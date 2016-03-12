@@ -1,7 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Attendance</string>
+    <string name="app_name">MyFreeGas</string>
+    <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="choose">Choose</string>
+    <string name="register">Register</string>
+    <string name="submit">Submit</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
+    <string name="uname">User Name</string>
+    <string name="oldpasswd">Old Password</string>
+    <string name="passwd">Password</string>
+    <string name="passwd2">Repeat Password</string>
+    <string name="fname">First Name</string>
+    <string name="mi">Middle Initial</string>
+    <string name="lname">Last Name</string>
+    <string name="province">Province</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="bday">Birthday</string>
+    <string name="takeAdPic">Take Ad Picture</string>
+    <string name="takeOdoPic">Take Odometer Picture</string>
+    <string name="adPic">Ad Picture</string>
+    <string name="odoPic">Odometer Picture</string>
+    <string name="odoText">Odometer Text</string>
+    <string name="viewPreviousUpdate">View Previous Update</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="editPassword">Edit Password</string>
+    <string name="takePicture">Take Picture</string>
+    <string name="savePicture">Save Picture</string>
+    <string name="registerVehicle">Add new vehicle</string>
+    <string name="plateNo">Plate No.</string>
+    <string name="name">Name</string>
+    <string name="pickavehicle">Registered vehicles:</string>
+    <string name="rememberme">Remember me</string>
+    <string name="sendUpdate">Send Update</string>
+    <string name="save">Save</string>
+    <string name="saveAndExit">Save and Exit</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_lgu_list">Pick a City / Province</string>
+    <string name="title_activity_login">Please enter your password</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_choose_user">Choose a User</string>
+    <string name="title_activity_choose_vehicle">Choose a Vehicle</string>
+    <string name="title_activity_view_updates">View Previous Update</string>
+    <string name="title_activity_edit_profile">Edit Your Profile</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="title_activity_vehicle_dashboard">Vehicle Dashboard</string>
+    <string name="title_activity_vehicle_registration">Vehicle Registration</string>
+    <string name="title_activity_edit_password">EditPasswordActivity</string>
 
 </resources>
