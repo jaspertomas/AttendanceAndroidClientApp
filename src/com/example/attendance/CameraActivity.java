@@ -61,16 +61,37 @@ public class CameraActivity extends Activity {
 	private ShowCamera showCamera;
 	private ImageView pic;
 
-	public static Camera isCameraAvailiable() {
-		Camera object = null;
-		try {
-			object = Camera.open();
-		} catch (Exception e) {
-			Log.e("CameraActivity","Camera is not available");
-		}
-		return object;
-	}
+	//this returns back camera if both cameras are available
+//	public static Camera isCameraAvailiable() {
+//		Camera object = null;
+//		try {
+//			object = Camera.open();
+//		} catch (Exception e) {
+//			Log.e("CameraActivity","Camera is not available");
+//		}
+//		return object;
+//	}
 
+	//this returns front camera
+	private Camera isCameraAvailiable() {
+	    int cameraCount = 0;
+	    Camera cam = null;
+	    Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
+	    cameraCount = Camera.getNumberOfCameras();
+	    for (int camIdx = 0; camIdx < cameraCount; camIdx++) {
+	        Camera.getCameraInfo(camIdx, cameraInfo);
+	        if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
+	            try {
+	                cam = Camera.open(camIdx);
+	            } catch (RuntimeException e) {
+	                Log.e(DEBUG_TAG, "Camera failed to open: " + e.getLocalizedMessage());
+	            }
+	        }
+	    }
+
+	    return cam;
+	}	
+	
 	private PictureCallback capturedIt = new PictureCallback() {
 
 		@Override
