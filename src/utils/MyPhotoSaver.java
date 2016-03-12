@@ -49,8 +49,16 @@ public class MyPhotoSaver {
   public static File getDir(Context context) {
 //	  File dir=new File(context.getFilesDir() + "/");
 	  
+	  //this gives /mnt/sdcard/Android/data/com.itforhumanity.attendance/files/camera
+	  return context.getExternalFilesDir(context.CAMERA_SERVICE);
+	  
+	  //this gives /data
 //	    return Environment.getDataDirectory();
-	  return new File(context.getFilesDir() + "/");
+	  
+	  //this gives /data/data/com.itforhumanity.attendance/
+	  //return new File(context.getFilesDir() + "/");
+	  
+	  // this gives /mnt/sdcard/Pictures/CameraAPIDemo
 //    File sdDir = Environment
 //      .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 //    return new File(sdDir, "CameraAPIDemo");
