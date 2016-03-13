@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import models.Employee;
 import models.Record;
+import models.Setting;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -124,8 +125,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 			//Put table creator functions here
 			//Employees.deleteTable();
 			Employee.createTable();
-			//Logs.deleteTable();
+			//Record.deleteTable();
 			Record.createTable();
+			//Setting.deleteTable();
+			Setting.createTable();
 
 		} catch (IOException e) {
 			Log.e(contextstring,"Error creating database");

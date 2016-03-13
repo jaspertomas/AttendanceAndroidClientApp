@@ -1,0 +1,50 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.itforhumanity.tmc.MainActivity" 
+    android:orientation="vertical"
+    >
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Set Server IP Address" 
+        android:textSize="30dp"
+        />
+    <EditText
+	    android:id="@+id/serverIp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Server Address" 
+        android:textSize="30dp"
+        android:text="10.0.2.2"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set" 
+        android:onClick="setServerIp"
+        android:textSize="30dp"
+        />
+    <Button
+	    android:id="@+id/btnExit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exit" 
+        android:onClick="exit"
+        android:textSize="30dp"
+        />
+    
+</LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -50,6 +50,7 @@
     <string name="title_activity_employees">Employees Activity</string>
     <string name="title_activity_log">Log Activity</string>
     <string name="title_activity_logs">Logs Activity</string>
+    <string name="title_activity_server_setting">ServerSettingActivity</string>
     <string name="crud_create">Create</string>
     <string name="crud_save">Save</string>
     <string name="crud_delete">Delete</string>

@@ -1,5 +1,7 @@
 package utils;
 
+import com.itforhumanity.attendance.Constants;
+
 import android.content.Context;
 
 public class MyInitializer {
@@ -11,5 +13,6 @@ public class MyInitializer {
 		//MyDatabaseHelper.initialize(context.getApplicationContext());
 		MyDatabaseHelper.createTables(context);
 		//BiofemmeSharedDatabaseHelper.initialize(context.getApplicationContext());
+		Constants.initServerUrl();
 	}
 }

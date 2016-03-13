@@ -1,14 +1,12 @@
 package converters;
 
+import java.util.ArrayList;
+
 import models.Employee;
 
-import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import utils.DateHelper;
-import utils.DateTimeHelper;
 
 public class EmployeeFromJsonConverter {
 	public static Employee convert(JSONObject json)

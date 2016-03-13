@@ -19,28 +19,21 @@
 	        android:layout_weight="1"
             android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/button_capture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="capture"
-                android:text="@string/takePicture" />
-
-            <Button
-                android:id="@+id/button_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="save"
-                android:text="@string/savePicture" />
+	        <ImageView
+	            android:id="@+id/imageView1"
+	            android:layout_height="fill_parent"
+		        android:layout_width="fill_parent"
+				android:scaleType="fitStart"
+				android:adjustViewBounds="true"
+	            android:src="@drawable/ic_launcher" />
+	            
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView1"
+		<ListView 
+		    android:id="@+id/list"
             android:layout_height="fill_parent"
 	        android:layout_width="0dp"
 	        android:layout_weight="1"
-			android:scaleType="fitStart"
-			android:adjustViewBounds="true"
-            android:src="@drawable/ic_launcher" />
-
+		    ></ListView>
+		    
 </LinearLayout>
