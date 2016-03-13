@@ -1,4 +1,4 @@
-package com.example.attendance;
+package com.itforhumanity.attendance;
 
 import holders.PictureHolder;
 
@@ -7,9 +7,9 @@ import java.util.Date;
 
 import utils.DateTimeHelper;
 import utils.MyBitmapHelper;
+import utils.MyInitializer;
 import utils.MyPhotoSaver;
 import utils.ShowCamera;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -28,6 +28,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class CameraActivity extends Activity {
+	static CameraActivity instance;
+	public static CameraActivity getInstance() {
+		return instance;
+	}
 	public static String DEBUG_TAG="CameraActivity";
 
 	Button btnCapture,btnSave;
@@ -40,6 +44,9 @@ public class CameraActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_camera);
 		context=CameraActivity.this;
+		instance=CameraActivity.this;
+
+		MyInitializer.initialize(context);
 		
 		pic = (ImageView) findViewById(R.id.imageView1);
 		preview = (FrameLayout) findViewById(R.id.camera_preview);
@@ -48,6 +55,8 @@ public class CameraActivity extends Activity {
 		
 		btnSave.setEnabled(false);
 		PictureHolder.setDatetimestring("");
+
+	
 	}
 
 	@Override
@@ -159,8 +168,8 @@ public class CameraActivity extends Activity {
 //		super.onDestroy();
 //	}
 	@Override
-	protected void onStart() {
-		super.onStart();
+	protected void onResume() {
+		super.onResume();
 		cameraObject = isCameraAvailiable();
 		if(cameraObject==null)
 		{
@@ -188,9 +197,9 @@ public class CameraActivity extends Activity {
 		}
 	}
 	@Override
-	protected void onStop() {
+	protected void onPause() {
 		if(cameraObject!=null)
 			cameraObject.release();
-		super.onStop();
+		super.onPause();
 	}
 }

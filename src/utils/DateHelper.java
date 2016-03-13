@@ -7,14 +7,21 @@ import java.util.Date;
 
 public class DateHelper {
 	static SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd");
+	static String emptydatestring="2000-01-01";
 	public static String toString(Date date)
 	{
-		return dateformat.format(date);
+		if(date==null)
+			return emptydatestring;
+		else
+			return dateformat.format(date);
 	}
 	public static Date toDate(String datestring)
 	{
 		try {
-			return dateformat.parse(datestring);
+			if(datestring==null||datestring.isEmpty())
+				return dateformat.parse(emptydatestring);
+			else
+				return dateformat.parse(datestring);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +71,8 @@ public class DateHelper {
 	}
 	public static Date getNullDate()
 	{
-		return toDate("3000-01-01");
+//		return toDate(Constants.NULL_DATE_STRING);
+		return getNullDate2000();
 	}
 	public static Date getNullDate2000()
 	{

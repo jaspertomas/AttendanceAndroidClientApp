@@ -1,4 +1,4 @@
-package com.example.attendance;
+package com.itforhumanity.attendance;
 
 import holders.PictureHolder;
 

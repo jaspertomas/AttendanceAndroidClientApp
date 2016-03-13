@@ -7,9 +7,9 @@ public class MyInitializer {
 	{
 		MyApplicationContextHolder.setAppContext(context.getApplicationContext());
 //		MyDownloadHelper.initialize(context.getApplicationContext());
-//		ThreadDownloadManager.getInstance();
-//		MyDatabaseHelper.initialize(context.getApplicationContext());
-//		
+		//ThreadDownloadManager.getInstance();
+		//MyDatabaseHelper.initialize(context.getApplicationContext());
+		MyDatabaseHelper.createTables(context);
 		//BiofemmeSharedDatabaseHelper.initialize(context.getApplicationContext());
 	}
 }

@@ -20,29 +20,48 @@ public class MyDialogHelper {
 		builder.setCancelable(false);
 		builder.show();		
 	}
-//	public static void textInput(Context context, String message)
-//	{
-//		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//		builder.setTitle(message);
-//
-//		// Set up the input
-//		final EditText input = new EditText(context);
-//		// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-//		input.setInputType(InputType.TYPE_CLASS_TEXT);
-//		builder.setView(input);
-//
-//		// Set up the buttons
-//		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
-//		    @Override
-//		    public void onClick(DialogInterface dialog, int which) {
-//		    }
-//		});
-//		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//		    @Override
-//		    public void onClick(DialogInterface dialog, int which) {
-//		    }
-//		});
-//
-//		builder.show();		
-//	}
+	public static void textInput(Context context, String message)
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(message);
+
+		// Set up the input
+		final EditText input = new EditText(context);
+		// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+		input.setInputType(InputType.TYPE_CLASS_TEXT);
+		builder.setView(input);
+
+		// Set up the buttons
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		    }
+		});
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		    }
+		});
+
+		builder.show();		
+	}
+	public static void okCancel(Context context, String message)
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(message);
+
+		// Set up the buttons
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		    }
+		});
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		    }
+		});
+
+		builder.show();		
+	}
 }

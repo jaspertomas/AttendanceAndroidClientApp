@@ -7,14 +7,21 @@ import java.util.Date;
 
 public class DateTimeHelper {
 	static SimpleDateFormat dateformat = new SimpleDateFormat(("yyyy-MM-dd HH:mm:ss"));
+	static String emptydatestring=toString(DateHelper.toDate(""));
 	public static String toString(Date date)
 	{
-		return dateformat.format(date);
+		if(date==null)
+			return emptydatestring;
+		else
+			return dateformat.format(date);
 	}
 	public static Date toDate(String datestring)
 	{
 		try {
-			return dateformat.parse(datestring);
+			if(datestring==null||datestring.isEmpty())
+				return dateformat.parse(emptydatestring);
+			else
+				return dateformat.parse(datestring);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -61,5 +68,14 @@ public class DateTimeHelper {
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		return c.get(Calendar.DAY_OF_MONTH);
+	}
+	public static Date getNullDate()
+	{
+//		return toDate(Constants.NULL_DATE_TIME_STRING);
+		return getNullDate2000();
+	}
+	public static Date getNullDate2000()
+	{
+		return toDate("2000-01-01 00:00:00");
 	}
 }

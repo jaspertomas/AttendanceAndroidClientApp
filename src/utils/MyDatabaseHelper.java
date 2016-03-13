@@ -6,15 +6,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import models.Employee;
+import models.Record;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
+	//set this to true if you want the initial database
+	//to be copied from the assets folder
+	//instead of just being a blank database
+	private static boolean copydbfromassets=false;
+	
 	private static String DB_PATH = ""; 
 	private final Context context;
-	private static String LOGCATTAG = "MyDatabaseHelper"; // Tag just for the LogCat window
+	private static String contextstring = "MyDatabaseHelper"; // Tag just for the LogCat window
 	private static final String DB_NAME = "database.db";
 
 	private static final int latestVersion=1;
@@ -26,22 +33,29 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 				instance=new MyDatabaseHelper(MyApplicationContextHolder.getAppContext());
 			return instance;
 		} catch (IOException e) {
-			Log.e(LOGCATTAG,"Error creating database");
+			Log.e(contextstring,"Error creating database");
 			return null;
 		}
 	}
 	private MyDatabaseHelper(Context context) throws IOException 
 	{
 	    super(context, DB_NAME, null, latestVersion);
-	    if(android.os.Build.VERSION.SDK_INT >= 17){
-	       DB_PATH = context.getApplicationInfo().dataDir + "/databases/";         
-	    }
-	    else
-	    {
-	       DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
-	    }
 	    this.context = context;
-	    createDataBase();
+
+	    //if copydbfromassets is true
+		//the database will be copied from the assets folder
+		//instead of just being a blank database
+	    if(copydbfromassets)
+	    {
+			if(android.os.Build.VERSION.SDK_INT >= 17){
+				DB_PATH = context.getApplicationInfo().dataDir + "/databases/";         
+			}
+			else
+			{
+				DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
+			}
+			createDataBase();
+	    }
 	}   
 	private void createDataBase() throws IOException
 	{
@@ -56,7 +70,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	        {
 	            //Copy the database from assests
 	            copyDataBase();
-	            Log.e(LOGCATTAG, "createDatabase database created");
+	            Log.e(contextstring, "createDatabase database created");
 	        } 
 	        catch (IOException mIOException) 
 	        {
@@ -99,6 +113,22 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
 		if(oldVersion<1)
 		{
+		}
+	}
+	public static void createTables(Context context)
+	{
+		try {
+			if(instance==null)
+				instance=new MyDatabaseHelper(MyApplicationContextHolder.getAppContext());
+
+			//Put table creator functions here
+			//Employees.deleteTable();
+			Employee.createTable();
+			//Logs.deleteTable();
+			Record.createTable();
+
+		} catch (IOException e) {
+			Log.e(contextstring,"Error creating database");
 		}
 	}
 }

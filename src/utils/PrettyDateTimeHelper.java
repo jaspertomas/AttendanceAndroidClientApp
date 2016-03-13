@@ -4,8 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class PrettyDateHelper {
-	static SimpleDateFormat dateformat = new SimpleDateFormat("MMM dd, yyyy");
+public class PrettyDateTimeHelper {
+	static SimpleDateFormat dateformat = new SimpleDateFormat("MMM d, yyyy hh:mm:ss a");
 	static String emptydatestring=toString(DateHelper.toDate(""));
 	public static String toString(Date date)
 	{
