@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.text.InputType;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MyDialogHelper {
 	public static void popup(Context context, String message)

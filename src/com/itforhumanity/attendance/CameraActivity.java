@@ -1,7 +1,6 @@
 package com.itforhumanity.attendance;
 
-import holders.PictureHolder;
-
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +23,7 @@ import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -74,8 +74,8 @@ public class CameraActivity extends Activity {
 		switch (item.getItemId()) {
 		case R.id.action_settings:
 		{
-//			Intent intent = new Intent(CameraActivity.this, SettingsActivity.class);
-//			startActivity(intent);
+			Intent intent = new Intent(CameraActivity.this, ServerSettingActivity.class);
+			startActivity(intent);
 			return true;
 		}
 		case R.id.action_update:
@@ -88,6 +88,7 @@ public class CameraActivity extends Activity {
 		}
 		case R.id.action_upload:
 		{
+			upload();
 //			Intent intent = new Intent(CameraActivity.this, ScheduleMapActivity.class);
 //			startActivity(intent);
 			return true;
@@ -139,9 +140,7 @@ public class CameraActivity extends Activity {
 
 			Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
 			
-			Date date=new Date();
-			PictureHolder.setDatetimestring(DateTimeHelper.toString(date));
-			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, PictureHolder.getDatetimestring());
+			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, DateTimeHelper.toString(new Date()));
 			if (bitmap == null) {
 				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_SHORT).show();
 			} else {
@@ -270,7 +269,6 @@ public class CameraActivity extends Activity {
 //		btnSave = (Button) findViewById(R.id.button_save);
 //		
 //		btnSave.setEnabled(false);
-		PictureHolder.setDatetimestring("");
 		
 		listView = (ListView) findViewById (R.id.list);
 		itemTitles= new ArrayList<String>();
@@ -294,14 +292,10 @@ public class CameraActivity extends Activity {
 					
 					//if datetimestring is not set, then no picture taken
 					//do nothing
-					String datetimestring=PictureHolder.getDatetimestring();
-					if(datetimestring.isEmpty())
-					{
-						Toast.makeText(getApplicationContext(), "Something's wrong",Toast.LENGTH_SHORT).show();
-						return;
-					}
 					
-					String filename=datetimestring.replace(" ", "-").replace(":", "-")+".jpg";
+					String employeename=getItemAtPosition(position).getName();
+					String datetimestring=DateTimeHelper.toString(new Date());
+					String filename=employeename+"-"+datetimestring.replace(" ", "-").replace(":", "-")+".jpg";
 
 				    File pictureFileDir = MyPhotoSaver.getDir(context);
 				    File picturefile=new File(pictureFileDir,"temp.jpg");
@@ -312,7 +306,7 @@ public class CameraActivity extends Activity {
 				    	
 						Record record=new Record();
 						record.setDatetime(DateTimeHelper.toDate(datetimestring));
-						record.setEmployeeName(getItemAtPosition(position).getName());
+						record.setEmployeeName(employeename);
 			    		record.setFilename(filename);
 			    		record.save();
 				    	
@@ -376,4 +370,32 @@ public class CameraActivity extends Activity {
 	public static Employee getItemAtPosition(Integer position) {
 		return Employee.getById(listItemIds.get(position));
 	}	
+	
+	
+	public void upload()
+	{
+		Record record=Record.selectOne("");
+		
+        String imagepath = MyPhotoSaver.getDir(context).getPath()+"/"+record.getFilename();
+
+        BitmapFactory.Options options0 = new BitmapFactory.Options();
+        options0.inSampleSize = 2;
+        // options.inJustDecodeBounds = true;
+        options0.inScaled = false;
+        options0.inDither = false;
+        options0.inPreferredConfig = Bitmap.Config.ARGB_8888;
+
+        Bitmap bmp = BitmapFactory.decodeFile(imagepath);
+
+        ByteArrayOutputStream baos0 = new ByteArrayOutputStream();
+
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos0);
+        byte[] imageBytes0 = baos0.toByteArray();
+
+        //image.setImageBitmap(bmp);
+
+        String encodedImage= Base64.encodeToString(imageBytes0, Base64.DEFAULT);	
+        
+        Log.i("encodedImage",encodedImage);
+        }
 }

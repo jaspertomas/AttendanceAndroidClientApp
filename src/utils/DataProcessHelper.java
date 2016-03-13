@@ -1,12 +1,11 @@
 package utils;
 
-import javax.security.auth.Subject;
-
 import models.Employee;
-import converters.EmployeeFromJsonConverter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import converters.EmployeeFromJsonConverter;
 
 public class DataProcessHelper {
 	public static void process(JSONObject json) throws JSONException

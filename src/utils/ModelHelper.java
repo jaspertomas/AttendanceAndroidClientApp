@@ -13,7 +13,6 @@ import org.json.JSONObject;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 public class ModelHelper {
 //	public String TABLENAME=null;

@@ -4,10 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 import android.content.Context;
-import android.hardware.Camera;
-import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 public class MyPhotoSaver {
 	public static String DEBUG_TAG="MyPhotoSaver";

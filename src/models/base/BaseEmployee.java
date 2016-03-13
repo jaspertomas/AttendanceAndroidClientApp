@@ -2,15 +2,12 @@
 package models.base;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import models.Employee;
 import models.Entity;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import utils.DateHelper;
 import utils.ModelHelper;
 import android.database.Cursor;
 

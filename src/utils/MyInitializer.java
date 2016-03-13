@@ -1,8 +1,8 @@
 package utils;
 
-import com.itforhumanity.attendance.Constants;
-
 import android.content.Context;
+
+import com.itforhumanity.attendance.Constants;
 
 public class MyInitializer {
 	public static void initialize(Context context)
