@@ -33,7 +33,7 @@ public class BaseRecord extends Entity{
 	public static final Integer[] datatypes={
 		ModelHelper.INTEGER
 		,ModelHelper.STRING
-		,ModelHelper.DATETIME
+		,ModelHelper.STRING
 		,ModelHelper.STRING
 			};
 		//field validations
@@ -89,11 +89,11 @@ public class BaseRecord extends Entity{
 		modelhelper.jsonPutString(values, "employee_name", employee_name);
 	}
 
-	public Date getDatetime() {
-		return modelhelper.jsonGetDate(values, "datetime");
+	public String getDatetime() {
+		return modelhelper.jsonGetString(values, "datetime");
 	}
-	public void setDatetime(Date datetime) {
-		modelhelper.jsonPutDate(values, "datetime", datetime);
+	public void setDatetime(String datetime) {
+		modelhelper.jsonPutString(values, "datetime", datetime);
 	}
 
 	public String getFilename() {

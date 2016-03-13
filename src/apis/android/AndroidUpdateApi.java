@@ -12,7 +12,7 @@ package apis.android;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import utils.DataProcessHelper;
+import utils.UpdateHelper;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -48,11 +48,11 @@ public class AndroidUpdateApi extends BaseAndroidUpdateApi{
 			
 			if(success)
 			{
-				DataProcessHelper.process(json);
+				UpdateHelper.process(json);
 				CameraActivity.getInstance().runOnUiThread(new Runnable() {
 				    public void run() {
-				        Toast.makeText(CameraActivity.getInstance(), "Update Success", Toast.LENGTH_SHORT).show();
-//						CameraActivity.getInstance().loadCamera();
+				        Toast.makeText(CameraActivity.getInstance(), "Update Success", Toast.LENGTH_LONG).show();
+				        CameraActivity.getInstance().load();
 				    }
 				});		
 			}
@@ -60,8 +60,7 @@ public class AndroidUpdateApi extends BaseAndroidUpdateApi{
 			{
 				CameraActivity.getInstance().runOnUiThread(new Runnable() {
 				    public void run() {
-				        Toast.makeText(CameraActivity.getInstance(), error, Toast.LENGTH_SHORT).show();
-//						CameraActivity.getInstance().loadCamera();
+				        Toast.makeText(CameraActivity.getInstance(), error, Toast.LENGTH_LONG).show();
 				    }
 				});		
 			}

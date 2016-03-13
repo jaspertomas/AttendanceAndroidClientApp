@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 import converters.EmployeeFromJsonConverter;
 
-public class DataProcessHelper {
+public class UpdateHelper {
 	public static void process(JSONObject json) throws JSONException
 	{
 		Employee.deleteAll();

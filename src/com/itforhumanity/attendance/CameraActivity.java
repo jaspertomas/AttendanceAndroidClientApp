@@ -36,6 +36,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 import apis.android.AndroidUpdateApi;
+import apis.android.AndroidUploadApi;
 
 public class CameraActivity extends Activity {
 	static CameraActivity instance;
@@ -88,9 +89,11 @@ public class CameraActivity extends Activity {
 		}
 		case R.id.action_upload:
 		{
-			upload();
-//			Intent intent = new Intent(CameraActivity.this, ScheduleMapActivity.class);
-//			startActivity(intent);
+			Integer count=Record.count("");
+			if(count==0)
+				Toast.makeText(CameraActivity.this, "No records to upload",Toast.LENGTH_LONG).show();
+		    else
+				AndroidUploadApi.demo(context);
 			return true;
 		}
 		default:
@@ -221,7 +224,7 @@ public class CameraActivity extends Activity {
 	}
 	public void loadCamera()
 	{
-		cameraObject = isCameraAvailiable();
+		cameraObject = isFrontCameraAvailiable();
 		if(cameraObject==null)
 		{
 //			btnCapture.setEnabled(false);
@@ -305,7 +308,7 @@ public class CameraActivity extends Activity {
 				    	picturefile.renameTo(newpicturefile);
 				    	
 						Record record=new Record();
-						record.setDatetime(DateTimeHelper.toDate(datetimestring));
+						record.setDatetime(datetimestring);
 						record.setEmployeeName(employeename);
 			    		record.setFilename(filename);
 			    		record.save();
@@ -371,31 +374,4 @@ public class CameraActivity extends Activity {
 		return Employee.getById(listItemIds.get(position));
 	}	
 	
-	
-	public void upload()
-	{
-		Record record=Record.selectOne("");
-		
-        String imagepath = MyPhotoSaver.getDir(context).getPath()+"/"+record.getFilename();
-
-        BitmapFactory.Options options0 = new BitmapFactory.Options();
-        options0.inSampleSize = 2;
-        // options.inJustDecodeBounds = true;
-        options0.inScaled = false;
-        options0.inDither = false;
-        options0.inPreferredConfig = Bitmap.Config.ARGB_8888;
-
-        Bitmap bmp = BitmapFactory.decodeFile(imagepath);
-
-        ByteArrayOutputStream baos0 = new ByteArrayOutputStream();
-
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos0);
-        byte[] imageBytes0 = baos0.toByteArray();
-
-        //image.setImageBitmap(bmp);
-
-        String encodedImage= Base64.encodeToString(imageBytes0, Base64.DEFAULT);	
-        
-        Log.i("encodedImage",encodedImage);
-        }
 }
