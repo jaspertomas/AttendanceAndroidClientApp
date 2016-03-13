@@ -1,13 +1,13 @@
 package converters;
 
-import java.util.ArrayList;
-
 import models.Record;
 
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.DateHelper;
 import utils.DateTimeHelper;
 
 public class RecordFromJsonConverter {
@@ -17,8 +17,7 @@ public class RecordFromJsonConverter {
 		try {
 			if(json.has("id")&&!json.isNull("id"))record.setId(json.getInt("id"));
 			if(json.has("employee_name")&&!json.isNull("employee_name"))record.setEmployeeName(json.getString("employee_name"));
-			if(json.has("datetime")&&!json.isNull("datetime"))record.setDatetime(DateTimeHelper.toDate(json.getString("datetime")));
-			else record.setDatetime(DateTimeHelper.getNullDate());
+			if(json.has("datetime")&&!json.isNull("datetime"))record.setDatetime(json.getString("datetime"));
 			if(json.has("filename")&&!json.isNull("filename"))record.setFilename(json.getString("filename"));
 			return record;
 		} catch (JSONException e) {

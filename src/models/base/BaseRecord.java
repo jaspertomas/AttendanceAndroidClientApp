@@ -4,11 +4,13 @@ package models.base;
 import java.util.ArrayList;
 import java.util.Date;
 
-import models.Entity;
 import models.Record;
+import models.Entity;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.DateHelper;
 import utils.ModelHelper;
 import android.database.Cursor;
 
@@ -26,7 +28,7 @@ public class BaseRecord extends Entity{
 	public static final String[] fieldtypes={
 		"int(11)"
 		,"varchar(25)"
-		,"varchar(0)"
+		,"varchar(20)"
 		,"varchar(30)"
 			};
 	//data types

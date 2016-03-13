@@ -1,10 +1,5 @@
 package activities.records;
-import java.text.ParseException;
-
 import models.Record;
-import utils.DateTimePickerHelper;
-import utils.MyDialogHelper;
-import utils.PrettyDateTimeHelper;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -13,7 +8,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -68,11 +62,11 @@ public class BaseRecordActivity extends Activity {
 		
 		//these fields use EditTexts
 		edittexts[1]=txtEmployeeName;//String
-		edittexts[2]=txtDatetime;//DateTime
+		edittexts[2]=txtDatetime;//String
 		edittexts[3]=txtFilename;//String
 
 		errortexts[1]=errEmployeeName;//String
-		errortexts[2]=errDatetime;//DateTime
+		errortexts[2]=errDatetime;//String
 		errortexts[3]=errFilename;//String
 
 		initializeData();
@@ -164,15 +158,7 @@ public class BaseRecordActivity extends Activity {
 		}
 
 		item.setEmployeeName(txtEmployeeName.getText().toString());
-		try {
-			if(!txtDatetime.getText().toString().isEmpty())
-			{
-				item.setDatetime(PrettyDateTimeHelper.toDate(txtDatetime.getText().toString()));
-			}
-		} catch (ParseException e) {
-			MyDialogHelper.popup(context, "Invalid date/time: "+txtDatetime.getText().toString());
-			return;
-		}//DateTime
+		item.setDatetime(txtDatetime.getText().toString());
 		item.setFilename(txtFilename.getText().toString());
 		item.save();
 		populateShowMode();
@@ -191,21 +177,13 @@ public class BaseRecordActivity extends Activity {
 	private void populateShowMode()
 	{
 		lblEmployeeName.setText(item.getEmployeeName()==null?"":item.getEmployeeName().toString());
-		lblDatetime.setText(item.getDatetime()==null?"":PrettyDateTimeHelper.toString(item.getDatetime()));
+		lblDatetime.setText(item.getDatetime()==null?"":item.getDatetime().toString());
 		lblFilename.setText(item.getFilename()==null?"":item.getFilename().toString());
 	}
 	private void populateEditMode()
 	{
 		txtEmployeeName.setText(item.getEmployeeName()==null?"":item.getEmployeeName().toString());
-		txtDatetime.setText(item.getDatetime()==null?"":PrettyDateTimeHelper.toString(item.getDatetime()));
-		txtDatetime.setFocusable(false);
-		txtDatetime.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View arg0) {
-				DateTimePickerHelper.genDatePicker(context,txtDatetime).show();
-			}
-		});
-
+		txtDatetime.setText(item.getDatetime()==null?"":item.getDatetime().toString());
 		txtFilename.setText(item.getFilename()==null?"":item.getFilename().toString());
 	}
 
