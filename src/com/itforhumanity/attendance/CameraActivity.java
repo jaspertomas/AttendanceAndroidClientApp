@@ -332,7 +332,7 @@ public class CameraActivity extends Activity {
 	}
 	
 	public void load() {
-        String criteria=" ";
+        String criteria=" order by name";
         loadListItems(criteria);
 
 		itemTitles.clear();

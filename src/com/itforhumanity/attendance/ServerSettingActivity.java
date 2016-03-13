@@ -31,10 +31,7 @@ public class ServerSettingActivity extends Activity {
 	    if(serverIp!=null)
 	    {
 	    	txtServerIp.setText(serverIp.getValue());
-	    	btnExit.setVisibility(View.GONE);
 	    }
-	    else
-	    	btnExit.setVisibility(View.VISIBLE);//if server is set, no need for exit button
 	}
 	public void setServerIp(View view)
 	{
