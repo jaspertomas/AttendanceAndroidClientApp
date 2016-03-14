@@ -1,5 +1,7 @@
 package utils;
 
+import holders.PictureDataHolder;
+
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -26,7 +28,7 @@ public class MyPhotoSaver {
 //    String date = dateFormat.format(new Date());
 //    String photoFile = "Picture_" + date + ".jpg";
 //    String filename = pictureFileDir.getPath() + File.separator + photoFile;
-    String photoFile = "temp.jpg";
+    String photoFile = PictureDataHolder.getFilename();
     String filename = pictureFileDir.getPath() + File.separator + photoFile;
     File pictureFile = new File(filename);
 

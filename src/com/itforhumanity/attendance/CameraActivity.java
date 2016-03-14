@@ -1,5 +1,7 @@
 package com.itforhumanity.attendance;
 
+import holders.PictureDataHolder;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
@@ -291,21 +293,22 @@ public class CameraActivity extends Activity {
 			{
 				if(cameraObject!=null)
 				{
+					String employeename=getItemAtPosition(position).getName();
+					String datetimestring=DateTimeHelper.toString(new Date());
+					String filename=datetimestring.replace(" ", "-").replace(":", "-")+"-"+employeename+".jpg";
+					PictureDataHolder.setFilename(filename);
+					
 					cameraObject.takePicture(null, null, capturedIt);
 					
 					//if datetimestring is not set, then no picture taken
 					//do nothing
 					
-					String employeename=getItemAtPosition(position).getName();
-					String datetimestring=DateTimeHelper.toString(new Date());
-					String filename=employeename+"-"+datetimestring.replace(" ", "-").replace(":", "-")+".jpg";
-
-				    File pictureFileDir = MyPhotoSaver.getDir(context);
-				    File picturefile=new File(pictureFileDir,"temp.jpg");
-				    File newpicturefile=new File(pictureFileDir,filename);
-				    if(picturefile.exists())
+//				    File pictureFileDir = MyPhotoSaver.getDir(context);
+//				    File picturefile=new File(pictureFileDir,"temp.jpg");
+//				    File newpicturefile=new File(pictureFileDir,filename);
+//				    if(picturefile.exists())
 				    {
-				    	picturefile.renameTo(newpicturefile);
+//				    	picturefile.renameTo(newpicturefile);
 				    	
 						Record record=new Record();
 						record.setDatetime(datetimestring);
@@ -317,10 +320,10 @@ public class CameraActivity extends Activity {
 				    }
 				    //else picture file not found
 				    //this should never happen
-				    else
-				    {
+//				    else
+//				    {
 //						Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_SHORT).show();
-				    }
+//				    }
 				}
 				else
 				{
