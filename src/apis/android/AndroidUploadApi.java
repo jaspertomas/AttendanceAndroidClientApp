@@ -41,6 +41,17 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 
 	public static void demo(Context context)
 	{
+		Integer count=Record.count("");
+		if(count==0)
+		{
+			CameraActivity.getInstance().runOnUiThread(new Runnable() {
+			    public void run() {
+			        Toast.makeText(CameraActivity.getInstance(), "Upload Success", Toast.LENGTH_LONG).show();
+			    }
+			});		
+			return;
+		}
+		
 		AndroidUploadApi api = new AndroidUploadApi(context);
 		api.setAccessToken("lalalala hey jude");//possible values:
 		
@@ -73,9 +84,10 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 					record.delete();
 				}
 				
+				final Context finalContext=context;
 				CameraActivity.getInstance().runOnUiThread(new Runnable() {
 				    public void run() {
-				        Toast.makeText(CameraActivity.getInstance(), "Upload Success", Toast.LENGTH_SHORT).show();
+				    	demo(finalContext);
 				    }
 				});		
 			}
@@ -83,7 +95,7 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			{
 				CameraActivity.getInstance().runOnUiThread(new Runnable() {
 				    public void run() {
-				        Toast.makeText(CameraActivity.getInstance(), error, Toast.LENGTH_SHORT).show();
+				        Toast.makeText(CameraActivity.getInstance(), error, Toast.LENGTH_LONG).show();
 				    }
 				});		
 			}
@@ -102,7 +114,7 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			if(accessToken!=null)mainobj.put("access_token", accessToken.toString());
 			
 			JSONArray array=new JSONArray();
-			for(Record record:Record.select(""))
+			for(Record record:Record.select(" limit 10"))
 			{
 		        String imagepath = MyPhotoSaver.getDir(context).getPath()+"/"+record.getFilename();
 				record.getValues().put("image_encoded", imageFileToString(imagepath));

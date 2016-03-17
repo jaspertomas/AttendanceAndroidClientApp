@@ -147,7 +147,7 @@ public class CameraActivity extends Activity {
 			
 			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, DateTimeHelper.toString(new Date()));
 			if (bitmap == null) {
-				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_LONG).show();
 			} else {
 				data=MyBitmapHelper.getByteArrayFromBitmap(bitmap);
 
@@ -316,18 +316,18 @@ public class CameraActivity extends Activity {
 			    		record.setFilename(filename);
 			    		record.save();
 				    	
-						Toast.makeText(getApplicationContext(), "Picture saved successfully.",Toast.LENGTH_SHORT).show();
+						Toast.makeText(getApplicationContext(), "Picture saved successfully.",Toast.LENGTH_LONG).show();
 				    }
 				    //else picture file not found
 				    //this should never happen
 //				    else
 //				    {
-//						Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_SHORT).show();
+//						Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_LONG).show();
 //				    }
 				}
 				else
 				{
-					Toast.makeText(getApplicationContext(), "No camera available",Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), "No camera available",Toast.LENGTH_LONG).show();
 				}
 			}});
 		}
