@@ -11,6 +11,7 @@ records
 */
 package apis.android;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 
 import models.Record;
@@ -26,7 +27,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.itforhumanity.attendance.CameraActivity;
@@ -117,7 +117,11 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			for(Record record:Record.select(" limit 10"))
 			{
 		        String imagepath = MyPhotoSaver.getDir(context).getPath()+"/"+record.getFilename();
-				record.getValues().put("image_encoded", imageFileToString(imagepath));
+		        File file=new File(imagepath);
+		        if(file.exists())
+		        	record.getValues().put("image_encoded", imageFileToString(imagepath));
+		        else
+		        	record.getValues().put("image_encoded","");
 				array.put(record.getValues());
 			}
 			mainobj.put("records", array);
