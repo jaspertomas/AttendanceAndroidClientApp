@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import models.Setting;
 import models.User;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -125,6 +126,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 			//[tablename].createTable();	
 			//User.deleteTable();
 			User.createTable();
+			Setting.createTable();
 			
 		} catch (IOException e) {
 			Log.e(contextstring,"Error creating database");

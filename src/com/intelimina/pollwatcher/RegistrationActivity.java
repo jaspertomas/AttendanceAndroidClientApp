@@ -122,49 +122,23 @@ public class RegistrationActivity extends Activity {
 		txtBday.setText(PrettyDateHelper.toString(DateHelper.getNullDate2000()));
 		
 		//setup temporary user record
-		User user=UserHolder.getUser();
-		if(user!=null)
-		{
-			txtUname.setText(user.getUsername());
-			txtPasswd.setText("");
-			txtPasswd2.setText("");
-			txtFname.setText(user.getFname());
-			txtMi.setText(user.getMi());
-			txtLname.setText(user.getLname());
-			Date bday=user.getBday();
-			txtBday.setText(PrettyDateHelper.toString(bday));
-			byear=DateHelper.getYear(bday);
-			bmonth=DateHelper.getMonth(bday);
-			bdayOfMonth=DateHelper.getDayOfMonth(bday);
-			txtPhone.setText(user.getPhone());
-			txtEmail.setText(user.getEmail());
-			RegistrationHolder.setCity(Lgus.getById(user.getCityId()));
-			txtCity.setText(RegistrationHolder.getCity().getName());
-			RegistrationHolder.setProvince(Lgus.getById(user.getProvinceId()));
-			txtProvince.setText(RegistrationHolder.getProvince().getName());
-			txtAddress.setText(user.getAddress());
-		}
-		else
-		{
-			user=new User();
-			user.setUsername(txtUname.getText().toString());
-			user.setPassword(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()));
-			user.setFname(txtFname.getText().toString());
-			user.setMi(txtMi.getText().toString());
-			user.setLname(txtLname.getText().toString());
-			user.setBday(DateHelper.getNullDate2000());
-			user.setEmail(txtEmail.getText().toString());
-			user.setPhone(txtPhone.getText().toString());
-			RegistrationHolder.setCity(Lgus.getByName(" Other / Not Applicable"));
-			user.setCityId(RegistrationHolder.getCity().getId());
-			RegistrationHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
-			user.setProvinceId(RegistrationHolder.getProvince().getId());
-			user.setAddress(txtAddress.getText().toString());
-			user.setIsReg(0);
-			user.save();
-			
-			UserHolder.setUser(user);
-		}
+		User user=new User();
+		user.setUsername(txtUname.getText().toString());
+		user.setPassword(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()));
+		user.setFname(txtFname.getText().toString());
+		user.setMi(txtMi.getText().toString());
+		user.setLname(txtLname.getText().toString());
+		user.setBday(DateHelper.getNullDate2000());
+		user.setEmail(txtEmail.getText().toString());
+		user.setPhone(txtPhone.getText().toString());
+		RegistrationHolder.setCity(Lgus.getByName(" Other / Not Applicable"));
+		user.setCityId(RegistrationHolder.getCity().getId());
+		RegistrationHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
+		user.setProvinceId(RegistrationHolder.getProvince().getId());
+		user.setAddress(txtAddress.getText().toString());
+		user.setIsReg(0);
+		
+		UserHolder.setRegUser(user);
 	}
 	public void provinceList()
 	{
@@ -209,7 +183,7 @@ public class RegistrationActivity extends Activity {
 		}
 		//else if username is taken (by another User record)
 		//say so
-		else if(duplicateuser!=null && duplicateuser.getId()!=UserHolder.getUser().getId())
+		else if(duplicateuser!=null && duplicateuser.getId()!=UserHolder.getRegUser().getId())
 		{
         	String message="Username "+txtUname.getText().toString()+" is already taken.";
 			MyDialogHelper.popup(context, message);
@@ -295,24 +269,7 @@ public class RegistrationActivity extends Activity {
 		} 
 		
 		//send data to server
-		
-		//temporarily fake registration success
-		fakeSuccess();
-	}
-	public void fakeSuccess(View button){fakeSuccess();}
-	public void fakeSuccess()
-	{
-		User user=UserHolder.getUser();
-		user.setIsReg(1);
-		user.save();
-
-		//go to dashboard after this
-		NavigationHolder.setDestination(NavigationHolder.DashboardActivity);
-		
-    	String message="Registration successful";
-    	Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-    	
-    	finish();
+		//fakeSuccess();//!!!todo
 	}
 
 	@Override
@@ -393,7 +350,7 @@ public class RegistrationActivity extends Activity {
 	}
 	public void save() throws ParseException
 	{
-		User user=UserHolder.getUser();
+		User user=UserHolder.getRegUser();
 		user.setUsername(txtUname.getText().toString());
 		user.setPassword(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()));
 		user.setFname(txtFname.getText().toString());
@@ -450,16 +407,14 @@ public class RegistrationActivity extends Activity {
 	}
 	public void reallyCancel()
 	{
-		UserHolder.getUser().delete();
-		UserHolder.reset();
-
-		NavigationHolder.setDestination(NavigationHolder.ChooseUserActivity);
+		MainActivity.getInstance().setShutdown(true);
 		finish();
 	}
 	@Override
 	public void onBackPressed()
 	{
-		finish();
+//		MainActivity.getInstance().setShutdown(true);
+//		finish();
 	}
 	public void saveAndExit(View button)
 	{

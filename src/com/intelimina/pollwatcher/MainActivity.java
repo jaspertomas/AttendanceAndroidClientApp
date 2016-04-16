@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 		//if not, that means logged out
 		if(UserHolder.getUser()==null)
 		{
-			Integer usercount=User.count("");
+			Integer usercount=User.count(" where is_reg=1");
 			//if no users in database, register
 			if(usercount==0)
 			{

@@ -11,17 +11,13 @@ public class UserHolder {
 		UserHolder.user = user;
 	}
 
-//	static User chosenuser=null;
-//	public static User getChosenUser() {
-//		return chosenuser;
-//	}
-//	public static void setChosenUser(User user) {
-//		UserHolder.chosenuser = user;
-//	}
 	
-	public static void reset()
-	{
-		user=null;
-//		chosenuser=null;
+	static User regUser=null;
+	public static User getRegUser() {
+		return regUser;
 	}
+	public static void setRegUser(User regUser) {
+		UserHolder.regUser = regUser;
+	}
+	
 }
