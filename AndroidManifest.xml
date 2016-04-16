@@ -70,6 +70,21 @@
             android:name="activities.users.UsersActivity"
             android:label="@string/title_activity_users" >
         </activity>
-    </application>
+        <activity
+            android:name="com.intelimina.pollwatcher.RegistrationActivity"
+            android:label="@string/title_activity_registration"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.intelimina.pollwatcher.LguListActivity"
+            android:label="@string/title_activity_lgu_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.intelimina.pollwatcher.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait" >
+        </activity>
+   	</application>
 
 </manifest>

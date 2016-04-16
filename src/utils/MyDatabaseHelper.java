@@ -16,7 +16,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	//set this to true if you want the initial database
 	//to be copied from the assets folder
 	//instead of just being a blank database
-	private static boolean copydbfromassets=false;
+	private static boolean copydbfromassets=true;
 	
 	private static String DB_PATH = ""; 
 	private final Context context;
@@ -69,6 +69,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	        {
 	            //Copy the database from assests
 	            copyDataBase();
+	            createTables(context);
 	            Log.e(contextstring, "createDatabase database created");
 	        } 
 	        catch (IOException mIOException) 

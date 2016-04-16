@@ -53,6 +53,9 @@
     <string name="title_activity_log">Log Activity</string>
     <string name="title_activity_logs">Logs Activity</string>
     <string name="title_activity_server_setting">ServerSettingActivity</string>
+    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_lgu_list">Pick a City / Province</string>
+    <string name="title_activity_login">Please enter your password</string>
     <string name="crud_create">Create</string>
     <string name="crud_save">Save</string>
     <string name="crud_delete">Delete</string>
@@ -61,4 +64,18 @@
     <string name="crud_cancel">Cancel</string>
     <string name="crud_add_new">Add New</string>
     <string name="crud_save_and_add_new">Save and Add New</string>
+    
+<!-- 
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_choose_user">Choose a User</string>
+    <string name="title_activity_choose_vehicle">Choose a Vehicle</string>
+    <string name="title_activity_view_updates">View Previous Update</string>
+    <string name="title_activity_edit_profile">Edit Your Profile</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="title_activity_vehicle_dashboard">Vehicle Dashboard</string>
+    <string name="title_activity_vehicle_registration">Vehicle Registration</string>
+    <string name="title_activity_edit_password">EditPasswordActivity</string>
+
+ -->    
+    
 </resources>

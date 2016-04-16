@@ -37,13 +37,13 @@ public class Regions {
 	{
 		SQLiteDatabase db = MyDatabaseHelper.getInstance().getWritableDatabase();
 		db.execSQL("delete from "+tablename+" where id = '"+item.getId()+"';");
-		db.close();
+		//db.close()
 	}
 	public static void delete(Integer id)
 	{
 		SQLiteDatabase db = MyDatabaseHelper.getInstance().getWritableDatabase();
 		db.execSQL("delete from "+tablename+" where id = '"+id+"';");
-		db.close();
+		//db.close()
 	}
 	public static Integer insert(Region item)
 	{
@@ -69,7 +69,7 @@ public class Regions {
 		Integer result=cursor.getInt(0);
 		cursor.close();
 
-		db.close();
+		//db.close()
 		return result;
 	}
 	public static void update(Region item)
@@ -79,7 +79,7 @@ public class Regions {
 		db.execSQL(
 		"update "+tablename+" set "+implodeFieldsWithValues(item,false)+" where id = '"+item.getId()
 		+"';");
-		db.close();
+		//db.close()
 	}
 	public static ArrayList<Region> select(String criteria) {
 		ArrayList<Region> items = new ArrayList<Region>();
@@ -92,7 +92,7 @@ public class Regions {
 			items.add(new Region(cursor));
 		}
 		cursor.close();
-		db.close();
+		//db.close()
 		return items;
 	}
 	public static Integer count(String criteria) {
@@ -101,7 +101,7 @@ public class Regions {
 		cursor.moveToFirst();
 		Integer result=cursor.getInt(0);
 		cursor.close();
-		db.close();
+		//db.close()
 		return result;
 	}
 	public static Integer getLastInsertId() {
@@ -110,7 +110,7 @@ public class Regions {
 		cursor.moveToFirst();
 		Integer result=cursor.getInt(0);
 		cursor.close();
-		db.close();
+		//db.close()
 		return result;
 	}
 

@@ -67,13 +67,13 @@ public class Lgus {
 	{
 		SQLiteDatabase db = MyDatabaseHelper.getInstance().getWritableDatabase();
 		db.execSQL("delete from "+tablename+" where id = '"+item.getId()+"';");
-		db.close();
+		//db.close()
 	}
 	public static void delete(Integer id)
 	{
 		SQLiteDatabase db = MyDatabaseHelper.getInstance().getWritableDatabase();
 		db.execSQL("delete from "+tablename+" where id = '"+id+"';");
-		db.close();
+		//db.close()
 	}
 	public static Integer insert(Lgu item)
 	{
@@ -99,7 +99,7 @@ public class Lgus {
 		Integer result=cursor.getInt(0);
 		cursor.close();
 
-		db.close();
+		//db.close()
 		return result;
 	}
 	public static void update(Lgu item)
@@ -109,7 +109,7 @@ public class Lgus {
 		db.execSQL(
 		"update "+tablename+" set "+implodeFieldsWithValues(item,false)+" where id = '"+item.getId()
 		+"';");
-		db.close();
+		//db.close()
 	}
 	public static ArrayList<Lgu> select(String criteria) {
 		ArrayList<Lgu> items = new ArrayList<Lgu>();
@@ -122,7 +122,7 @@ public class Lgus {
 			items.add(new Lgu(cursor));
 		}
 		cursor.close();
-		db.close();
+		//db.close()
 		return items;
 	}
 	public static Integer count(String criteria) {
@@ -131,7 +131,7 @@ public class Lgus {
 		cursor.moveToFirst();
 		Integer result=cursor.getInt(0);
 		cursor.close();
-		db.close();
+		//db.close()
 		return result;
 	}
 	public static Integer getLastInsertId() {
@@ -140,7 +140,7 @@ public class Lgus {
 		cursor.moveToFirst();
 		Integer result=cursor.getInt(0);
 		cursor.close();
-		db.close();
+		//db.close()
 		return result;
 	}
 
