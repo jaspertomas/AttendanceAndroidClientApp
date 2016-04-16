@@ -389,7 +389,7 @@ public class RegistrationActivity extends Activity {
 	}
 	public void reallyCancel()
 	{
-		MainActivity.getInstance().setShutdown(true);
+		NavigationHolder.setDestination(NavigationHolder.ShutDown);
 		finish();
 	}
 	@Override

@@ -1,12 +1,14 @@
 package com.intelimina.pollwatcher;
 
-import models.User;
+import holders.NavigationHolder;
 import holders.UserHolder;
+import models.User;
 import utils.MyInitializer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -78,51 +80,69 @@ public class MainActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 		
-		//save picture file name to Update object if new picture exists
-//		savePicture();
-		
-		//if user is set, that means newly registered or logged in
-		//if not, that means logged out
-		if(UserHolder.getUser()==null)
+		switch(NavigationHolder.getDestination())
 		{
-			Integer usercount=User.count(" where is_reg=1");
-			//if no users in database, register
-			if(usercount==0)
+			case NavigationHolder.ShutDown:
 			{
-				Intent intent = new Intent(context, RegistrationActivity.class);
-				startActivity(intent);
+				finish();break;
 			}
-			//else log in
-			else
+			case NavigationHolder.RegistrationActivity:
 			{
-				Intent intent = new Intent(context, LoginActivity.class);
-				startActivity(intent);
+				Intent intent = new Intent(context, RegistrationActivity.class);startActivity(intent);break;
+			}
+			case NavigationHolder.Registration2Activity:
+			{
+				//Intent intent = new Intent(context, Registration2Activity.class);startActivity(intent);break;
+			}
+			case NavigationHolder.Registration3Activity:
+			{
+				//Intent intent = new Intent(context, Registration3Activity.class);startActivity(intent);break;
+			}
+			case NavigationHolder.Registration4Activity:
+			{
+				//Intent intent = new Intent(context, Registration4Activity.class);startActivity(intent);break;
+			}
+			case NavigationHolder.Registration5Activity:
+			{
+				//Intent intent = new Intent(context, Registration4Activity.class);startActivity(intent);break;
+			}
+			case NavigationHolder.LoginActivity:
+			{
+				Intent intent = new Intent(context, LoginActivity.class);startActivity(intent);break;
+			}
+			//no navigation directive
+			//normal operation
+			default:
+			{
+				//if user is set, that means newly registered or logged in
+				//if not, that means logged out or not yet registered
+				if(UserHolder.getUser()==null)
+				{
+					Integer usercount=User.count(" where is_reg=1");
+					//if no registered users in database, register
+					if(usercount==0)
+					{
+						Intent intent = new Intent(context, RegistrationActivity.class);
+						startActivity(intent);
+					}
+					//else log in
+					else
+					{
+						Intent intent = new Intent(context, LoginActivity.class);
+						startActivity(intent);
+					}
+				}
 			}
 		}
 	}
 	
-	//this allows login activity to request shutdown if its cancel button is clicked
-	@Override
-	protected void onResume() {
-		super.onResume();
-		
-		//if shutdown = true
-		if(shutdown)
-		{
-			finish();
-		}
-		//else normal operation
-		else
-		{
-		}
-	}
+//	@Override
+//	protected void onResume() {
+//		super.onResume();
+//		
+//	}
 //	@Override
 //	protected void onPause() {
 //		super.onPause();
 //	}
-	Boolean shutdown=false;
-	public void setShutdown(Boolean shutdown) {
-		this.shutdown = shutdown;
-	}
-	
 }
