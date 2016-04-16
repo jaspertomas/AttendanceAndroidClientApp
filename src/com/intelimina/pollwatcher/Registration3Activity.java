@@ -1,11 +1,14 @@
 package com.intelimina.pollwatcher;
 
 import holders.NavigationHolder;
+import holders.RegistrationHolder;
 import holders.UserHolder;
 
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 
+import models.Lgus;
 import models.User;
 
 import utils.DateHelper;
@@ -53,6 +56,16 @@ public class Registration3Activity extends Activity {
 		
 		//default values
 		txtBday.setText(PrettyDateHelper.toString(DateHelper.getNullDate2000()));
+	}
+	public void back(View button)
+	{
+		try {
+			save();
+		} catch (ParseException e) {
+	    	MyDialogHelper.popup(context, "Invalid Date");
+		}
+		NavigationHolder.setDestination(NavigationHolder.Registration2Activity);
+		finish();
 	}
 	public void next(View button)
 	{
@@ -142,5 +155,18 @@ public class Registration3Activity extends Activity {
 		byear=2000;bmonth=1;bdayOfMonth=1;
 		txtPhone.setText("12345677");
 		txtEmail.setText("a@a.a");
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+
+		User user=UserHolder.getRegUser();
+		Date bday=user.getBday();
+		txtBday.setText(PrettyDateHelper.toString(bday));
+		byear=DateHelper.getYear(bday);
+		bmonth=DateHelper.getMonth(bday);
+		bdayOfMonth=DateHelper.getDayOfMonth(bday);
+		txtPhone.setText(user.getPhone());
+		txtEmail.setText(user.getEmail());
 	}
 }

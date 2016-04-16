@@ -52,6 +52,12 @@ public class Registration4Activity extends Activity {
 	        }
 	    });
 	}
+	public void back(View button)
+	{
+		save();
+		NavigationHolder.setDestination(NavigationHolder.Registration3Activity);
+		finish();
+	}
 	public void submit(View button)
 	{
 		if(txtProvince.getText().toString().isEmpty())
@@ -79,8 +85,6 @@ public class Registration4Activity extends Activity {
 	}
 	public void save()
 	{
-		NavigationHolder.setDestination(NavigationHolder.Registration3Activity);
-		finish();
 		User user=UserHolder.getRegUser();
 		user.setProvinceId(RegistrationHolder.getProvince().getId());
 		user.setCityId(RegistrationHolder.getCity().getId());
@@ -122,6 +126,13 @@ public class Registration4Activity extends Activity {
 			txtProvince.setText("");
 		}
 	
+		User user=UserHolder.getRegUser();
+//		RegistrationHolder.setCity(Lgus.getById(user.getCityId()));
+//		txtCity.setText(RegistrationHolder.getCity().getName());
+//		RegistrationHolder.setProvince(Lgus.getById(user.getProvinceId()));
+//		txtProvince.setText(RegistrationHolder.getProvince().getName());
+		txtAddress.setText(user.getAddress());
+		
 	}
 	public void fill(View button)
 	{

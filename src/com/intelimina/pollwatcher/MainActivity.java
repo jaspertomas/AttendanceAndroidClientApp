@@ -92,15 +92,15 @@ public class MainActivity extends Activity {
 			}
 			case NavigationHolder.Registration2Activity:
 			{
-				//Intent intent = new Intent(context, Registration2Activity.class);startActivity(intent);break;
+				Intent intent = new Intent(context, Registration2Activity.class);startActivity(intent);break;
 			}
 			case NavigationHolder.Registration3Activity:
 			{
-				//Intent intent = new Intent(context, Registration3Activity.class);startActivity(intent);break;
+				Intent intent = new Intent(context, Registration3Activity.class);startActivity(intent);break;
 			}
 			case NavigationHolder.Registration4Activity:
 			{
-				//Intent intent = new Intent(context, Registration4Activity.class);startActivity(intent);break;
+				Intent intent = new Intent(context, Registration4Activity.class);startActivity(intent);break;
 			}
 			case NavigationHolder.LoginActivity:
 			{

@@ -134,7 +134,7 @@ public class RegistrationActivity extends Activity {
 		}
 
 		save();
-		NavigationHolder.setDestination(NavigationHolder.Registration3Activity);
+		NavigationHolder.setDestination(NavigationHolder.Registration2Activity);
 		finish();
 	}
 
@@ -187,5 +187,15 @@ public class RegistrationActivity extends Activity {
 		cancel();
 //		MainActivity.getInstance().setShutdown(true);
 //		finish();
+	}
+	
+	@Override
+	protected void onStart() {
+		super.onStart();
+		
+		User user=UserHolder.getRegUser();
+			txtUname.setText(user.getUsername());
+			txtPasswd.setText("");
+			txtPasswd2.setText("");
 	}
 }

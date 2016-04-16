@@ -1,9 +1,15 @@
 package com.intelimina.pollwatcher;
 
+import java.util.Date;
+
 import holders.NavigationHolder;
+import holders.RegistrationHolder;
 import holders.UserHolder;
+import models.Lgus;
 import models.User;
+import utils.DateHelper;
 import utils.MyDialogHelper;
+import utils.PrettyDateHelper;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -29,6 +35,12 @@ public class Registration2Activity extends Activity {
 		txtFname = (EditText) findViewById(R.id.fname);
 		txtMi = (EditText) findViewById(R.id.mi);
 		txtLname = (EditText) findViewById(R.id.lname);
+	}
+	public void back(View button)
+	{
+		save();
+		NavigationHolder.setDestination(NavigationHolder.RegistrationActivity);
+		finish();
 	}
 	public void next(View button)
 	{
@@ -66,5 +78,15 @@ public class Registration2Activity extends Activity {
 		txtFname.setText("asdfgh");
 		txtMi.setText("a");
 		txtLname.setText("asdfgh");
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		User user=UserHolder.getRegUser();
+		txtFname.setText(user.getFname());
+		txtMi.setText(user.getMi());
+		txtLname.setText(user.getLname());
+
+
 	}
 }
