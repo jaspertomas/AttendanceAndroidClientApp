@@ -7,7 +7,6 @@ public class NavigationHolder {
 	public static final int Registration2Activity=2;
 	public static final int Registration3Activity=3;
 	public static final int Registration4Activity=4;
-	public static final int Registration5Activity=5;
 	public static final int LoginActivity=6;
 	public static final int ShutDown=100;
 //	public static final int DashboardActivity=3;

@@ -32,24 +32,10 @@ import android.widget.Toast;
 
 public class RegistrationActivity extends Activity {
 	
-	static final int DATE_DIALOG_ID = 0;
-
 	private EditText txtUname;	
 	private EditText txtPasswd;	
 	private EditText txtPasswd2;	
-	private EditText txtFname;	
-	private EditText txtMi;	
-	private EditText txtLname;	
-	private EditText txtProvince;	
-	private EditText txtCity;	
-	private EditText txtBday;	
-	private EditText txtEmail;	
-	private EditText txtPhone;	
-	private EditText txtAddress;	
 	
-	private Lgu province;
-	private Lgu city;
-
 	private Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +45,10 @@ public class RegistrationActivity extends Activity {
 		
 		setupView();
 	}
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		//data no longer needed
-		RegistrationHolder.reset();
-	}
+//	@Override
+//	protected void onDestroy() {
+//		super.onDestroy();
+//	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -79,77 +63,28 @@ public class RegistrationActivity extends Activity {
 		txtUname = (EditText) findViewById(R.id.uname);
 		txtPasswd = (EditText) findViewById(R.id.passwd);
 		txtPasswd2 = (EditText) findViewById(R.id.passwd2);
-		txtFname = (EditText) findViewById(R.id.fname);
-		txtMi = (EditText) findViewById(R.id.mi);
-		txtLname = (EditText) findViewById(R.id.lname);
-		txtProvince = (EditText) findViewById(R.id.province);
-		txtCity = (EditText) findViewById(R.id.city);
-		txtBday = (EditText) findViewById(R.id.bday);
-		txtEmail = (EditText) findViewById(R.id.email);
-		txtPhone = (EditText) findViewById(R.id.phone);
-		txtAddress = (EditText) findViewById(R.id.address);
-		
-		txtProvince.setOnClickListener(new View.OnClickListener() {
-	        @Override
-	        public void onClick(View v) {
-	        	provinceList();
-	        }
-	    });
-		txtCity.setOnClickListener(new View.OnClickListener() {
-	        @Override
-	        public void onClick(View v) {
-	        	cityList();
-	        }
-	    });
-		txtBday.setOnClickListener(new View.OnClickListener() {
-	        @Override
-	        public void onClick(View v) {
-	    		showDialog(DATE_DIALOG_ID);		
-	        }
-	    });
-		
-		//default values
-		txtBday.setText(PrettyDateHelper.toString(DateHelper.getNullDate2000()));
-		
+
 		//setup temporary user record
 		User user=new User();
 		user.setUsername(txtUname.getText().toString());
 		user.setPassword(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()));
-		user.setFname(txtFname.getText().toString());
-		user.setMi(txtMi.getText().toString());
-		user.setLname(txtLname.getText().toString());
+		user.setFname("");
+		user.setMi("");
+		user.setLname("");
 		user.setBday(DateHelper.getNullDate2000());
-		user.setEmail(txtEmail.getText().toString());
-		user.setPhone(txtPhone.getText().toString());
+		user.setEmail("");
+		user.setPhone("");
 		RegistrationHolder.setCity(Lgus.getByName(" Other / Not Applicable"));
 		user.setCityId(RegistrationHolder.getCity().getId());
 		RegistrationHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
 		user.setProvinceId(RegistrationHolder.getProvince().getId());
-		user.setAddress(txtAddress.getText().toString());
+		user.setAddress("");
 		user.setIsReg(0);
 		
 		UserHolder.setRegUser(user);
 	}
-	public void provinceList()
+	public void next(View button)
 	{
-		Intent intent = new Intent(context, LguListActivity.class);
-		intent.setAction("province");
-		startActivity(intent);
-	}
-	public void cityList()
-	{
-		Intent intent = new Intent(context, LguListActivity.class);
-		intent.setAction("city");
-		startActivity(intent);
-	}
-	public void submit(View button)
-	{
-//		try {
-//			save();
-//		} catch (ParseException e) {
-//	    	MyDialogHelper.popup(context, "Invalid Date");
-//		}
-		
 		User duplicateuser=User.getByUsername(txtUname.getText().toString());
 		
 		//validate
@@ -197,172 +132,24 @@ public class RegistrationActivity extends Activity {
 			MyDialogHelper.popup(context, message);
         	return;
 		}
-		if(txtFname.getText().toString().isEmpty())
-		{
-			String message="Please enter your First Name";
-			MyDialogHelper.popup(context, message);
-        	return;
-		}
-		else if(txtMi.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Middle Initial";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtLname.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Last Name";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtBday.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Birthday";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtEmail.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Email Address";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(!android.util.Patterns.EMAIL_ADDRESS.matcher(txtEmail.getText().toString()).matches())
-		{
-        	String message="Please enter a valid Email Address";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtPhone.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Phone Number";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtProvince.getText().toString().isEmpty())
-		{
-        	String message="Please choose your Province";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtCity.getText().toString().isEmpty())
-		{
-        	String message="Please choose your City";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtAddress.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Address";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		
-		//send data to server
-		//!!!todo
+
+		save();
+		NavigationHolder.setDestination(NavigationHolder.Registration3Activity);
+		finish();
 	}
 
-	@Override
-	protected void onStart() {
-		super.onStart();
-
-		Lgu tempcity=RegistrationHolder.getCity();
-		if(tempcity!=null)
-		{
-			this.city=tempcity;
-			txtCity.setText(city.getName());
-		}
-		else
-		{
-			txtCity.setText("");
-		}
-
-		Lgu tempprovince=RegistrationHolder.getProvince();
-		if(tempprovince!=null)
-		{
-			this.province=tempprovince;
-			txtProvince.setText(province.getName());
-		}
-		else
-		{
-			txtProvince.setText("");
-		}
-	
-	}
-
-	//-----date picker system----
-	private Integer byear=0,bmonth=0,bdayOfMonth=0;
-	public void setDate(int year, int month, int date) {
-		this.byear=year;
-		this.bmonth=month;
-		this.bdayOfMonth=date;
-//		String myString = OutputStringCalculator.getGivenDateString(year, month, date);
-		txtBday.setText(PrettyDateHelper.toString(DateHelper.toDate(byear+"-"+bmonth+"-"+bdayOfMonth)));
-//		textscrollview.fullScroll(ScrollView.FOCUS_UP);
-	}
-	//this receives the chosen date from the datepicker dialog 
-	private DatePickerDialog.OnDateSetListener mDateSetListener =
-	new DatePickerDialog.OnDateSetListener() {
-
-		public void onDateSet(DatePicker view, int year, 
-				int monthOfYear, int dayOfMonth) {
-			setDate(year, monthOfYear+1, dayOfMonth);
-		}
-	};
-	//this creates the datepicker dialog
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		switch (id) {
-		case DATE_DIALOG_ID:
-			Calendar c = Calendar.getInstance(); 
-			byear=c.get(c.YEAR);
-			bmonth=c.get(c.MONTH)+1;
-			bdayOfMonth=c.get(c.DATE);
-			DatePickerDialog d=new DatePickerDialog(this,
-					mDateSetListener,
-					2000, 0, 1);
-			
-			d.getDatePicker().setMinDate(DateHelper.toDate(String.valueOf(byear-100)+"-"+bmonth+"-"+bdayOfMonth).getTime());
-			d.getDatePicker().setMaxDate(DateHelper.toDate(byear+"-"+bmonth+"-"+bdayOfMonth).getTime());
-			return d;
-		}
-		return null;
-	}
-	//-----end date picker system----
-
-	public void save() throws ParseException
+	public void save()
 	{
 		User user=UserHolder.getRegUser();
 		user.setUsername(txtUname.getText().toString());
 		user.setPassword(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()));
-		user.setFname(txtFname.getText().toString());
-		user.setMi(txtMi.getText().toString());
-		user.setLname(txtLname.getText().toString());
-		user.setBday(PrettyDateHelper.toDate(txtBday.getText().toString()));
-		user.setEmail(txtEmail.getText().toString());
-		user.setPhone(txtPhone.getText().toString());
-		user.setProvinceId(RegistrationHolder.getProvince().getId());
-		user.setCityId(RegistrationHolder.getCity().getId());
-		user.setAddress(txtAddress.getText().toString());
-		user.save();
+//		user.save();
 	}
 	public void fill(View button)
 	{
 		txtUname.setText("asdfgh");
 		txtPasswd.setText("asdfgh");
 		txtPasswd2.setText("asdfgh");
-		txtFname.setText("asdfgh");
-		txtMi.setText("a");
-		txtLname.setText("asdfgh");
-		txtBday.setText("Jan 1, 2000");
-		byear=2000;bmonth=1;bdayOfMonth=1;
-		txtPhone.setText("12345677");
-		txtEmail.setText("a@a.a");
-		RegistrationHolder.setCity(Lgus.getByName("Manila"));
-		txtCity.setText(RegistrationHolder.getCity().getName());
-		RegistrationHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
-		txtProvince.setText(RegistrationHolder.getProvince().getName());
-		txtAddress.setText("asdfgh");
 		
 	}
 
@@ -389,6 +176,8 @@ public class RegistrationActivity extends Activity {
 	}
 	public void reallyCancel()
 	{
+		//city and province data no longer needed
+		RegistrationHolder.reset();
 		NavigationHolder.setDestination(NavigationHolder.ShutDown);
 		finish();
 	}

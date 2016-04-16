@@ -14,52 +14,50 @@
 			android:layout_height="match_parent"
 		    android:orientation="vertical"
 			>
+
+
+    	<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/fname" />
+    	<EditText
+            android:id="@+id/fname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/fname" />
      	<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="@string/uname" />
+            android:text="@string/mi" />
     	<EditText
-            android:id="@+id/uname"
+            android:id="@+id/mi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/uname" />
+            android:hint="@string/mi" />
      	<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="@string/passwd" />
+            android:text="@string/lname" />
     	<EditText
-            android:id="@+id/passwd"
+            android:id="@+id/lname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/passwd" 
-			android:inputType="textPassword"
-            />
-     	<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/passwd2" />
-    	<EditText
-            android:id="@+id/passwd2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/passwd2" 
-			android:inputType="textPassword"
-            />
-    		
+            android:hint="@string/lname" />
+	 	    	 	    
     	<Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="cancel"
-            android:text="@string/cancel" />
+            android:onClick="back"
+            android:text="@string/back" />
     	<Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="next"
             android:text="@string/next" />
-   		<Button
+    	<Button
             android:id="@+id/btnFill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
