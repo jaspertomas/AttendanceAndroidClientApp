@@ -1,5 +1,7 @@
 package com.intelimina.pollwatcher;
 
+import models.User;
+import holders.UserHolder;
 import utils.MyInitializer;
 import android.app.Activity;
 import android.content.Context;
@@ -72,13 +74,32 @@ public class MainActivity extends Activity {
 //	    }
 //	}
 //	
-//	@Override
-//	protected void onStart() {
-//		super.onStart();
-//		
-//		//save picture file name to Update object if new picture exists
+	@Override
+	protected void onStart() {
+		super.onStart();
+		
+		//save picture file name to Update object if new picture exists
 //		savePicture();
-//	}
+		
+		//if user is set, that means newly registered or logged in
+		//if not, that means logged out
+		if(UserHolder.getUser()==null)
+		{
+			Integer usercount=User.count("");
+			//if no users in database, register
+			if(usercount==0)
+			{
+				Intent intent = new Intent(context, RegistrationActivity.class);
+				startActivity(intent);
+			}
+			//else log in
+			else
+			{
+				Intent intent = new Intent(context, LoginActivity.class);
+				startActivity(intent);
+			}
+		}
+	}
 	
 	//this allows login activity to request shutdown if its cancel button is clicked
 	@Override
@@ -94,7 +115,6 @@ public class MainActivity extends Activity {
 		else
 		{
 		}
-
 	}
 //	@Override
 //	protected void onPause() {
