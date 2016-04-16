@@ -395,6 +395,7 @@ public class RegistrationActivity extends Activity {
 	@Override
 	public void onBackPressed()
 	{
+		cancel();
 //		MainActivity.getInstance().setShutdown(true);
 //		finish();
 	}
