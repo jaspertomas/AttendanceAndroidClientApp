@@ -31,7 +31,7 @@ import android.content.Context;
 import android.util.Log;
 import apis.BaseApi;
 
-import com.itforhumanity.attendance.Constants;
+import com.intelimina.pollwatcher.Constants;
 
 public class BaseAndroidUploadApi extends BaseApi{
 	String contextString="BaseAndroidUploadApi";
@@ -72,7 +72,7 @@ public class BaseAndroidUploadApi extends BaseApi{
 		}
 	}
 	@Override public String getUrl() {
-		String url=Constants.getServerUrl()+"/android/upload";
+		String url=Constants.SERVER_URL+"/android/upload";
 		return UrlHelper.escapeUrl(url);	}
 	@Override public Integer getMethod() {
 		return BaseApi.METHOD_POST;

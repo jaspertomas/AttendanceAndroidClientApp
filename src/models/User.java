@@ -2,21 +2,21 @@ package models;
 
 import java.util.ArrayList;
 
-import models.base.BaseEmployee;
+import models.base.BaseUser;
 
 import org.json.JSONObject;
 
 import utils.MyDatabaseHelper;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-public class Employee extends BaseEmployee{
-	public Employee()
+public class User extends BaseUser{
+	public User()
 	{
 	}
-	public Employee(JSONObject values) {
+	public User(JSONObject values) {
 		super(values);
 	}
-	public Employee(Cursor cursor) {
+	public User(Cursor cursor) {
 		super(cursor);
 	}
 	public static void selectIdsAndNames(String criteria,		
@@ -28,10 +28,10 @@ public class Employee extends BaseEmployee{
 		SQLiteDatabase db = MyDatabaseHelper.getInstance()
 				.getWritableDatabase();
 
-		Cursor cursor = db.rawQuery("SELECT id, name FROM employees "+criteria, null);
+		Cursor cursor = db.rawQuery("SELECT id, username FROM users "+criteria, null);
 		while (cursor.moveToNext()) {
 			itemIds.add(cursor.getInt(cursor.getColumnIndex("id")));
-			itemNames.add(cursor.getString(cursor.getColumnIndex("name")));
+			itemNames.add(cursor.getString(cursor.getColumnIndex("username")));
 		}
 		cursor.close();
 	}

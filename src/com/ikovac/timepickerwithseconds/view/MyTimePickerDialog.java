@@ -30,7 +30,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.ikovac.timepickerwithseconds.view.TimePicker.OnTimeChangedListener;
-import com.itforhumanity.attendance.R;
+import com.intelimina.pollwatcher.R;
 
 /**
  * A dialog that prompts the user for the time of day using a {@link TimePicker}.

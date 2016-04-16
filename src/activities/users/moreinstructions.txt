@@ -1,0 +1,17 @@
+MORE INSTRUCTIONS
+
+edit AndroidManifest.xml and put this at the bottom of the list of activities inside the <application> tag
+-------------------------------
+        <activity
+            android:name="activities.users.UserActivity"
+            android:label="@string/title_activity_user" >
+        </activity>
+        <activity
+            android:name="activities.users.UsersActivity"
+            android:label="@string/title_activity_users" >
+        </activity>
+-------------------------------
+Edit utils/MyDatabaseHelper.java and add this to the createTables() function
+-------------------------------
+		//Users.deleteTable();
+		Users.createTable();

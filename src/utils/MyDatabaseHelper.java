@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import models.Employee;
-import models.Record;
-import models.Setting;
+import models.User;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -123,13 +121,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 				instance=new MyDatabaseHelper(MyApplicationContextHolder.getAppContext());
 
 			//Put table creator functions here
-			//Employees.deleteTable();
-			Employee.createTable();
-			//Record.deleteTable();
-			Record.createTable();
-			//Setting.deleteTable();
-			Setting.createTable();
-
+			//[tablename].createTable();	
+			//User.deleteTable();
+			User.createTable();
+			
 		} catch (IOException e) {
 			Log.e(contextstring,"Error creating database");
 		}

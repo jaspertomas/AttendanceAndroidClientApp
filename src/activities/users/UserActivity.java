@@ -1,20 +1,20 @@
-package activities.employees;
+package activities.users;
 
 import android.os.Bundle;
 
-import com.itforhumanity.attendance.R;
+import com.intelimina.pollwatcher.R;
 
-public class EmployeeActivity extends BaseEmployeeActivity {
-	static public EmployeeActivity getInstance()
+public class UserActivity extends BaseUserActivity {
+	static public UserActivity getInstance()
 	{
-		return (EmployeeActivity)context;
+		return (UserActivity)context;
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_employee);
-		context=EmployeeActivity.this;
+		setContentView(R.layout.activity_user);
+		context=UserActivity.this;
 		
 		setupView();
 	}

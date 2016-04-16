@@ -31,7 +31,7 @@ import android.widget.FrameLayout;
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.Formatter;
 
-import com.itforhumanity.attendance.R;
+import com.intelimina.pollwatcher.R;
 
 /**
  * A view for selecting the time of day, in either 24 hour or AM/PM mode.

@@ -1,31 +1,26 @@
-package com.itforhumanity.attendance;
+package com.intelimina.pollwatcher;
 
 import holders.PictureDataHolder;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import models.Employee;
 import models.Record;
 import utils.DateTimeHelper;
 import utils.MyBitmapHelper;
-import utils.MyInitializer;
 import utils.MyPhotoSaver;
 import utils.ShowCamera;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +32,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
-import apis.android.AndroidUpdateApi;
 import apis.android.AndroidUploadApi;
 
 public class CameraActivity extends Activity {
@@ -59,8 +53,6 @@ public class CameraActivity extends Activity {
 		context=CameraActivity.this;
 		instance=CameraActivity.this;
 
-		MyInitializer.initialize(context);
-		
 		setupView();
 	
 	}
@@ -77,16 +69,16 @@ public class CameraActivity extends Activity {
 		switch (item.getItemId()) {
 		case R.id.action_settings:
 		{
-			Intent intent = new Intent(CameraActivity.this, ServerSettingActivity.class);
-			startActivity(intent);
-			return true;
+//			Intent intent = new Intent(CameraActivity.this, ServerSettingActivity.class);
+//			startActivity(intent);
+//			return true;
 		}
 		case R.id.action_update:
 		{
 //			Intent intent = new Intent(CameraActivity.this, ScheduleMapActivity.class);
 //			startActivity(intent);
 //			releaseCamera();
-			AndroidUpdateApi.demo(context);
+			//AndroidUpdateApi.demo(context);
 			return true;
 		}
 		case R.id.action_upload:
@@ -191,33 +183,12 @@ public class CameraActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
-		//if shutdown = true
-		if(shutdown)
-		{
-			finish();
-		}
-		//else if server url is not set
-		else if(Constants.getServerUrl()==null)
-		{
-			Intent intent = new Intent(context, ServerSettingActivity.class);
-			startActivity(intent);
-		}
-		//else load camera
-		else
-		{
-			loadCamera();
-		}
-
+		loadCamera();
 	}
 	@Override
 	protected void onPause() {
 		releaseCamera();
 		super.onPause();
-	}
-	Boolean shutdown=false;
-	public void setShutdown(Boolean shutdown) {
-		this.shutdown = shutdown;
 	}
 	public void releaseCamera()
 	{
@@ -291,44 +262,44 @@ public class CameraActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) 
 			{
-				if(cameraObject!=null)
-				{
-					String employeename=getItemAtPosition(position).getName();
-					String datetimestring=DateTimeHelper.toString(new Date());
-					String filename=datetimestring.replace(" ", "-").replace(":", "-")+"-"+employeename+".jpg";
-					PictureDataHolder.setFilename(filename);
-					
-					cameraObject.takePicture(null, null, capturedIt);
-					
-					//if datetimestring is not set, then no picture taken
-					//do nothing
-					
-//				    File pictureFileDir = MyPhotoSaver.getDir(context);
-//				    File picturefile=new File(pictureFileDir,"temp.jpg");
-//				    File newpicturefile=new File(pictureFileDir,filename);
-//				    if(picturefile.exists())
-				    {
-//				    	picturefile.renameTo(newpicturefile);
-				    	
-						Record record=new Record();
-						record.setDatetime(datetimestring);
-						record.setEmployeeName(employeename);
-			    		record.setFilename(filename);
-			    		record.save();
-				    	
-						Toast.makeText(getApplicationContext(), "Picture saved successfully.",Toast.LENGTH_LONG).show();
-				    }
-				    //else picture file not found
-				    //this should never happen
-//				    else
+//				if(cameraObject!=null)
+//				{
+//					String employeename=getItemAtPosition(position).getName();
+//					String datetimestring=DateTimeHelper.toString(new Date());
+//					String filename=datetimestring.replace(" ", "-").replace(":", "-")+"-"+employeename+".jpg";
+//					PictureDataHolder.setFilename(filename);
+//					
+//					cameraObject.takePicture(null, null, capturedIt);
+//					
+//					//if datetimestring is not set, then no picture taken
+//					//do nothing
+//					
+////				    File pictureFileDir = MyPhotoSaver.getDir(context);
+////				    File picturefile=new File(pictureFileDir,"temp.jpg");
+////				    File newpicturefile=new File(pictureFileDir,filename);
+////				    if(picturefile.exists())
 //				    {
-//						Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_LONG).show();
+////				    	picturefile.renameTo(newpicturefile);
+//				    	
+//						Record record=new Record();
+//						record.setDatetime(datetimestring);
+//						record.setEmployeeName(employeename);
+//			    		record.setFilename(filename);
+//			    		record.save();
+//				    	
+//						Toast.makeText(getApplicationContext(), "Picture saved successfully.",Toast.LENGTH_LONG).show();
 //				    }
-				}
-				else
-				{
-					Toast.makeText(getApplicationContext(), "No camera available",Toast.LENGTH_LONG).show();
-				}
+//				    //else picture file not found
+//				    //this should never happen
+////				    else
+////				    {
+////						Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_LONG).show();
+////				    }
+//				}
+//				else
+//				{
+//					Toast.makeText(getApplicationContext(), "No camera available",Toast.LENGTH_LONG).show();
+//				}
 			}});
 		}
 		load();
@@ -352,7 +323,7 @@ public class CameraActivity extends Activity {
 		listItemLabels.clear();
 		listItemIds.clear();
 		//load ids and names into these arrays
-		Employee.selectIdsAndNames(criteria,listItemIds,listItemLabels);
+		//Employee.selectIdsAndNames(criteria,listItemIds,listItemLabels);
 	}
 	
 	static ArrayList<String> listItemLabels=new ArrayList<String>();
@@ -373,8 +344,8 @@ public class CameraActivity extends Activity {
 	public static void setListItemIds(ArrayList<Integer> _listItemIds) {
 		listItemIds = _listItemIds;
 	}
-	public static Employee getItemAtPosition(Integer position) {
-		return Employee.getById(listItemIds.get(position));
-	}	
+//	public static Employee getItemAtPosition(Integer position) {
+//		return Employee.getById(listItemIds.get(position));
+//	}	
 	
 }

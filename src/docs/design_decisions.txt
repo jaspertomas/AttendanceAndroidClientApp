@@ -1,0 +1,7 @@
+Ask Deng:
+image directory is accessible via file manager, but not easily found (inside Android folder)
+
+------------------
+one user per device
+login every time app starts
+username is email

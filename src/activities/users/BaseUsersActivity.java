@@ -1,9 +1,9 @@
-package activities.records;
+package activities.users;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Record;
+import models.User;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,20 +16,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.itforhumanity.attendance.R;
+import com.intelimina.pollwatcher.R;
 
-public class BaseRecordsActivity extends Activity {
+public class BaseUsersActivity extends Activity {
 	static Context context;
-	static public BaseRecordsActivity getInstance()
+	static public BaseUsersActivity getInstance()
 	{
-		return (BaseRecordsActivity)context;
+		return (BaseUsersActivity)context;
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_records);
-		context=BaseRecordsActivity.this;
+		setContentView(R.layout.activity_users);
+		context=BaseUsersActivity.this;
 		
 		setupView();
 	}
@@ -47,11 +47,11 @@ public class BaseRecordsActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.records, menu);
+		getMenuInflater().inflate(R.menu.users, menu);
 		return true;
 	}
 
-	//ArrayList<Record> list=new ArrayList<Record>();
+	//ArrayList<User> list=new ArrayList<User>();
 	ArrayAdapter<String> listAdapter;
 	protected void setupView()
 	{
@@ -73,9 +73,9 @@ public class BaseRecordsActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,int position, long id) 
 			{
-				RecordActivity.setOperationShow();
-				RecordActivity.setItem(getItemAtPosition(position));
-				Intent intent = new Intent(BaseRecordsActivity.this, RecordActivity.class);
+				UserActivity.setOperationShow();
+				UserActivity.setItem(getItemAtPosition(position));
+				Intent intent = new Intent(BaseUsersActivity.this, UserActivity.class);
 				startActivity(intent);
 			}});
 		}
@@ -85,9 +85,9 @@ public class BaseRecordsActivity extends Activity {
 	public void create(View button){create();}
 	public void create()
 	{
-		RecordActivity.setOperationEdit();
-		RecordActivity.setItem(new Record());
-        Intent intent = new Intent(BaseRecordsActivity.this, RecordActivity.class);
+		UserActivity.setOperationEdit();
+		UserActivity.setItem(new User());
+        Intent intent = new Intent(BaseUsersActivity.this, UserActivity.class);
         startActivity(intent);
 	}
 	public void logout(View button){logout();}
@@ -115,7 +115,7 @@ public class BaseRecordsActivity extends Activity {
 		listItemLabels.clear();
 		listItemIds.clear();
 		//load ids and names into these arrays
-		Record.selectIdsAndNames(criteria,listItemIds,listItemLabels);
+		User.selectIdsAndNames(criteria,listItemIds,listItemLabels);
 	}
 	
 	static ArrayList<String> listItemLabels=new ArrayList<String>();
@@ -136,8 +136,8 @@ public class BaseRecordsActivity extends Activity {
 	public static void setListItemIds(ArrayList<Integer> _listItemIds) {
 		listItemIds = _listItemIds;
 	}
-	public static Record getItemAtPosition(Integer position) {
-		return Record.getById(listItemIds.get(position));
+	public static User getItemAtPosition(Integer position) {
+		return User.getById(listItemIds.get(position));
 	}
 	public void back(View view) {
 		super.onBackPressed();

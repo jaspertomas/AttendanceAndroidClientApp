@@ -29,7 +29,7 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.widget.Toast;
 
-import com.itforhumanity.attendance.CameraActivity;
+import com.intelimina.pollwatcher.CameraActivity;
 
 public class AndroidUploadApi extends BaseAndroidUploadApi{
 	public AndroidUploadApi(Context context) {

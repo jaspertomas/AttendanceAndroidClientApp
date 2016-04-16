@@ -1,5 +1,6 @@
-package com.itforhumanity.attendance;
+package com.intelimina.pollwatcher;
 
+import utils.MyInitializer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,12 +11,21 @@ import android.widget.ImageView;
 public class MainActivity extends Activity {
 	Context context;
 	private ImageView imageView;	
+	
+	static MainActivity instance;
+	public static MainActivity getInstance() {
+		return instance;
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		context=MainActivity.this;
+		instance=MainActivity.this;
 		
+		MyInitializer.initialize(context);
+
 		setupView();
 	}
 	private void setupView()
@@ -69,4 +79,30 @@ public class MainActivity extends Activity {
 //		//save picture file name to Update object if new picture exists
 //		savePicture();
 //	}
+	
+	//this allows login activity to request shutdown if its cancel button is clicked
+	@Override
+	protected void onResume() {
+		super.onResume();
+		
+		//if shutdown = true
+		if(shutdown)
+		{
+			finish();
+		}
+		//else normal operation
+		else
+		{
+		}
+
+	}
+//	@Override
+//	protected void onPause() {
+//		super.onPause();
+//	}
+	Boolean shutdown=false;
+	public void setShutdown(Boolean shutdown) {
+		this.shutdown = shutdown;
+	}
+	
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Attendance</string>
+    <string name="app_name">Poll Watcher</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="choose">Choose</string>
@@ -43,6 +43,8 @@
     <string name="sendUpdate">Send Update</string>
     <string name="save">Save</string>
     <string name="saveAndExit">Save and Exit</string>
+    <string name="title_activity_user">User Activity</string>
+    <string name="title_activity_users">Users Activity</string>
     <string name="title_activity_camera">CameraActivity</string>
     <string name="title_activity_record">Record Activity</string>
     <string name="title_activity_records">Records Activity</string>
