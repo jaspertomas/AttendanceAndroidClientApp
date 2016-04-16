@@ -46,7 +46,6 @@ public class RegistrationActivity extends Activity {
 	private EditText txtEmail;	
 	private EditText txtPhone;	
 	private EditText txtAddress;	
-	private Button btnFakeSuccess,btnFill;
 	
 	private Lgu province;
 	private Lgu city;
@@ -89,15 +88,6 @@ public class RegistrationActivity extends Activity {
 		txtEmail = (EditText) findViewById(R.id.email);
 		txtPhone = (EditText) findViewById(R.id.phone);
 		txtAddress = (EditText) findViewById(R.id.address);
-		
-		btnFakeSuccess = (Button) findViewById(R.id.btnFakeSuccess);
-		btnFakeSuccess.setVisibility(View.GONE);
-		
-//		if(Constants.DEMO==true)
-//		{
-//			btnFill = (Button) findViewById(R.id.btnFill);
-//			btnFill.setVisibility(View.GONE);
-//		}
 		
 		txtProvince.setOnClickListener(new View.OnClickListener() {
 	        @Override
@@ -152,13 +142,13 @@ public class RegistrationActivity extends Activity {
 		intent.setAction("city");
 		startActivity(intent);
 	}
-	public void register(View button)
+	public void submit(View button)
 	{
-		try {
-			save();
-		} catch (ParseException e) {
-	    	MyDialogHelper.popup(context, "Invalid Date");
-		}
+//		try {
+//			save();
+//		} catch (ParseException e) {
+//	    	MyDialogHelper.popup(context, "Invalid Date");
+//		}
 		
 		User duplicateuser=User.getByUsername(txtUname.getText().toString());
 		
@@ -269,7 +259,7 @@ public class RegistrationActivity extends Activity {
 		} 
 		
 		//send data to server
-		//fakeSuccess();//!!!todo
+		//!!!todo
 	}
 
 	@Override
@@ -340,14 +330,6 @@ public class RegistrationActivity extends Activity {
 	}
 	//-----end date picker system----
 
-	public void save(View button)
-	{
-		try {
-			save();
-		} catch (ParseException e) {
-	    	MyDialogHelper.popup(context, "Invalid Date");
-		}
-	}
 	public void save() throws ParseException
 	{
 		User user=UserHolder.getRegUser();
@@ -415,14 +397,5 @@ public class RegistrationActivity extends Activity {
 	{
 //		MainActivity.getInstance().setShutdown(true);
 //		finish();
-	}
-	public void saveAndExit(View button)
-	{
-		try {
-			save();
-		} catch (ParseException e) {
-	    	MyDialogHelper.popup(context, "Invalid Date");
-		}
-		finish();
 	}
 }

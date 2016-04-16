@@ -18,7 +18,7 @@ import android.widget.TextView;
 public class LoginActivity extends Activity {
 	private EditText txtPasswd;	
 	private TextView txtUname;	
-	private CheckBox chkRememberMe;	
+	//private CheckBox chkRememberMe;	
 
 	Context context;
 	User user;
@@ -42,32 +42,32 @@ public class LoginActivity extends Activity {
 	{
 		txtPasswd = (EditText) findViewById(R.id.passwd);
 		txtUname = (TextView) findViewById(R.id.uname);
-		chkRememberMe = (CheckBox) findViewById(R.id.chkRememberMe);
+		//chkRememberMe = (CheckBox) findViewById(R.id.chkRememberMe);
 
-		user=UserHolder.getUser();
-		UserHolder.reset();
-		
+		//remember me: prepopulate username
+		user=User.selectOne(" where is_reg=1");
+		if(user!=null)
 		txtUname.setText(user.getUsername());
 	}
 	public void login(View button)
 	{
 		if(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()).contentEquals(user.getPassword()))
 		{
-			Setting remember_me=Setting.getByName("remember_me");
-			if(chkRememberMe.isChecked())
-			{
-				remember_me.setValue(user.getId().toString());
-				remember_me.save();
-			}
-			else
-			{
-				remember_me.setValue("0");
-				remember_me.save();
-			}
+//			Setting remember_me=Setting.getByName("remember_me");
+//			if(chkRememberMe.isChecked())
+//			{
+//				remember_me.setValue(user.getId().toString());
+//				remember_me.save();
+//			}
+//			else
+//			{
+//				remember_me.setValue("0");
+//				remember_me.save();
+//			}
 			
 			UserHolder.setUser(user);
 			//Go to dashboard after this
-			NavigationHolder.setDestination(NavigationHolder.DashboardActivity);
+			NavigationHolder.setDestination(NavigationHolder.MainActivity);
 			finish();
 		}
 		else
