@@ -20,20 +20,29 @@ public class BaseRecord extends Entity{
 	//field names
 	public static final String[] fields={
 		"id"
-		,"employee_name"
+		,"sf_guard_user_id"
 		,"datetime"
+		,"record_type"
+		,"description"
+		,"notes"
 		,"filename"
 			};
 	//field types
 	public static final String[] fieldtypes={
 		"int(11)"
-		,"varchar(25)"
-		,"varchar(20)"
+		,"int(11)"
+		,"varchar(0)"
 		,"varchar(30)"
+		,"varchar(255)"
+		,"varchar(255)"
+		,"varchar(255)"
 			};
 	//data types
 	public static final Integer[] datatypes={
 		ModelHelper.INTEGER
+		,ModelHelper.INTEGER
+		,ModelHelper.DATETIME
+		,ModelHelper.STRING
 		,ModelHelper.STRING
 		,ModelHelper.STRING
 		,ModelHelper.STRING
@@ -45,20 +54,29 @@ public class BaseRecord extends Entity{
 	//ModelHelper.REQUIRED+ModelHelper.UNIQUE,
 	public static final Integer[] fieldvalidations={
 		0//id
-		,0//employee_name
+		,0//sf_guard_user_id
 		,0//datetime
+		,0//record_type
+		,0//description
+		,0//notes
 		,0//filename
 			};
 	//field positions
 	public static final int ID=0;
-	public static final int EMPLOYEE_NAME=1;
+	public static final int SF_GUARD_USER_ID=1;
 	public static final int DATETIME=2;
-	public static final int FILENAME=3;
+	public static final int RECORD_TYPE=3;
+	public static final int DESCRIPTION=4;
+	public static final int NOTES=5;
+	public static final int FILENAME=6;
 	//field labels
 	public static final String[] fieldlabels={
 		"Id"
-		,"Employee Name"
+		,"Sf Guard User Id"
 		,"Datetime"
+		,"Record Type"
+		,"Description"
+		,"Notes"
 		,"Filename"
 			};
 	protected static final ModelHelper modelhelper=new ModelHelper(tablename,fields,fieldtypes,datatypes,fieldvalidations,fieldlabels);
@@ -84,18 +102,39 @@ public class BaseRecord extends Entity{
 		modelhelper.jsonPutInteger(values, "id", id);
 	}
 
-	public String getEmployeeName() {
-		return modelhelper.jsonGetString(values, "employee_name");
+	public Integer getSfGuardUserId() {
+		return modelhelper.jsonGetInteger(values, "sf_guard_user_id");
 	}
-	public void setEmployeeName(String employee_name) {
-		modelhelper.jsonPutString(values, "employee_name", employee_name);
+	public void setSfGuardUserId(Integer sf_guard_user_id) {
+		modelhelper.jsonPutInteger(values, "sf_guard_user_id", sf_guard_user_id);
 	}
 
-	public String getDatetime() {
-		return modelhelper.jsonGetString(values, "datetime");
+	public Date getDatetime() {
+		return modelhelper.jsonGetDate(values, "datetime");
 	}
-	public void setDatetime(String datetime) {
-		modelhelper.jsonPutString(values, "datetime", datetime);
+	public void setDatetime(Date datetime) {
+		modelhelper.jsonPutDate(values, "datetime", datetime);
+	}
+
+	public String getRecordType() {
+		return modelhelper.jsonGetString(values, "record_type");
+	}
+	public void setRecordType(String record_type) {
+		modelhelper.jsonPutString(values, "record_type", record_type);
+	}
+
+	public String getDescription() {
+		return modelhelper.jsonGetString(values, "description");
+	}
+	public void setDescription(String description) {
+		modelhelper.jsonPutString(values, "description", description);
+	}
+
+	public String getNotes() {
+		return modelhelper.jsonGetString(values, "notes");
+	}
+	public void setNotes(String notes) {
+		modelhelper.jsonPutString(values, "notes", notes);
 	}
 
 	public String getFilename() {

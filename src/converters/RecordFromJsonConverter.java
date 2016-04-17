@@ -16,8 +16,12 @@ public class RecordFromJsonConverter {
 		Record record=new Record();
 		try {
 			if(json.has("id")&&!json.isNull("id"))record.setId(json.getInt("id"));
-			if(json.has("employee_name")&&!json.isNull("employee_name"))record.setEmployeeName(json.getString("employee_name"));
-			if(json.has("datetime")&&!json.isNull("datetime"))record.setDatetime(json.getString("datetime"));
+			if(json.has("sf_guard_user_id")&&!json.isNull("sf_guard_user_id"))record.setSfGuardUserId(json.getInt("sf_guard_user_id"));
+			if(json.has("datetime")&&!json.isNull("datetime"))record.setDatetime(DateTimeHelper.toDate(json.getString("datetime")));
+			else record.setDatetime(DateTimeHelper.getNullDate());
+			if(json.has("record_type")&&!json.isNull("record_type"))record.setRecordType(json.getString("record_type"));
+			if(json.has("description")&&!json.isNull("description"))record.setDescription(json.getString("description"));
+			if(json.has("notes")&&!json.isNull("notes"))record.setNotes(json.getString("notes"));
 			if(json.has("filename")&&!json.isNull("filename"))record.setFilename(json.getString("filename"));
 			return record;
 		} catch (JSONException e) {

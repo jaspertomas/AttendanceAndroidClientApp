@@ -49,11 +49,11 @@
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="20sp"
-			        android:text="Employee name:"
+			        android:text="Sf guard user ID:"
 			        android:textStyle="italic"
 			        />
 		        <TextView
-			        android:id="@+id/lblEmployeeName"
+			        android:id="@+id/lblSfGuardUserId"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="20sp"
@@ -67,6 +67,45 @@
 			        />
 		        <TextView
 			        android:id="@+id/lblDatetime"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        />
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        android:text="Record type:"
+			        android:textStyle="italic"
+			        />
+		        <TextView
+			        android:id="@+id/lblRecordType"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        />
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        android:text="Description:"
+			        android:textStyle="italic"
+			        />
+		        <TextView
+			        android:id="@+id/lblDescription"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        />
+			    <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        android:text="Notes:"
+			        android:textStyle="italic"
+			        />
+		        <TextView
+			        android:id="@+id/lblNotes"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="20sp"
@@ -126,19 +165,20 @@
 			    android:layout_height="wrap_content"
 		        >
 			    <TextView
-			        android:id="@+id/errEmployeeName"
+			        android:id="@+id/errSfGuardUserId"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:textSize="20sp"
-			        android:text="Employee name:"
+			        android:text="Sf guard user ID:"
 			        android:textStyle="italic"
 			        />
 			    <EditText
-			        android:id="@+id/txtEmployeeName"
+			        android:id="@+id/txtSfGuardUserId"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:ems="10"
-			        android:hint="Employee name"
+			        android:hint="Sf guard user ID"
+			        android:inputType="numberSigned"
 			        android:imeOptions="actionDone"
 			        />
 			    <TextView
@@ -155,6 +195,54 @@
 			        android:layout_height="wrap_content"
 			        android:ems="10"
 			        android:hint="Datetime"
+			        android:imeOptions="actionDone"
+			        />
+			    <TextView
+			        android:id="@+id/errRecordType"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        android:text="Record type:"
+			        android:textStyle="italic"
+			        />
+			    <EditText
+			        android:id="@+id/txtRecordType"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:ems="10"
+			        android:hint="Record type"
+			        android:imeOptions="actionDone"
+			        />
+			    <TextView
+			        android:id="@+id/errDescription"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        android:text="Description:"
+			        android:textStyle="italic"
+			        />
+			    <EditText
+			        android:id="@+id/txtDescription"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:ems="10"
+			        android:hint="Description"
+			        android:imeOptions="actionDone"
+			        />
+			    <TextView
+			        android:id="@+id/errNotes"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:textSize="20sp"
+			        android:text="Notes:"
+			        android:textStyle="italic"
+			        />
+			    <EditText
+			        android:id="@+id/txtNotes"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:ems="10"
+			        android:hint="Notes"
 			        android:imeOptions="actionDone"
 			        />
 			    <TextView

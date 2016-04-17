@@ -30,6 +30,7 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import com.intelimina.pollwatcher.CameraActivity;
+import com.intelimina.pollwatcher.Constants;
 
 public class AndroidUploadApi extends BaseAndroidUploadApi{
 	public AndroidUploadApi(Context context) {
@@ -53,7 +54,7 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 		}
 		
 		AndroidUploadApi api = new AndroidUploadApi(context);
-		api.setAccessToken("lalalala hey jude");//possible values:
+		api.setAccessToken(Constants.accessToken1);//possible values:
 		
 		api.setMessageLoading("Uploading...");
 		api.execute();
