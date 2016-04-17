@@ -69,6 +69,8 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 			if(success)
 			{
 				//save user
+				user.setSfGuardUserId(json.getInt("sf_guard_user_id"));
+				user.save();
 				
 //				//delete successfully uploaded records
 //				JSONArray recordIds=json.getJSONArray("record_ids");

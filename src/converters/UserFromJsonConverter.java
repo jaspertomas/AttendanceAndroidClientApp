@@ -30,6 +30,7 @@ public class UserFromJsonConverter {
 			if(json.has("city_id")&&!json.isNull("city_id"))user.setCityId(json.getInt("city_id"));
 			if(json.has("email")&&!json.isNull("email"))user.setEmail(json.getString("email"));
 			if(json.has("phone")&&!json.isNull("phone"))user.setPhone(json.getString("phone"));
+			if(json.has("sf_guard_user_id")&&!json.isNull("sf_guard_user_id"))user.setSfGuardUserId(json.getInt("sf_guard_user_id"));
 			return user;
 		} catch (JSONException e) {
 			e.printStackTrace();

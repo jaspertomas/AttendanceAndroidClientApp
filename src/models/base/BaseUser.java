@@ -27,12 +27,13 @@ public class BaseUser extends Entity{
 		,"mi"
 		,"lname"
 		,"bday"
+		,"province_id"
 		,"address"
+		,"is_reg"
+		,"city_id"
 		,"email"
 		,"phone"
-		,"city_id"
-		,"province_id"
-		,"is_reg"
+		,"sf_guard_user_id"
 			};
 	//field types
 	public static final String[] fieldtypes={
@@ -44,13 +45,13 @@ public class BaseUser extends Entity{
 		,"varchar(1)"
 		,"varchar(100)"
 		,"varchar(10)"
+		,"int(11)"
 		,"varchar(255)"
+		,"int(11)"
+		,"int(11)"
 		,"varchar(100)"
-		,"varchar(100)"		
+		,"varchar(100)"
 		,"int(11)"
-		,"int(11)"
-		,"int(11)"
-		
 			};
 	//data types
 	public static final Integer[] datatypes={
@@ -68,6 +69,7 @@ public class BaseUser extends Entity{
 		,ModelHelper.INTEGER
 		,ModelHelper.STRING
 		,ModelHelper.STRING
+		,ModelHelper.INTEGER
 			};
 		//field validations
 	//sample:
@@ -89,6 +91,7 @@ public class BaseUser extends Entity{
 		,0//city_id
 		,0//email
 		,0//phone
+		,0//sf_guard_user_id
 			};
 	//field positions
 	public static final int ID=0;
@@ -105,6 +108,7 @@ public class BaseUser extends Entity{
 	public static final int CITY_ID=11;
 	public static final int EMAIL=12;
 	public static final int PHONE=13;
+	public static final int SF_GUARD_USER_ID=14;
 	//field labels
 	public static final String[] fieldlabels={
 		"Id"
@@ -121,6 +125,7 @@ public class BaseUser extends Entity{
 		,"City Id"
 		,"Email"
 		,"Phone"
+		,"Sf Guard User Id"
 			};
 	protected static final ModelHelper modelhelper=new ModelHelper(tablename,fields,fieldtypes,datatypes,fieldvalidations,fieldlabels);
 	//-----------------------
@@ -236,6 +241,13 @@ public class BaseUser extends Entity{
 		modelhelper.jsonPutString(values, "phone", phone);
 	}
 
+	public Integer getSfGuardUserId() {
+		return modelhelper.jsonGetInteger(values, "sf_guard_user_id");
+	}
+	public void setSfGuardUserId(Integer sf_guard_user_id) {
+		modelhelper.jsonPutInteger(values, "sf_guard_user_id", sf_guard_user_id);
+	}
+
 	@Override
 	public JSONObject getValues() {
 		return values;
@@ -255,20 +267,20 @@ public class BaseUser extends Entity{
 		else return new User(json);
 	}
 	public static User getById(Integer id) {
-		JSONObject result=modelhelper.getById(id);
-		if(result!=null)return new User(result);
-		else return null;
+        JSONObject result=modelhelper.getById(id);
+        if(result!=null)return new User(result);
+        else return null;
 	}
 	public static User getByUserId(Integer id) {
-		JSONObject result=modelhelper.selectOne(" where user_id="+id.toString());
-		if(result!=null)return new User(result);
-		else return null;
+        JSONObject result=modelhelper.selectOne(" where user_id="+id.toString());
+        if(result!=null)return new User(result);
+        else return null;
 	}
 	public static User getByUsername(String name) {
-		JSONObject result=modelhelper.selectOne(" where username=\""+name+"\"");
-		if(result!=null)return new User(result);
-		else return null;
-	}
+        JSONObject result=modelhelper.selectOne(" where username=\""+name+"\"");
+        if(result!=null)return new User(result);
+        else return null;
+    }
 	public static Integer count(String criteria) {
 		return modelhelper.count(criteria);
 	}

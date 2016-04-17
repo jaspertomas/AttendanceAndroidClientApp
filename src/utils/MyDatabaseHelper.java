@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import models.Record;
+import models.Setting;
+import models.User;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -15,7 +19,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	//set this to true if you want the initial database
 	//to be copied from the assets folder
 	//instead of just being a blank database
-	private static boolean copydbfromassets=false;
+	private static boolean copydbfromassets=true;
 	
 	private static String DB_PATH = ""; 
 	private final Context context;
@@ -68,6 +72,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 	        {
 	            //Copy the database from assests
 	            copyDataBase();
+	            //create additional tables
+	            createTables(context);
 	            Log.e(contextstring, "createDatabase database created");
 	        } 
 	        catch (IOException mIOException) 
@@ -121,6 +127,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 			//Put table creator functions here
 			//[tablename].createTable();	
+			User.createTable();
+			Record.createTable();
+			Setting.createTable();
 
 		} catch (IOException e) {
 			Log.e(contextstring,"Error creating database");
