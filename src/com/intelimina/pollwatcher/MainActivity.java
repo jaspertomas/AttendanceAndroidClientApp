@@ -17,7 +17,6 @@ import android.widget.ImageView;
 
 public class MainActivity extends Activity {
 	Context context;
-	private ImageView imageView;	
 	
 	static MainActivity instance;
 	public static MainActivity getInstance() {
@@ -38,7 +37,6 @@ public class MainActivity extends Activity {
 	private void setupView()
 	{
 		
-		imageView = (ImageView) findViewById(R.id.imageView);
 	}
 	@Override
 	public void onBackPressed()

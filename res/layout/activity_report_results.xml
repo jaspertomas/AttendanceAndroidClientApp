@@ -1,0 +1,164 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ReportResultsActivity" >
+
+
+    <ImageView
+		android:id="@+id/imageView" 
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:scaleType="fitStart"
+		android:adjustViewBounds="true"
+		android:onClick="takePicture"
+		/>
+    
+    <Button
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:onClick="takePicture"
+		android:text="Take a picture"
+		/>
+
+ 
+ <TableLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+    <TableRow>
+        
+        <TextView
+            android:text="Jejomar Binay"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+        <TextView
+            android:text="Gringo Honasan"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+        <TextView
+            android:text="Miriam Defensor Santiago"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+                
+        <TextView
+            android:text="Rodrigo Duterte"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+                
+        <TextView
+            android:text="Grace Poe"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+        
+        <TextView
+            android:text="Mar Roxas "
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+    </TableRow>
+
+</TableLayout>
+  
+ <TableLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+    <TableRow>
+        
+        <TextView
+            android:text="Gringo Honasan"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+                
+        <TextView
+            android:text="Bongbong Marcos"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+                
+        <TextView
+            android:text="Alan Peter Cayetano"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+                
+        <TextView
+            android:text="Francis Escudero"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+        
+        <TextView
+            android:text="Leni Robredo"
+            android:padding="3dip" 
+            />
+        <EditText
+            android:text=""
+            android:gravity="right"
+            android:padding="3dip" 
+            />
+    </TableRow>
+
+</TableLayout>
+ 	<TextView
+	    android:id="@+id/daystodue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        />
+
+	<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="submit"
+        android:text="Submit" />
+    					
+</LinearLayout>

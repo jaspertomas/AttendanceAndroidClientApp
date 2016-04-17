@@ -1,23 +1,64 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    tools:context="${relativePackage}.${activityClass}" 
+    >
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" 
+    android:orientation="vertical"
+    >
     	
-    <ImageView
-            android:id="@+id/imageView" 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-			android:scaleType="fitStart"
-			android:adjustViewBounds="true"
-            android:onClick="takePicture"
-            />
+     <TextView
+	    android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        />
     
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Take a picture" 
-        android:onClick="takePicture"
+        android:text="Report election results" 
+        android:onClick="reportResults"
         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report electoral fraud" 
+        android:onClick="reportFraud"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Report other event" 
+        android:onClick="reportOther"
+        />
+	
+    <!-- spacer -->
+	<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="           " />
 
+		<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="logout"
+        android:text="@string/logout" />
+	<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="editProfile"
+        android:text="@string/editProfile" />
+	<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="editPassword"
+        android:text="@string/editPassword" />
+    
 </LinearLayout>
+</ScrollView>
