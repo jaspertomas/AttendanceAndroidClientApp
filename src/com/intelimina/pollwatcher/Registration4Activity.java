@@ -1,20 +1,19 @@
 package com.intelimina.pollwatcher;
 
 import holders.NavigationHolder;
-import holders.RegistrationHolder;
+import holders.LGUHolder;
 import holders.UserHolder;
-import utils.MyDialogHelper;
 import models.Lgu;
 import models.Lgus;
 import models.User;
+import utils.MyDialogHelper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import apis.android.AndroidRegisterApi;
 
 public class Registration4Activity extends Activity {
 	private EditText txtProvince;	
@@ -25,11 +24,17 @@ public class Registration4Activity extends Activity {
 	private Lgu city;
 
 	private Context context;
+	static Registration4Activity instance;
+	public static Registration4Activity getInstance() {
+		return instance;
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_registration4);
 		context=Registration4Activity.this;
+		instance=Registration4Activity.this;
 		
 		setupView();
 	}
@@ -52,7 +57,8 @@ public class Registration4Activity extends Activity {
 	        }
 	    });
 	}
-	public void back(View button)
+	public void back(View button){back();}
+	public void back()
 	{
 		save();
 		NavigationHolder.setDestination(NavigationHolder.Registration3Activity);
@@ -80,19 +86,21 @@ public class Registration4Activity extends Activity {
 		} 
 
 		save();
+
 		//send data to server
-		//!!!todo
+		AndroidRegisterApi.demo(context, UserHolder.getRegUser());
 	}
 	public void save()
 	{
 		User user=UserHolder.getRegUser();
-		user.setProvinceId(RegistrationHolder.getProvince().getId());
-		user.setCityId(RegistrationHolder.getCity().getId());
+		user.setProvinceId(LGUHolder.getProvince().getId());
+		user.setCityId(LGUHolder.getCity().getId());
 		user.setAddress(txtAddress.getText().toString());
 	}
 	public void onSubmitSuccess()
 	{
-		RegistrationHolder.reset();
+		MyDialogHelper.popup(context, "Registration Successful");
+		LGUHolder.reset();
 		NavigationHolder.setDestination(NavigationHolder.MainActivity);
 		finish();
 	}
@@ -104,7 +112,7 @@ public class Registration4Activity extends Activity {
 	protected void onStart() {
 		super.onStart();
 
-		Lgu tempcity=RegistrationHolder.getCity();
+		Lgu tempcity=LGUHolder.getCity();
 		if(tempcity!=null)
 		{
 			this.city=tempcity;
@@ -115,7 +123,7 @@ public class Registration4Activity extends Activity {
 			txtCity.setText("");
 		}
 
-		Lgu tempprovince=RegistrationHolder.getProvince();
+		Lgu tempprovince=LGUHolder.getProvince();
 		if(tempprovince!=null)
 		{
 			this.province=tempprovince;
@@ -136,10 +144,10 @@ public class Registration4Activity extends Activity {
 	}
 	public void fill(View button)
 	{
-		RegistrationHolder.setCity(Lgus.getByName("Manila"));
-		txtCity.setText(RegistrationHolder.getCity().getName());
-		RegistrationHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
-		txtProvince.setText(RegistrationHolder.getProvince().getName());
+		LGUHolder.setCity(Lgus.getByName("Manila"));
+		txtCity.setText(LGUHolder.getCity().getName());
+		LGUHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
+		txtProvince.setText(LGUHolder.getProvince().getName());
 		txtAddress.setText("asdfgh");
 	}
 	public void provinceList()
@@ -153,5 +161,10 @@ public class Registration4Activity extends Activity {
 		Intent intent = new Intent(context, LguListActivity.class);
 		intent.setAction("city");
 		startActivity(intent);
+	}
+	@Override
+	public void onBackPressed()
+	{
+		back();
 	}
 }

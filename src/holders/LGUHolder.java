@@ -2,13 +2,13 @@ package holders;
 
 import models.Lgu;
 
-public class RegistrationHolder {
+public class LGUHolder {
 	static Lgu city;
 	public static Lgu getCity() {
 		return city;
 	}
 	public static void setCity(Lgu city) {
-		RegistrationHolder.city = city;
+		LGUHolder.city = city;
 	}
 
 	static Lgu province;
@@ -16,7 +16,7 @@ public class RegistrationHolder {
 		return province;
 	}
 	public static void setProvince(Lgu province) {
-		RegistrationHolder.province = province;
+		LGUHolder.province = province;
 	}
 	
 	public static void reset()

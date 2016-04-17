@@ -72,8 +72,9 @@ public class BaseAndroidRegisterApi extends BaseApi{
 		}
 	}
 	@Override public String getUrl() {
-		String url=Constants.SERVER_URL+"/android/upload";
-		return UrlHelper.escapeUrl(url);	}
+		String url=Constants.SERVER_URL+"/android/register";
+		return UrlHelper.escapeUrl(url);
+	}
 	@Override public Integer getMethod() {
 		return BaseApi.METHOD_POST;
 	}

@@ -1,7 +1,7 @@
 package com.intelimina.pollwatcher;
 
 import holders.NavigationHolder;
-import holders.RegistrationHolder;
+import holders.LGUHolder;
 import holders.UserHolder;
 
 import java.text.ParseException;
@@ -57,7 +57,8 @@ public class Registration3Activity extends Activity {
 		//default values
 		txtBday.setText(PrettyDateHelper.toString(DateHelper.getNullDate2000()));
 	}
-	public void back(View button)
+	public void back(View button){back();}
+	public void back()
 	{
 		try {
 			save();
@@ -135,13 +136,20 @@ public class Registration3Activity extends Activity {
 		switch (id) {
 		case DATE_DIALOG_ID:
 			Calendar c = Calendar.getInstance(); 
+			User user=UserHolder.getRegUser();
+			c.setTime(user.getBday());
 			byear=c.get(c.YEAR);
 			bmonth=c.get(c.MONTH)+1;
 			bdayOfMonth=c.get(c.DATE);
+			//set datepicker date to user birthday
 			DatePickerDialog d=new DatePickerDialog(this,
 					mDateSetListener,
 					2000, 0, 1);
 			
+			c = Calendar.getInstance(); 
+			byear=c.get(c.YEAR);
+			bmonth=c.get(c.MONTH)+1;
+			bdayOfMonth=c.get(c.DATE);
 			d.getDatePicker().setMinDate(DateHelper.toDate(String.valueOf(byear-100)+"-"+bmonth+"-"+bdayOfMonth).getTime());
 			d.getDatePicker().setMaxDate(DateHelper.toDate(byear+"-"+bmonth+"-"+bdayOfMonth).getTime());
 			return d;
@@ -168,5 +176,10 @@ public class Registration3Activity extends Activity {
 		bdayOfMonth=DateHelper.getDayOfMonth(bday);
 		txtPhone.setText(user.getPhone());
 		txtEmail.setText(user.getEmail());
+	}
+	@Override
+	public void onBackPressed()
+	{
+		back();
 	}
 }

@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import utils.MyPhotoSaver;
+import utils.UrlHelper;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -32,6 +33,7 @@ import android.widget.Toast;
 
 import com.intelimina.pollwatcher.CameraActivity;
 import com.intelimina.pollwatcher.Constants;
+import com.intelimina.pollwatcher.Registration4Activity;
 
 public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 	
@@ -50,7 +52,7 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 		AndroidRegisterApi api = new AndroidRegisterApi(context);
 		api.setAccessToken(Constants.accessToken1);//possible values:
 		
-		api.setMessageLoading("Uploading...");
+		api.setMessageLoading("Connecting to Server...");
 		api.execute();
 	}
 	@Override public JSONObject convertResponseToJson(String response) throws JSONException
@@ -70,31 +72,22 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 			{
 				//save user
 				user.setSfGuardUserId(json.getInt("sf_guard_user_id"));
+				user.setPassword(json.getString("password"));
+				user.setSalt(json.getString("salt"));
+				user.setIsReg(1);
 				user.save();
 				
-//				//delete successfully uploaded records
-//				JSONArray recordIds=json.getJSONArray("record_ids");
-//				String id;
-//				Record record;
-//				for(int i=0;i<recordIds.length();i++)
-//				{
-//					id=recordIds.getString(i);
-//					record=Record.selectOne(" where filename ='"+id+"' ");
-//					record.delete();
-//				}
-//				
-//				final Context finalContext=context;
-//				CameraActivity.getInstance().runOnUiThread(new Runnable() {
-//				    public void run() {
-//				    	demo(finalContext);
-//				    }
-//				});		
+				Registration4Activity.getInstance().runOnUiThread(new Runnable() {
+				    public void run() {
+						Registration4Activity.getInstance().onSubmitSuccess();
+				    }
+				});		
 			}
 			else
 			{
-				CameraActivity.getInstance().runOnUiThread(new Runnable() {
+				Registration4Activity.getInstance().runOnUiThread(new Runnable() {
 				    public void run() {
-				        Toast.makeText(CameraActivity.getInstance(), error, Toast.LENGTH_LONG).show();
+						Registration4Activity.getInstance().onSubmitFailure(error);
 				    }
 				});		
 			}
@@ -112,18 +105,7 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 		try {
 			if(accessToken!=null)mainobj.put("access_token", accessToken.toString());
 			
-			JSONArray array=new JSONArray();
-			for(Record record:Record.select(" limit 10"))
-			{
-		        String imagepath = MyPhotoSaver.getDir(context).getPath()+"/"+record.getFilename();
-		        File file=new File(imagepath);
-		        if(file.exists())
-		        	record.getValues().put("image_encoded", imageFileToString(imagepath));
-		        else
-		        	record.getValues().put("image_encoded","");
-				array.put(record.getValues());
-			}
-			mainobj.put("records", array);
+			mainobj.put("user", user.getValues());
 //			Log.i("request",mainobj.toString());
 			StringEntity se = new StringEntity(mainobj.toString());
 			post.setEntity(se);
@@ -141,6 +123,10 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 			e.printStackTrace();
 		}
 	}	
+	@Override public String getUrl() {
+		String url=Constants.SERVER_URL+"/android/register";
+		return UrlHelper.escapeUrl(url);
+	}
 	
 	
 	

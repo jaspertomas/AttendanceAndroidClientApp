@@ -1,6 +1,6 @@
 package com.intelimina.pollwatcher;
 
-import holders.RegistrationHolder;
+import holders.LGUHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,9 +75,9 @@ public class LguListActivity extends Activity {
     					String selectedFromList = (parent.getItemAtPosition(position).toString());
 
     					if(getIntent().getAction().contentEquals("province"))
-    						RegistrationHolder.setProvince(Lgus.getByName(selectedFromList));
+    						LGUHolder.setProvince(Lgus.getByName(selectedFromList));
     					else
-    						RegistrationHolder.setCity(Lgus.getByName(selectedFromList));
+    						LGUHolder.setCity(Lgus.getByName(selectedFromList));
     						
     					finish();
     			    }});	

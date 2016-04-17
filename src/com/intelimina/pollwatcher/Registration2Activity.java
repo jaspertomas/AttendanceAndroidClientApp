@@ -3,7 +3,7 @@ package com.intelimina.pollwatcher;
 import java.util.Date;
 
 import holders.NavigationHolder;
-import holders.RegistrationHolder;
+import holders.LGUHolder;
 import holders.UserHolder;
 import models.Lgus;
 import models.User;
@@ -36,7 +36,8 @@ public class Registration2Activity extends Activity {
 		txtMi = (EditText) findViewById(R.id.mi);
 		txtLname = (EditText) findViewById(R.id.lname);
 	}
-	public void back(View button)
+	public void back(View button){back();}
+	public void back()
 	{
 		save();
 		NavigationHolder.setDestination(NavigationHolder.RegistrationActivity);
@@ -88,5 +89,10 @@ public class Registration2Activity extends Activity {
 		txtLname.setText(user.getLname());
 
 
+	}
+	@Override
+	public void onBackPressed()
+	{
+		back();
 	}
 }

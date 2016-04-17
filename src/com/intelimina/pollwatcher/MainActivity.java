@@ -1,8 +1,11 @@
 package com.intelimina.pollwatcher;
 
 import holders.NavigationHolder;
+import holders.LGUHolder;
 import holders.UserHolder;
+import models.Lgus;
 import models.User;
+import utils.DateHelper;
 import utils.MyInitializer;
 import android.app.Activity;
 import android.content.Context;
@@ -79,7 +82,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		
+		Log.i("NavigationHelper Destination",String.valueOf(NavigationHolder.getDestination()));
 		switch(NavigationHolder.getDestination())
 		{
 			case NavigationHolder.ShutDown:
@@ -118,6 +121,26 @@ public class MainActivity extends Activity {
 					//if no registered users in database, register
 					if(usercount==0)
 					{
+						//setup temporary user record
+						LGUHolder.reset();
+						
+						User user=new User();
+						user.setUsername("");
+						user.setPassword("");
+						user.setFname("");
+						user.setMi("");
+						user.setLname("");
+						user.setBday(DateHelper.getNullDate2000());
+						user.setEmail("");
+						user.setPhone("");
+						LGUHolder.setCity(Lgus.getByName(" Other / Not Applicable"));
+						user.setCityId(LGUHolder.getCity().getId());
+						LGUHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
+						user.setProvinceId(LGUHolder.getProvince().getId());
+						user.setAddress("");
+						user.setIsReg(0);
+						UserHolder.setRegUser(user);
+						
 						Intent intent = new Intent(context, RegistrationActivity.class);
 						startActivity(intent);
 					}

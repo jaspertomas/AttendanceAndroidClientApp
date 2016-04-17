@@ -1,7 +1,7 @@
 package com.intelimina.pollwatcher;
 
 import holders.NavigationHolder;
-import holders.RegistrationHolder;
+import holders.LGUHolder;
 import holders.UserHolder;
 
 import java.text.ParseException;
@@ -58,30 +58,10 @@ public class RegistrationActivity extends Activity {
 
 	private void setupView()
 	{
-		RegistrationHolder.reset();
 
 		txtUname = (EditText) findViewById(R.id.uname);
 		txtPasswd = (EditText) findViewById(R.id.passwd);
 		txtPasswd2 = (EditText) findViewById(R.id.passwd2);
-
-		//setup temporary user record
-		User user=new User();
-		user.setUsername(txtUname.getText().toString());
-		user.setPassword(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()));
-		user.setFname("");
-		user.setMi("");
-		user.setLname("");
-		user.setBday(DateHelper.getNullDate2000());
-		user.setEmail("");
-		user.setPhone("");
-		RegistrationHolder.setCity(Lgus.getByName(" Other / Not Applicable"));
-		user.setCityId(RegistrationHolder.getCity().getId());
-		RegistrationHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
-		user.setProvinceId(RegistrationHolder.getProvince().getId());
-		user.setAddress("");
-		user.setIsReg(0);
-		
-		UserHolder.setRegUser(user);
 	}
 	public void next(View button)
 	{
@@ -142,8 +122,7 @@ public class RegistrationActivity extends Activity {
 	{
 		User user=UserHolder.getRegUser();
 		user.setUsername(txtUname.getText().toString());
-		user.setPassword(MyEncryptionHelper.encrypt(txtPasswd.getText().toString()));
-//		user.save();
+		user.setPassword(txtPasswd.getText().toString());
 	}
 	public void fill(View button)
 	{
@@ -177,7 +156,7 @@ public class RegistrationActivity extends Activity {
 	public void reallyCancel()
 	{
 		//city and province data no longer needed
-		RegistrationHolder.reset();
+		LGUHolder.reset();
 		NavigationHolder.setDestination(NavigationHolder.ShutDown);
 		finish();
 	}
@@ -195,7 +174,7 @@ public class RegistrationActivity extends Activity {
 		
 		User user=UserHolder.getRegUser();
 			txtUname.setText(user.getUsername());
-			txtPasswd.setText("");
-			txtPasswd2.setText("");
+			txtPasswd.setText(user.getPassword());
+			txtPasswd2.setText(user.getPassword());
 	}
 }
