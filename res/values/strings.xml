@@ -80,5 +80,6 @@
     <string name="title_activity_registration2">Registration2Activity</string>
     <string name="title_activity_registration3">Registration3Activity</string>
     <string name="title_activity_registration4">Registration4Activity</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
 
 </resources>

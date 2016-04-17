@@ -40,10 +40,10 @@ public class MainActivity extends Activity {
 		
 		imageView = (ImageView) findViewById(R.id.imageView);
 	}
-	public void takePicture(View button)
+	@Override
+	public void onBackPressed()
 	{
-		Intent intent = new Intent(context, CameraActivity.class);
-		startActivity(intent);
+		nav();
 	}
 //	public void savePicture()
 //	{
@@ -82,6 +82,10 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		nav();
+	}
+	private void nav()
+	{
 		Log.i("NavigationHelper Destination",String.valueOf(NavigationHolder.getDestination()));
 		switch(NavigationHolder.getDestination())
 		{
@@ -151,10 +155,15 @@ public class MainActivity extends Activity {
 						startActivity(intent);
 					}
 				}
+				//else go to dashboard activity
+				else
+				{
+					Intent intent = new Intent(context, DashboardActivity.class);
+					startActivity(intent);
+				}
 			}
 		}
 	}
-	
 //	@Override
 //	protected void onResume() {
 //		super.onResume();
@@ -164,4 +173,6 @@ public class MainActivity extends Activity {
 //	protected void onPause() {
 //		super.onPause();
 //	}
+	
+	
 }
