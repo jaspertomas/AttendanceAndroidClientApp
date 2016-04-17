@@ -8,7 +8,9 @@ import models.Lgus;
 import models.User;
 import utils.MyDialogHelper;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -99,10 +101,21 @@ public class Registration4Activity extends Activity {
 	}
 	public void onSubmitSuccess()
 	{
-		MyDialogHelper.popup(context, "Registration Successful");
-		LGUHolder.reset();
-		NavigationHolder.setDestination(NavigationHolder.MainActivity);
-		finish();
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle("Registration Successful");
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+				UserHolder.setUser(UserHolder.getRegUser());
+				UserHolder.setRegUser(null);
+				LGUHolder.reset();
+				NavigationHolder.reset();
+				
+				finish();
+		    }
+		});
+		builder.setCancelable(false);
+		builder.show();		
 	}
 	public void onSubmitFailure(String message)
 	{

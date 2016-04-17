@@ -80,7 +80,13 @@ public class LoginActivity extends Activity {
 	}
 	public void cancel(View button)
 	{
-		NavigationHolder.setDestination(NavigationHolder.MainActivity);
+		NavigationHolder.setDestination(NavigationHolder.ShutDown);
+		finish();
+	}
+	@Override
+	public void onBackPressed()
+	{
+		NavigationHolder.setDestination(NavigationHolder.ShutDown);
 		finish();
 	}
 
