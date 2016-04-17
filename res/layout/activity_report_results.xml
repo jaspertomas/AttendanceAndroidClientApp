@@ -1,164 +1,205 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".ReportResultsActivity" >
-
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
-		android:id="@+id/imageView" 
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:scaleType="fitStart"
-		android:adjustViewBounds="true"
-		android:onClick="takePicture"
-		/>
-    
-    <Button
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:onClick="takePicture"
-		android:text="Take a picture"
-		/>
-
- 
- <TableLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="1">
-    <TableRow>
-        
-        <TextView
-            android:text="Jejomar Binay"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-        <TextView
-            android:text="Gringo Honasan"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-        <TextView
-            android:text="Miriam Defensor Santiago"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-                
-        <TextView
-            android:text="Rodrigo Duterte"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-                
-        <TextView
-            android:text="Grace Poe"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-        
-        <TextView
-            android:text="Mar Roxas "
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-    </TableRow>
-
-</TableLayout>
-  
- <TableLayout 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:stretchColumns="1">
-    <TableRow>
-        
-        <TextView
-            android:text="Gringo Honasan"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-                
-        <TextView
-            android:text="Bongbong Marcos"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-                
-        <TextView
-            android:text="Alan Peter Cayetano"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-                
-        <TextView
-            android:text="Francis Escudero"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-        
-        <TextView
-            android:text="Leni Robredo"
-            android:padding="3dip" 
-            />
-        <EditText
-            android:text=""
-            android:gravity="right"
-            android:padding="3dip" 
-            />
-    </TableRow>
-
-</TableLayout>
- 	<TextView
-	    android:id="@+id/daystodue"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        />
+        android:adjustViewBounds="true"
+        android:onClick="takePicture"
+        android:scaleType="fitStart" />
 
-	<Button
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="takePicture"
+        android:text="Take a picture" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1" >
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblp1"
+                android:padding="3dip"
+                android:text="Jejomar Binay" />
+
+            <EditText
+		        android:id="@+id/txtp1"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblp2"
+                android:padding="3dip"
+                android:text="Miriam Defensor Santiago" />
+
+            <EditText
+		        android:id="@+id/txtp2"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblp3"
+                android:padding="3dip"
+                android:text="Rodrigo Duterte" />
+
+            <EditText
+		        android:id="@+id/txtp3"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblp4"
+                android:padding="3dip"
+                android:text="Grace Poe" />
+
+            <EditText
+		        android:id="@+id/txtp4"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblp5"
+                android:padding="3dip"
+                android:text="Mar Roxas " />
+
+            <EditText
+		        android:id="@+id/txtp5"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+    </TableLayout>
+    
+	<!-- SPACER -->
+	<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:padding="3dip"
+	    android:text="            " />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1" >
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblvp1"
+                android:padding="3dip"
+                android:text="Gringo Honasan" />
+
+            <EditText
+		        android:id="@+id/txtvp1"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblvp2"
+                android:padding="3dip"
+                android:text="Bongbong Marcos" />
+
+            <EditText
+		        android:id="@+id/txtvp2"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="3dip"
+		        android:id="@+id/lblvp3"
+                android:text="Alan Peter Cayetano" />
+
+            <EditText
+		        android:id="@+id/txtvp3"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblvp4"
+                android:padding="3dip"
+                android:text="Francis Escudero" />
+
+            <EditText
+		        android:id="@+id/txtvp4"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+		        android:id="@+id/lblvp5"
+                android:padding="3dip"
+                android:text="Leni Robredo" />
+
+            <EditText
+		        android:id="@+id/txtvp5"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+        </TableRow>
+    </TableLayout>
+    
+	<!-- SPACER -->
+	<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:padding="3dip"
+	    android:text="            " />
+    
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cancel"
+        android:text="Cancel" />
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="submit"
         android:text="Submit" />
-    					
+
 </LinearLayout>
+</ScrollView>
