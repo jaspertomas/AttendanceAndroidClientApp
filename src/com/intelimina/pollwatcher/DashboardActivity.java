@@ -1,5 +1,6 @@
 package com.intelimina.pollwatcher;
 
+import holders.NavigationHolder;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,5 +19,11 @@ public class DashboardActivity extends Activity {
 	{
 		Intent intent = new Intent(context, CameraActivity.class);
 		startActivity(intent);
+	}
+	@Override
+	public void onBackPressed()
+	{
+		NavigationHolder.setDestination(NavigationHolder.ShutDown);
+		finish();
 	}
 }
