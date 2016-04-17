@@ -64,8 +64,8 @@
     <string name="crud_cancel">Cancel</string>
     <string name="crud_add_new">Add New</string>
     <string name="crud_save_and_add_new">Save and Add New</string>
-    
-<!-- 
+
+    <!--
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_choose_user">Choose a User</string>
     <string name="title_activity_choose_vehicle">Choose a Vehicle</string>
@@ -75,7 +75,10 @@
     <string name="title_activity_vehicle_dashboard">Vehicle Dashboard</string>
     <string name="title_activity_vehicle_registration">Vehicle Registration</string>
     <string name="title_activity_edit_password">EditPasswordActivity</string>
+    -->
 
- -->    
-    
+    <string name="title_activity_registration2">Registration2Activity</string>
+    <string name="title_activity_registration3">Registration3Activity</string>
+    <string name="title_activity_registration4">Registration4Activity</string>
+
 </resources>
