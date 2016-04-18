@@ -1,10 +1,18 @@
 package com.intelimina.pollwatcher;
 
+import holders.PictureDataHolder;
+import holders.PictureHolder;
+
+import java.io.File;
+
 import utils.MyDialogHelper;
+import utils.MyPhotoSaver;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -72,6 +80,11 @@ public class ReportResultsActivity extends Activity {
 		lblvp3.setText(vps[2]);
 		lblvp4.setText(vps[3]);
 		lblvp5.setText(vps[4]);
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		savePicture();
 	}
 	public void submit(View button)
 	{
@@ -160,5 +173,43 @@ public class ReportResultsActivity extends Activity {
 //		PictureHolder.setAction(PictureHolder.ACTION_ODOPIC);
 		Intent intent = new Intent(context, CameraActivity.class);
 		startActivity(intent);
+	}
+
+	public void savePicture()
+	{
+		//if action is neither adpic nor odopic, do nothing
+		//if(PictureHolder.getAction()==0)return;
+		
+		//if datetimestring is not set, then no picture taken
+		//do nothing
+		String datetimestring=PictureHolder.getDatetimestring();
+		if(datetimestring.isEmpty())return;
+		
+	    File pictureFileDir = MyPhotoSaver.getDir(context);
+	    String filename=PictureDataHolder.getFilename();
+	    File picturefile=new File(pictureFileDir,filename);
+	    if(picturefile.exists())
+	    {
+	    	//picturefile.renameTo(newpicturefile);
+	    	
+//			Update update=VehicleHolder.getUpdate();
+//	    	
+//    	    File oldpicturefile=new File(pictureFileDir,update.getOdoPicFilename());
+//    	    if(oldpicturefile.exists())oldpicturefile.delete();
+//    		
+//    		//save filename to update
+//    		update.setOdoPicFilename(filename);
+//    		update.save();
+
+    		//show image
+	        imageView.setImageBitmap(BitmapFactory.decodeFile(picturefile.getAbsolutePath()));
+//			Toast.makeText(getApplicationContext(), "Picture saved successfully.",Toast.LENGTH_SHORT).show();
+	    }
+	    //else picture file not found
+	    //this should never happen
+	    else
+	    {
+//			Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_SHORT).show();
+	    }
 	}
 }

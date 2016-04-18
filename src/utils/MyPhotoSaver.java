@@ -11,7 +11,7 @@ import android.util.Log;
 public class MyPhotoSaver {
 	public static String DEBUG_TAG="MyPhotoSaver";
 
-  public static Boolean save(byte[] data, File pictureFileDir, Context context) {
+  public static Boolean save(byte[] data, File pictureFileDir, String filename, Context context) {
 //
 //    //if can't get picture directory, do nothing
 //    if (!pictureFileDir.exists() && !pictureFileDir.mkdirs()) {
@@ -28,9 +28,8 @@ public class MyPhotoSaver {
 //    String date = dateFormat.format(new Date());
 //    String photoFile = "Picture_" + date + ".jpg";
 //    String filename = pictureFileDir.getPath() + File.separator + photoFile;
-    String photoFile = PictureDataHolder.getFilename();
-    String filename = pictureFileDir.getPath() + File.separator + photoFile;
-    File pictureFile = new File(filename);
+//    String photoFile = PictureDataHolder.getFilename();
+    File pictureFile = new File(pictureFileDir.getPath() + File.separator + filename);
 
     //save image to disk
     try {

@@ -1,5 +1,6 @@
 package com.intelimina.pollwatcher;
 
+import holders.PictureDataHolder;
 import holders.PictureHolder;
 
 import java.io.File;
@@ -83,7 +84,11 @@ public class CameraActivity extends Activity {
 			Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
 			
 			Date date=new Date();
-			PictureHolder.setDatetimestring(DateTimeHelper.toString(date));
+			String datetimestring=DateTimeHelper.toString(date);
+			PictureHolder.setDatetimestring(datetimestring);
+			String filename=datetimestring.replace(" ", "-").replace(":", "-")+".jpg";
+			PictureDataHolder.setFilename(filename);
+			
 			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, PictureHolder.getDatetimestring());
 			if (bitmap == null) {
 				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_SHORT).show();
@@ -102,7 +107,7 @@ public class CameraActivity extends Activity {
 			    }
 			    else
 			    {
-					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,CameraActivity.this);
+					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,filename,CameraActivity.this);
 					if(saved)
 					{
 //					      Toast.makeText(CameraActivity.this, "Image saved", Toast.LENGTH_LONG).show();
