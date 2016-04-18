@@ -47,6 +47,11 @@ public class ReportResultsActivity extends Activity {
 
 		setupView();
 	}
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		PictureHolder.reset();
+	}
 	private void setupView()
 	{
 		imageView = (ImageView) findViewById(R.id.imageView);
