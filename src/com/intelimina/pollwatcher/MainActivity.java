@@ -1,28 +1,18 @@
 package com.intelimina.pollwatcher;
 
-import com.itforhumanity.attendance.CameraActivity;
-import com.itforhumanity.attendance.R;
-import com.itforhumanity.attendance.ServerSettingActivity;
-
-import holders.NavigationHolder;
 import holders.LGUHolder;
+import holders.NavigationHolder;
 import holders.UserHolder;
 import models.Lgus;
-import models.Record;
 import models.User;
 import utils.DateHelper;
 import utils.MyInitializer;
+import utils.StringHelper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-import apis.android.AndroidUpdateApi;
-import apis.android.AndroidUploadApi;
 
 public class MainActivity extends Activity {
 	Context context;

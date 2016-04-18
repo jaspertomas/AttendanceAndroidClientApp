@@ -198,8 +198,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="submit"
-        android:text="Submit" />
+        android:onClick="save"
+        android:text="Save" />
 
 </LinearLayout>
 </ScrollView>

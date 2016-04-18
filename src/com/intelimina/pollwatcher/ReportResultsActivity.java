@@ -1,18 +1,22 @@
 package com.intelimina.pollwatcher;
 
-import holders.PictureDataHolder;
 import holders.PictureHolder;
 
 import java.io.File;
 
+import models.Record;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import utils.MyDialogHelper;
 import utils.MyPhotoSaver;
+import utils.StringHelper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -92,7 +96,7 @@ public class ReportResultsActivity extends Activity {
 		super.onStart();
 		savePicture();
 	}
-	public void submit(View button)
+	public void save(View button)
 	{
 		if(txtp5.getText().toString().isEmpty())
 		{
@@ -155,6 +159,68 @@ public class ReportResultsActivity extends Activity {
         	return;
 		} 
 
+		
+		if(!StringHelper.isNumeric(txtp5.getText().toString()))
+		{
+        	String message="Vote count for "+ps[4]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtp4.getText().toString()))
+		{
+        	String message="Vote count for "+ps[3]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtp3.getText().toString()))
+		{
+        	String message="Vote count for "+ps[2]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtp2.getText().toString()))
+		{
+        	String message="Vote count for "+ps[1]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtp1.getText().toString()))
+		{
+        	String message="Vote count for "+ps[0]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtvp5.getText().toString()))
+		{
+        	String message="Vote count for "+vps[4]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtvp4.getText().toString()))
+		{
+        	String message="Vote count for "+vps[3]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtvp3.getText().toString()))
+		{
+        	String message="Vote count for "+vps[2]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtvp2.getText().toString()))
+		{
+        	String message="Vote count for "+vps[1]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(!StringHelper.isNumeric(txtvp1.getText().toString()))
+		{
+        	String message="Vote count for "+vps[0]+" must be a number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		
 //		Log.i(ps[0],String.valueOf(txtp1.getText()));
 //		Log.i(ps[1],String.valueOf(txtp2.getText()));
 //		Log.i(ps[2],String.valueOf(txtp3.getText()));
@@ -167,8 +233,20 @@ public class ReportResultsActivity extends Activity {
 //		Log.i(vps[4],String.valueOf(txtvp5.getText()));
 //		save();
 
-		//send data to server
-//		AndroidRegisterApi.demo(context, UserHolder.getRegUser());
+		//save data to database
+		JSONObject jsondata=new JSONObject();
+		try {
+			jsondata.put(ps[0], Integer.valueOf(txtp1.getText().toString()));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Record record=new Record();
+		record.setJsondata(jsondata.toString());
 	}
 	public void takePicture(View button)
 	{
