@@ -104,7 +104,9 @@ public class CameraActivity extends Activity {
 			    }
 			    else
 			    {
-//					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,datetimestring+".jpg",CameraActivity.this);
+			    	//use this to not use temp.jpg as filename
+//					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,datetimestring+".jpg",CameraActivity.this,datetimestring);
+			    	//use this to use temp.jpg as filename
 					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,"temp.jpg",CameraActivity.this,datetimestring);
 					if(saved)
 					{

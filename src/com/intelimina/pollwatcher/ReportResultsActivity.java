@@ -191,10 +191,15 @@ public class ReportResultsActivity extends Activity {
 		{
 			File picturefile=MyPhotoSaver.getPictureFile();
 			String filename=MyPhotoSaver.getDateTimeString()+".jpg";
+			
 			//then rename it from temp.jpg to a name with the datestring
 			File newfile=new File(MyPhotoSaver.getDir(context)+ File.separator +filename);
 	    	picturefile.renameTo(newfile);
-			//and move it to PictureHolder
+			//or not
+	    	//use this if files are not saved to temp.jpg, and need no renaming
+//			File newfile=picturefile;
+	    	
+	    	//and move it to PictureHolder
 	    	PictureHolder.setPictureFile(newfile);
 	    	//along with additional data
 	    	PictureHolder.setFilename(filename);
