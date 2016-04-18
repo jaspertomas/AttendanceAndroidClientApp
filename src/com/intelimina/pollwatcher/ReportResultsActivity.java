@@ -58,7 +58,7 @@ public class ReportResultsActivity extends Activity {
 			};
  * */	
 	private ImageView imageView;	
-	private EditText txtp1,txtp2,txtp3,txtp4,txtp5,txtvp1,txtvp2,txtvp3,txtvp4,txtvp5;
+	private EditText txtp1,txtp2,txtp3,txtp4,txtp5,txtvp1,txtvp2,txtvp3,txtvp4,txtvp5,txtNotes;
 	private TextView lblp1,lblp2,lblp3,lblp4,lblp5,lblvp1,lblvp2,lblvp3,lblvp4,lblvp5;
 
 	@Override
@@ -78,6 +78,7 @@ public class ReportResultsActivity extends Activity {
 	private void setupView()
 	{
 		imageView = (ImageView) findViewById(R.id.imageView);
+		txtNotes = (EditText) findViewById(R.id.txtNotes);
 		txtvp1 = (EditText) findViewById(R.id.txtvp5);
 		txtvp2 = (EditText) findViewById(R.id.txtvp4);
 		txtvp3 = (EditText) findViewById(R.id.txtvp3);
@@ -273,11 +274,11 @@ public class ReportResultsActivity extends Activity {
 		record.setJsondata(jsondata.toString());
 		record.setFilename(PictureHolder.getFilename());
 		record.setDatetime(new java.util.Date());
-//		record.setDescription(txtDescription.getText().toString());
+		record.setDescription(txtNotes.getText().toString());
 		record.setRecordType("electionresults");
 		record.setSfGuardUserId(UserHolder.getUser().getSfGuardUserId());
-//		record.save();
-		Log.i("",jsondata.toString());
+		record.save();
+		finish();
 	}
 	public void takePicture(View button)
 	{

@@ -341,7 +341,28 @@
 	    android:padding="3dip"
 	    android:text="            " />
     
-    <Button
+	<TextView
+	    android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:padding="3dip"
+	    android:text="Notes" />
+	<EditText
+        android:id="@+id/txtNotes"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:padding="3dip"
+	    android:text="" />
+	
+	<!-- SPACER -->
+	<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+	    android:padding="3dip"
+	    android:text="            " />
+		
+	<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="save"
