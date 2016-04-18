@@ -52,7 +52,6 @@ public class CameraActivity extends Activity {
 		btnSave = (Button) findViewById(R.id.button_save);
 		
 		btnSave.setEnabled(false);
-		PictureHolder.setDatetimestring("");
 	}
 
 	@Override
@@ -85,11 +84,9 @@ public class CameraActivity extends Activity {
 			
 			Date date=new Date();
 			String datetimestring=DateTimeHelper.toString(date);
-			PictureHolder.setDatetimestring(datetimestring);
 			String filename=datetimestring.replace(" ", "-").replace(":", "-")+".jpg";
-			PictureDataHolder.setFilename(filename);
 			
-			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, PictureHolder.getDatetimestring());
+			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, filename);
 			if (bitmap == null) {
 				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_SHORT).show();
 			} else {

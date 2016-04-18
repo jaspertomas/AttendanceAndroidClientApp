@@ -185,15 +185,12 @@ public class ReportResultsActivity extends Activity {
 		//if action is neither adpic nor odopic, do nothing
 		//if(PictureHolder.getAction()==0)return;
 		
-		//if datetimestring is not set, then no picture taken
-		//do nothing
-		String datetimestring=PictureHolder.getDatetimestring();
-		if(datetimestring.isEmpty())return;
-		
-	    File pictureFileDir = MyPhotoSaver.getDir(context);
-	    String filename=PictureDataHolder.getFilename();
-	    File picturefile=new File(pictureFileDir,filename);
-	    if(picturefile.exists())
+		//if no picture in MyPhotoSaver, then nothing to do
+		File picturefile=MyPhotoSaver.getPictureFile();
+		if(picturefile==null)
+			picturefile=PictureHolder.getPictureFile();		
+		if(picturefile==null)return;
+		else if(picturefile.exists())
 	    {
 	    	//picturefile.renameTo(newpicturefile);
 	    	

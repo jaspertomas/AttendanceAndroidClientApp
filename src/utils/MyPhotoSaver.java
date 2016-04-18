@@ -10,8 +10,21 @@ import android.util.Log;
 
 public class MyPhotoSaver {
 	public static String DEBUG_TAG="MyPhotoSaver";
+	private static String pictureFileShortName="";
+	private static String pictureFileFullName="";
+	private static File pictureFile=null;
 
-  public static Boolean save(byte[] data, File pictureFileDir, String filename, Context context) {
+	  public static String getPictureFileShortName() {
+			return pictureFileShortName;
+		}
+  public static String getPictureFileFullName() {
+		return pictureFileFullName;
+	}
+  public static File getPictureFile() {
+		return pictureFile;
+	}
+
+public static Boolean save(byte[] data, File pictureFileDir, String _filename, Context context) {
 //
 //    //if can't get picture directory, do nothing
 //    if (!pictureFileDir.exists() && !pictureFileDir.mkdirs()) {
@@ -29,7 +42,9 @@ public class MyPhotoSaver {
 //    String photoFile = "Picture_" + date + ".jpg";
 //    String filename = pictureFileDir.getPath() + File.separator + photoFile;
 //    String photoFile = PictureDataHolder.getFilename();
-    File pictureFile = new File(pictureFileDir.getPath() + File.separator + filename);
+	pictureFileShortName=_filename;
+	pictureFileFullName=pictureFileDir.getPath() + File.separator + _filename;
+    pictureFile = new File(pictureFileFullName);
 
     //save image to disk
     try {
@@ -38,7 +53,7 @@ public class MyPhotoSaver {
       fos.close();
       return true;
     } catch (Exception error) {
-      Log.d(DEBUG_TAG, "File" + filename + "not saved: "
+      Log.d(DEBUG_TAG, "File" + _filename + "not saved: "
           + error.getMessage());
       return false;
     }

@@ -1,5 +1,7 @@
 package holders;
 
+import java.io.File;
+
 public class PictureHolder {
 //	static String adPicFilename="";
 //	static String odoPicFilename="";
@@ -19,20 +21,21 @@ public class PictureHolder {
 	{
 //		adPicFilename="";
 //		odoPicFilename="";
-		datetimestring="";
+//		datetimestring="";
 		action=0;
+		pictureFile=null;
 	}
 	
-	static String datetimestring="";
-	public static String getDatetimestring() {
-		return datetimestring;
-	}
-	public static void setDatetimestring(String datetimestring) {
-		PictureHolder.datetimestring = datetimestring;
-	}
+//	static String datetimestring="";
+//	public static String getDatetimestring() {
+//		return datetimestring;
+//	}
+//	public static void setDatetimestring(String datetimestring) {
+//		PictureHolder.datetimestring = datetimestring;
+//	}
 	
-	public static final Integer ACTION_ADPIC=1;
-	public static final Integer ACTION_ODOPIC=2;
+//	public static final Integer ACTION_ADPIC=1;
+//	public static final Integer ACTION_ODOPIC=2;
 	static Integer action=0;
 	public static Integer getAction() {
 		return action;
@@ -41,4 +44,13 @@ public class PictureHolder {
 		PictureHolder.action = action;
 	}
 
+	private static File pictureFile=null;
+	public static File getPictureFile() {
+		return pictureFile;
+	}
+	public static void setPictureFile(File pictureFile) {
+		PictureHolder.pictureFile = pictureFile;
+	}
+
+	
 }
