@@ -186,33 +186,26 @@ public class ReportResultsActivity extends Activity {
 		//if action is neither adpic nor odopic, do nothing
 		//if(PictureHolder.getAction()==0)return;
 		
-		//if no picture in MyPhotoSaver, then nothing to do
-		File picturefile=MyPhotoSaver.getPictureFile();
-		if(picturefile==null)
-			picturefile=PictureHolder.getPictureFile();		
-		if(picturefile==null)return;
-		else if(picturefile.exists())
+		//if there's a picture in MyPhotoSaver, 
+		if(MyPhotoSaver.getPictureFile()!=null)
+		{
+			File picturefile=MyPhotoSaver.getPictureFile();
+			String filename=MyPhotoSaver.getDateTimeString()+".jpg";
+			//then rename it from temp.jpg to a name with the datestring
+			File newfile=new File(MyPhotoSaver.getDir(context)+ File.separator +filename);
+	    	picturefile.renameTo(newfile);
+			//and move it to PictureHolder
+	    	PictureHolder.setPictureFile(newfile);
+	    	//along with additional data
+	    	PictureHolder.setFilename(filename);
+		}
+		
+		//if there's a picture in PictureHolder
+		//whether or not it's newly taken
+		if(PictureHolder.getPictureFile()!=null)
 	    {
-	    	//picturefile.renameTo(newpicturefile);
-	    	
-//			Update update=VehicleHolder.getUpdate();
-//	    	
-//    	    File oldpicturefile=new File(pictureFileDir,update.getOdoPicFilename());
-//    	    if(oldpicturefile.exists())oldpicturefile.delete();
-//    		
-//    		//save filename to update
-//    		update.setOdoPicFilename(filename);
-//    		update.save();
-
     		//show image
-	        imageView.setImageBitmap(BitmapFactory.decodeFile(picturefile.getAbsolutePath()));
-//			Toast.makeText(getApplicationContext(), "Picture saved successfully.",Toast.LENGTH_SHORT).show();
-	    }
-	    //else picture file not found
-	    //this should never happen
-	    else
-	    {
-//			Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_SHORT).show();
+	        imageView.setImageBitmap(BitmapFactory.decodeFile(PictureHolder.getPictureFile().getAbsolutePath()));
 	    }
 	}
 }

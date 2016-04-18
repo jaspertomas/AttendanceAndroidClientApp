@@ -53,6 +53,7 @@ public static Boolean save(byte[] data, File pictureFileDir, String _filename, C
 	pictureFileShortName=_filename;
 	pictureFileFullName=pictureFileDir.getPath() + File.separator + _filename;
     pictureFile = new File(pictureFileFullName);
+    MyPhotoSaver.dateTimeString=datetimestring;
 
     //save image to disk
     try {
@@ -71,13 +72,13 @@ public static Boolean save(byte[] data, File pictureFileDir, String _filename, C
 //	  File dir=new File(context.getFilesDir() + "/");
 	  
 	  //this gives /mnt/sdcard/Android/data/com.itforhumanity.attendance/files/camera
-	  return context.getExternalFilesDir(context.CAMERA_SERVICE);
+//	  return context.getExternalFilesDir(context.CAMERA_SERVICE);
 	  
 	  //this gives /data
 //	    return Environment.getDataDirectory();
 	  
-	  //this gives /data/data/com.itforhumanity.attendance/
-	  //return new File(context.getFilesDir() + "/");
+	  //this gives something like /data/data/com.itforhumanity.attendance/
+	  return new File(context.getFilesDir() + "/");
 	  
 	  // this gives /mnt/sdcard/Pictures/CameraAPIDemo
 //    File sdDir = Environment

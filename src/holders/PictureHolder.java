@@ -52,5 +52,12 @@ public class PictureHolder {
 		PictureHolder.pictureFile = pictureFile;
 	}
 
+	static String filename="";
+	public static String getFilename() {
+		return filename;
+	}
+	public static void setFilename(String filename) {
+		PictureHolder.filename = filename;
+	}
 	
 }
