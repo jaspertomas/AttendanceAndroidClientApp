@@ -2,13 +2,15 @@ package com.intelimina.pollwatcher;
 
 import holders.NavigationHolder;
 import holders.UserHolder;
+import models.Record;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+import apis.android.AndroidUploadApi;
 
 public class DashboardActivity extends Activity {
 	TextView welcome;
@@ -46,5 +48,13 @@ public class DashboardActivity extends Activity {
 //	    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
 //	        startActivityForResult(takePictureIntent, 1);
 //	    }
+	}
+	public void upload(View button)
+	{
+		Integer count=Record.count("");
+		if(count==0)
+			Toast.makeText(context, "No records to upload",Toast.LENGTH_LONG).show();
+	    else
+			AndroidUploadApi.demo(context);
 	}
 }

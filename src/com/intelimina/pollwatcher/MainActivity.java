@@ -1,9 +1,14 @@
 package com.intelimina.pollwatcher;
 
+import com.itforhumanity.attendance.CameraActivity;
+import com.itforhumanity.attendance.R;
+import com.itforhumanity.attendance.ServerSettingActivity;
+
 import holders.NavigationHolder;
 import holders.LGUHolder;
 import holders.UserHolder;
 import models.Lgus;
+import models.Record;
 import models.User;
 import utils.DateHelper;
 import utils.MyInitializer;
@@ -12,8 +17,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+import apis.android.AndroidUpdateApi;
+import apis.android.AndroidUploadApi;
 
 public class MainActivity extends Activity {
 	Context context;
@@ -162,6 +171,27 @@ public class MainActivity extends Activity {
 			}
 		}
 	}
+/*
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.action_upload:
+		{
+			Integer count=Record.count("");
+			if(count==0)
+				Toast.makeText(CameraActivity.this, "No records to upload",Toast.LENGTH_LONG).show();
+		    else
+				AndroidUploadApi.demo(context);
+			return true;
+		}
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+ * */	
+	
 //	@Override
 //	protected void onResume() {
 //		super.onResume();
