@@ -53,9 +53,9 @@
     <string name="title_activity_log">Log Activity</string>
     <string name="title_activity_logs">Logs Activity</string>
     <string name="title_activity_server_setting">ServerSettingActivity</string>
-    <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_registration">Poll Watcher Registration</string>
     <string name="title_activity_lgu_list">Pick a City / Province</string>
-    <string name="title_activity_login">Please enter your password</string>
+    <string name="title_activity_login">Poll Watcher Login</string>
     <string name="crud_create">Create</string>
     <string name="crud_save">Save</string>
     <string name="crud_delete">Delete</string>

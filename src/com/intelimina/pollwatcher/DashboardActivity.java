@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,11 +27,6 @@ public class DashboardActivity extends Activity {
 		welcome = (TextView) findViewById (R.id.welcome);
         welcome.setText("Welcome "+UserHolder.getUser().toString());
 	}
-	public void takePicture(View button)
-	{
-		Intent intent = new Intent(context, CameraActivity.class);
-		startActivity(intent);
-	}
 	@Override
 	public void onBackPressed()
 	{
@@ -41,5 +37,14 @@ public class DashboardActivity extends Activity {
 	{
 		Intent intent = new Intent(context, ReportResultsActivity.class);
 		startActivity(intent);
+	}
+	public void launchCamera(View button)
+	{
+		 Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+		 startActivityForResult(intent, 0); 
+ //	    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//	    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//	        startActivityForResult(takePictureIntent, 1);
+//	    }
 	}
 }

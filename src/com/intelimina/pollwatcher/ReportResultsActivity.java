@@ -3,8 +3,8 @@ package com.intelimina.pollwatcher;
 import utils.MyDialogHelper;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -136,19 +136,29 @@ public class ReportResultsActivity extends Activity {
         	return;
 		} 
 
-		Log.i(ps[0],String.valueOf(txtp1.getText()));
-		Log.i(ps[1],String.valueOf(txtp2.getText()));
-		Log.i(ps[2],String.valueOf(txtp3.getText()));
-		Log.i(ps[3],String.valueOf(txtp4.getText()));
-		Log.i(ps[4],String.valueOf(txtp5.getText()));
-		Log.i(vps[0],String.valueOf(txtvp1.getText()));
-		Log.i(vps[1],String.valueOf(txtvp2.getText()));
-		Log.i(vps[2],String.valueOf(txtvp3.getText()));
-		Log.i(vps[3],String.valueOf(txtvp4.getText()));
-		Log.i(vps[4],String.valueOf(txtvp5.getText()));
+//		Log.i(ps[0],String.valueOf(txtp1.getText()));
+//		Log.i(ps[1],String.valueOf(txtp2.getText()));
+//		Log.i(ps[2],String.valueOf(txtp3.getText()));
+//		Log.i(ps[3],String.valueOf(txtp4.getText()));
+//		Log.i(ps[4],String.valueOf(txtp5.getText()));
+//		Log.i(vps[0],String.valueOf(txtvp1.getText()));
+//		Log.i(vps[1],String.valueOf(txtvp2.getText()));
+//		Log.i(vps[2],String.valueOf(txtvp3.getText()));
+//		Log.i(vps[3],String.valueOf(txtvp4.getText()));
+//		Log.i(vps[4],String.valueOf(txtvp5.getText()));
 //		save();
 
 		//send data to server
 //		AndroidRegisterApi.demo(context, UserHolder.getRegUser());
+	}
+	public void takePicture(View button)
+	{
+		takePicture();
+	}
+	public void takePicture()
+	{
+//		PictureHolder.setAction(PictureHolder.ACTION_ODOPIC);
+		Intent intent = new Intent(context, CameraActivity.class);
+		startActivity(intent);
 	}
 }

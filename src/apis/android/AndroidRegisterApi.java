@@ -31,7 +31,6 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.widget.Toast;
 
-import com.intelimina.pollwatcher.CameraActivity;
 import com.intelimina.pollwatcher.Constants;
 import com.intelimina.pollwatcher.Registration4Activity;
 

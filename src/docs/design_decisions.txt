@@ -5,3 +5,7 @@ image directory is accessible via file manager, but not easily found (inside And
 one user per device
 login every time app starts
 username is email
+
+-------------------
+put "launch camera" menu item in every page
+test launch camera in real device, see if it allows video capture and multiple image capture

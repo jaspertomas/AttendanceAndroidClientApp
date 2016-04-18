@@ -1,13 +1,10 @@
 package com.intelimina.pollwatcher;
 
-import holders.PictureDataHolder;
+import holders.PictureHolder;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import models.Record;
 import utils.DateTimeHelper;
 import utils.MyBitmapHelper;
 import utils.MyPhotoSaver;
@@ -23,38 +20,38 @@ import android.hardware.Camera.PictureCallback;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
-import apis.android.AndroidUploadApi;
 
 public class CameraActivity extends Activity {
+	public static String DEBUG_TAG="CameraActivity";
+
+	Button btnCapture,btnSave;
+	FrameLayout preview;
+	
+	Context context;
 	static CameraActivity instance;
 	public static CameraActivity getInstance() {
 		return instance;
 	}
-	public static String DEBUG_TAG="CameraActivity";
-
-//	Button btnCapture,btnSave;
-	FrameLayout preview;
-	
-	Context context;
-	
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_camera);
 		context=CameraActivity.this;
 		instance=CameraActivity.this;
-
-		setupView();
-	
+		
+		pic = (ImageView) findViewById(R.id.imageView1);
+		preview = (FrameLayout) findViewById(R.id.camera_preview);
+		btnCapture = (Button) findViewById(R.id.button_capture);
+		btnSave = (Button) findViewById(R.id.button_save);
+		
+		btnSave.setEnabled(false);
+		PictureHolder.setDatetimestring("");
 	}
 
 	@Override
@@ -63,43 +60,11 @@ public class CameraActivity extends Activity {
 		getMenuInflater().inflate(R.menu.camera, menu);
 		return true;
 	}
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
-		switch (item.getItemId()) {
-		case R.id.action_settings:
-		{
-//			Intent intent = new Intent(CameraActivity.this, ServerSettingActivity.class);
-//			startActivity(intent);
-//			return true;
-		}
-		case R.id.action_update:
-		{
-//			Intent intent = new Intent(CameraActivity.this, ScheduleMapActivity.class);
-//			startActivity(intent);
-//			releaseCamera();
-			//AndroidUpdateApi.demo(context);
-			return true;
-		}
-		case R.id.action_upload:
-		{
-			Integer count=Record.count("");
-			if(count==0)
-				Toast.makeText(CameraActivity.this, "No records to upload",Toast.LENGTH_LONG).show();
-		    else
-				AndroidUploadApi.demo(context);
-			return true;
-		}
-		default:
-			return super.onOptionsItemSelected(item);
-		}
-	}
 
 	private Camera cameraObject;
 	private ShowCamera showCamera;
 	private ImageView pic;
 
-	//this returns back camera if both cameras are available
 	public static Camera isCameraAvailiable() {
 		Camera object = null;
 		try {
@@ -110,26 +75,6 @@ public class CameraActivity extends Activity {
 		return object;
 	}
 
-	//this returns front camera
-	private Camera isFrontCameraAvailiable() {
-	    int cameraCount = 0;
-	    Camera cam = null;
-	    Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
-	    cameraCount = Camera.getNumberOfCameras();
-	    for (int camIdx = 0; camIdx < cameraCount; camIdx++) {
-	        Camera.getCameraInfo(camIdx, cameraInfo);
-	        if (cameraInfo.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-	            try {
-	                cam = Camera.open(camIdx);
-	            } catch (RuntimeException e) {
-	                Log.e(DEBUG_TAG, "Front Camera failed to open: " + e.getLocalizedMessage());
-	            }
-	        }
-	    }
-
-	    return cam;
-	}	
-	
 	private PictureCallback capturedIt = new PictureCallback() {
 
 		@Override
@@ -137,9 +82,11 @@ public class CameraActivity extends Activity {
 
 			Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
 			
-			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, DateTimeHelper.toString(new Date()));
+			Date date=new Date();
+			PictureHolder.setDatetimestring(DateTimeHelper.toString(date));
+			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, PictureHolder.getDatetimestring());
 			if (bitmap == null) {
-				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_LONG).show();
+				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_SHORT).show();
 			} else {
 				data=MyBitmapHelper.getByteArrayFromBitmap(bitmap);
 
@@ -171,9 +118,23 @@ public class CameraActivity extends Activity {
 			preview.addView(showCamera);
 			
 			//enable save button
-//			btnSave.setEnabled(true);
+			btnSave.setEnabled(true);
 		}
 	};
+
+	public void capture(View view) {
+		if(cameraObject!=null)
+		{
+			cameraObject.takePicture(null, null, capturedIt);
+		}
+		else
+		{
+			Toast.makeText(getApplicationContext(), "No camera available",Toast.LENGTH_SHORT).show();
+		}
+	}
+	public void save(View view) {
+		finish();
+	}
 
 //	@Override
 //	protected void onDestroy() {
@@ -181,27 +142,13 @@ public class CameraActivity extends Activity {
 //		super.onDestroy();
 //	}
 	@Override
-	protected void onResume() {
-		super.onResume();
-		loadCamera();
-	}
-	@Override
-	protected void onPause() {
-		releaseCamera();
-		super.onPause();
-	}
-	public void releaseCamera()
-	{
-		if(cameraObject!=null)
-			cameraObject.release();
-	}
-	public void loadCamera()
-	{
-		cameraObject = isFrontCameraAvailiable();
+	protected void onStart() {
+		super.onStart();
+		cameraObject = isCameraAvailiable();
 		if(cameraObject==null)
 		{
-//			btnCapture.setEnabled(false);
-//			btnSave.setEnabled(false);
+			btnCapture.setEnabled(false);
+			btnSave.setEnabled(false);
 			
 			//show popup saying camera not available
 			AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -219,133 +166,14 @@ public class CameraActivity extends Activity {
 		{
 			showCamera = new ShowCamera(this, cameraObject);
 			preview.addView(showCamera);
-//			btnCapture.setEnabled(true);
-//			btnSave.setEnabled(false);
+			btnCapture.setEnabled(true);
+			btnSave.setEnabled(false);
 		}
 	}
-	
-	//-------list -------------
-
 	@Override
-	protected void onStart() {
-		super.onStart();
-		load();
+	protected void onStop() {
+		if(cameraObject!=null)
+			cameraObject.release();
+		super.onStop();
 	}
-
-	List<String> itemTitles;
-    ListView listView;
-    
-	//ArrayList<Employee> list=new ArrayList<Employee>();
-	ArrayAdapter<String> listAdapter;
-	protected void setupView()
-	{
-		pic = (ImageView) findViewById(R.id.imageView1);
-		preview = (FrameLayout) findViewById(R.id.camera_preview);
-//		btnCapture = (Button) findViewById(R.id.button_capture);
-//		btnSave = (Button) findViewById(R.id.button_save);
-//		
-//		btnSave.setEnabled(false);
-		
-		listView = (ListView) findViewById (R.id.list);
-		itemTitles= new ArrayList<String>();
-        
-		//=====read tracks table and add results to listview=======
-		
-        if (listView != null) {
-        	
-		listAdapter=new ArrayAdapter<String>(context,
-			android.R.layout.simple_list_item_1, itemTitles);
-		
-		listView.setAdapter(listAdapter);
-
-
-		listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,int position, long id) 
-			{
-//				if(cameraObject!=null)
-//				{
-//					String employeename=getItemAtPosition(position).getName();
-//					String datetimestring=DateTimeHelper.toString(new Date());
-//					String filename=datetimestring.replace(" ", "-").replace(":", "-")+"-"+employeename+".jpg";
-//					PictureDataHolder.setFilename(filename);
-//					
-//					cameraObject.takePicture(null, null, capturedIt);
-//					
-//					//if datetimestring is not set, then no picture taken
-//					//do nothing
-//					
-////				    File pictureFileDir = MyPhotoSaver.getDir(context);
-////				    File picturefile=new File(pictureFileDir,"temp.jpg");
-////				    File newpicturefile=new File(pictureFileDir,filename);
-////				    if(picturefile.exists())
-//				    {
-////				    	picturefile.renameTo(newpicturefile);
-//				    	
-//						Record record=new Record();
-//						record.setDatetime(datetimestring);
-//						record.setEmployeeName(employeename);
-//			    		record.setFilename(filename);
-//			    		record.save();
-//				    	
-//						Toast.makeText(getApplicationContext(), "Picture saved successfully.",Toast.LENGTH_LONG).show();
-//				    }
-//				    //else picture file not found
-//				    //this should never happen
-////				    else
-////				    {
-////						Toast.makeText(getApplicationContext(), "An error has occured. Picture not saved.",Toast.LENGTH_LONG).show();
-////				    }
-//				}
-//				else
-//				{
-//					Toast.makeText(getApplicationContext(), "No camera available",Toast.LENGTH_LONG).show();
-//				}
-			}});
-		}
-		load();
-	}
-	
-	public void load() {
-        String criteria=" order by name";
-        loadListItems(criteria);
-
-		itemTitles.clear();
-        for(String name:getListItemLabels())
-        {
-        	itemTitles.add(name);
-        }
-        listAdapter.notifyDataSetChanged();
-        listView.invalidate();
-	}
-
-	public static void loadListItems(String criteria)
-	{
-		listItemLabels.clear();
-		listItemIds.clear();
-		//load ids and names into these arrays
-		//Employee.selectIdsAndNames(criteria,listItemIds,listItemLabels);
-	}
-	
-	static ArrayList<String> listItemLabels=new ArrayList<String>();
-	static ArrayList<Integer> listItemIds=new ArrayList<Integer>();
-
-	public static ArrayList<String> getListItemLabels() {
-		return listItemLabels;
-	}
-
-	public static void setListItemLabels(ArrayList<String> _listItemLabels) {
-		listItemLabels = _listItemLabels;
-	}
-
-	public static ArrayList<Integer> getListItemIds() {
-		return listItemIds;
-	}
-
-	public static void setListItemIds(ArrayList<Integer> _listItemIds) {
-		listItemIds = _listItemIds;
-	}
-//	public static Employee getItemAtPosition(Integer position) {
-//		return Employee.getById(listItemIds.get(position));
-//	}	
-	
 }

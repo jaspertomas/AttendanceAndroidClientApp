@@ -36,6 +36,11 @@
         <activity
             android:name=".CameraActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".EmployeeCameraActivity"
+            android:label="@string/app_name"
             android:screenOrientation="landscape" >
         </activity>
         <activity
