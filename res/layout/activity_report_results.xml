@@ -32,11 +32,13 @@
 
             <TextView
 		        android:id="@+id/lblp1"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Jejomar Binay" />
 
             <EditText
 		        android:id="@+id/txtp1"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -47,11 +49,13 @@
 
             <TextView
 		        android:id="@+id/lblp2"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Miriam Defensor Santiago" />
 
             <EditText
 		        android:id="@+id/txtp2"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -61,6 +65,7 @@
 
             <TextView
 		        android:id="@+id/lblp3"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Rodrigo Duterte" />
 
@@ -75,11 +80,13 @@
 
             <TextView
 		        android:id="@+id/lblp4"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Grace Poe" />
 
             <EditText
 		        android:id="@+id/txtp4"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -89,11 +96,13 @@
 
             <TextView
 		        android:id="@+id/lblp5"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Mar Roxas " />
 
             <EditText
 		        android:id="@+id/txtp5"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -116,11 +125,13 @@
 
             <TextView
 		        android:id="@+id/lblvp1"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Gringo Honasan" />
 
             <EditText
 		        android:id="@+id/txtvp1"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -130,11 +141,13 @@
 
             <TextView
 		        android:id="@+id/lblvp2"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Bongbong Marcos" />
 
             <EditText
 		        android:id="@+id/txtvp2"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -144,11 +157,13 @@
 
             <TextView
                 android:padding="3dip"
+                android:textSize="20sp"
 		        android:id="@+id/lblvp3"
                 android:text="Alan Peter Cayetano" />
 
             <EditText
 		        android:id="@+id/txtvp3"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -158,11 +173,13 @@
 
             <TextView
 		        android:id="@+id/lblvp4"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Francis Escudero" />
 
             <EditText
 		        android:id="@+id/txtvp4"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -172,16 +189,150 @@
 
             <TextView
 		        android:id="@+id/lblvp5"
+                android:textSize="20sp"
                 android:padding="3dip"
                 android:text="Leni Robredo" />
 
             <EditText
 		        android:id="@+id/txtvp5"
+                android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
         </TableRow>
     </TableLayout>
+    
+    <!-- 
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1" >
+
+        <TableRow>
+
+            <TextView  android:textSize="20sp" 
+		        android:id="@+id/lblp1"
+                android:padding="3dip"
+                android:text="Jejomar Binay" />
+
+            <EditText android:textSize="20sp" 
+		        android:id="@+id/txtp1"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblvp1"
+                android:padding="3dip"
+                android:text="Gringo Honasan" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtvp1"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            </TableRow>
+
+
+        <TableRow>
+
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblp2"
+                android:padding="3dip"
+                android:text="Miriam Defensor Santiago" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtp2"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblvp2"
+                android:padding="3dip"
+                android:text="Bongbong Marcos" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtvp2"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            </TableRow>
+
+        <TableRow>
+
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblp3"
+                android:padding="3dip"
+                android:text="Rodrigo Duterte" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtp3"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            <TextView  android:textSize="20sp"
+                android:padding="3dip"
+		        android:id="@+id/lblvp3"
+                android:text="Alan Peter Cayetano" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtvp3"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            </TableRow>
+
+        <TableRow>
+
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblp4"
+                android:padding="3dip"
+                android:text="Grace Poe" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtp4"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblvp4"
+                android:padding="3dip"
+                android:text="Francis Escudero" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtvp4"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            </TableRow>
+
+        <TableRow>
+
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblp5"
+                android:padding="3dip"
+                android:text="Mar Roxas " />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtp5"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            <TextView  android:textSize="20sp"
+		        android:id="@+id/lblvp5"
+                android:padding="3dip"
+                android:text="Leni Robredo" />
+
+            <EditText android:textSize="20sp"
+		        android:id="@+id/txtvp5"
+                android:gravity="right"
+                android:padding="3dip"
+                android:text="" />
+            </TableRow>
+    </TableLayout>
+        
+     -->
     
 	<!-- SPACER -->
 	<TextView
@@ -193,13 +344,13 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="cancel"
-        android:text="Cancel" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:onClick="save"
         android:text="Save" />
+	<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cancel"
+        android:text="Cancel" />
 
 </LinearLayout>
 </ScrollView>

@@ -1,6 +1,7 @@
 package com.intelimina.pollwatcher;
 
 import holders.PictureHolder;
+import holders.UserHolder;
 
 import java.io.File;
 
@@ -9,6 +10,7 @@ import models.Record;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.DateTimeHelper;
 import utils.MyDialogHelper;
 import utils.MyPhotoSaver;
 import utils.StringHelper;
@@ -17,6 +19,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +27,21 @@ import android.widget.TextView;
 
 public class ReportResultsActivity extends Activity {
 	Context context;
+	String[] ps={
+			"Binay"
+			,"Santiago"
+			,"Duterte"
+			,"Poe"
+			,"Roxas"
+			};
+	String[] vps={
+			"Honasan "
+			,"Marcos"
+			,"Cayetano"
+			,"Escudero"
+			,"Robredo "
+			};
+/*
 	String[] ps={
 			"Jejomar Binay"
 			,"Miriam Defensor Santiago"
@@ -38,7 +56,7 @@ public class ReportResultsActivity extends Activity {
 			,"Francis Escudero"
 			,"Leni Robredo "
 			};
-	
+ * */	
 	private ImageView imageView;	
 	private EditText txtp1,txtp2,txtp3,txtp4,txtp5,txtvp1,txtvp2,txtvp3,txtvp4,txtvp5;
 	private TextView lblp1,lblp2,lblp3,lblp4,lblp5,lblvp1,lblvp2,lblvp3,lblvp4,lblvp5;
@@ -98,6 +116,13 @@ public class ReportResultsActivity extends Activity {
 	}
 	public void save(View button)
 	{
+		if(PictureHolder.getPictureFile()==null)
+		{
+        	String message="Please take a picture of the election results";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		
 		if(txtp5.getText().toString().isEmpty())
 		{
         	String message="Please enter vote count for "+ps[4];
@@ -220,23 +245,22 @@ public class ReportResultsActivity extends Activity {
 			MyDialogHelper.popup(context, message);
         	return;
 		} 
-		
-//		Log.i(ps[0],String.valueOf(txtp1.getText()));
-//		Log.i(ps[1],String.valueOf(txtp2.getText()));
-//		Log.i(ps[2],String.valueOf(txtp3.getText()));
-//		Log.i(ps[3],String.valueOf(txtp4.getText()));
-//		Log.i(ps[4],String.valueOf(txtp5.getText()));
-//		Log.i(vps[0],String.valueOf(txtvp1.getText()));
-//		Log.i(vps[1],String.valueOf(txtvp2.getText()));
-//		Log.i(vps[2],String.valueOf(txtvp3.getText()));
-//		Log.i(vps[3],String.valueOf(txtvp4.getText()));
-//		Log.i(vps[4],String.valueOf(txtvp5.getText()));
-//		save();
+		//--------validation complete---------
 
 		//save data to database
 		JSONObject jsondata=new JSONObject();
 		try {
 			jsondata.put(ps[0], Integer.valueOf(txtp1.getText().toString()));
+			jsondata.put(ps[1], Integer.valueOf(txtp2.getText().toString()));
+			jsondata.put(ps[2], Integer.valueOf(txtp3.getText().toString()));
+			jsondata.put(ps[3], Integer.valueOf(txtp4.getText().toString()));
+			jsondata.put(ps[4], Integer.valueOf(txtp5.getText().toString()));
+			jsondata.put(vps[0], Integer.valueOf(txtvp1.getText().toString()));
+			jsondata.put(vps[1], Integer.valueOf(txtvp2.getText().toString()));
+			jsondata.put(vps[2], Integer.valueOf(txtvp3.getText().toString()));
+			jsondata.put(vps[3], Integer.valueOf(txtvp4.getText().toString()));
+			jsondata.put(vps[4], Integer.valueOf(txtvp5.getText().toString()));
+			
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -247,6 +271,13 @@ public class ReportResultsActivity extends Activity {
 		
 		Record record=new Record();
 		record.setJsondata(jsondata.toString());
+		record.setFilename(PictureHolder.getFilename());
+		record.setDatetime(new java.util.Date());
+//		record.setDescription(txtDescription.getText().toString());
+		record.setRecordType("electionresults");
+		record.setSfGuardUserId(UserHolder.getUser().getSfGuardUserId());
+//		record.save();
+		Log.i("",jsondata.toString());
 	}
 	public void takePicture(View button)
 	{
