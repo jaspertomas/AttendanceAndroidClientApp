@@ -51,8 +51,8 @@ public class BaseRecordActivity extends Activity {
 	EditText txtRecordType;
 	TextView lblDescription,errDescription;
 	EditText txtDescription;
-	TextView lblNotes,errNotes;
-	EditText txtNotes;
+	TextView lblJsondata,errJsondata;
+	EditText txtJsondata;
 	TextView lblFilename,errFilename;
 	EditText txtFilename;
 	EditText edittexts[]=new EditText[Record.fields.length];
@@ -74,9 +74,9 @@ public class BaseRecordActivity extends Activity {
 		lblDescription = (TextView) findViewById (R.id.lblDescription);
 		errDescription = (TextView) findViewById (R.id.errDescription);
 		txtDescription = (EditText) findViewById (R.id.txtDescription);
-		lblNotes = (TextView) findViewById (R.id.lblNotes);
-		errNotes = (TextView) findViewById (R.id.errNotes);
-		txtNotes = (EditText) findViewById (R.id.txtNotes);
+		lblJsondata = (TextView) findViewById (R.id.lblJsondata);
+		errJsondata = (TextView) findViewById (R.id.errJsondata);
+		txtJsondata = (EditText) findViewById (R.id.txtJsondata);
 		lblFilename = (TextView) findViewById (R.id.lblFilename);
 		errFilename = (TextView) findViewById (R.id.errFilename);
 		txtFilename = (EditText) findViewById (R.id.txtFilename);
@@ -86,14 +86,14 @@ public class BaseRecordActivity extends Activity {
 		edittexts[2]=txtDatetime;//DateTime
 		edittexts[3]=txtRecordType;//String
 		edittexts[4]=txtDescription;//String
-		edittexts[5]=txtNotes;//String
+		edittexts[5]=txtJsondata;//String
 		edittexts[6]=txtFilename;//String
 
 		errortexts[1]=errSfGuardUserId;//Integer
 		errortexts[2]=errDatetime;//DateTime
 		errortexts[3]=errRecordType;//String
 		errortexts[4]=errDescription;//String
-		errortexts[5]=errNotes;//String
+		errortexts[5]=errJsondata;//String
 		errortexts[6]=errFilename;//String
 
 		initializeData();
@@ -196,7 +196,7 @@ public class BaseRecordActivity extends Activity {
 		}//DateTime
 		item.setRecordType(txtRecordType.getText().toString());
 		item.setDescription(txtDescription.getText().toString());
-		item.setNotes(txtNotes.getText().toString());
+		item.setJsondata(txtJsondata.getText().toString());
 		item.setFilename(txtFilename.getText().toString());
 		item.save();
 		populateShowMode();
@@ -218,7 +218,7 @@ public class BaseRecordActivity extends Activity {
 		lblDatetime.setText(item.getDatetime()==null?"":PrettyDateTimeHelper.toString(item.getDatetime()));
 		lblRecordType.setText(item.getRecordType()==null?"":item.getRecordType().toString());
 		lblDescription.setText(item.getDescription()==null?"":item.getDescription().toString());
-		lblNotes.setText(item.getNotes()==null?"":item.getNotes().toString());
+		lblJsondata.setText(item.getJsondata()==null?"":item.getJsondata().toString());
 		lblFilename.setText(item.getFilename()==null?"":item.getFilename().toString());
 	}
 	private void populateEditMode()
@@ -235,7 +235,7 @@ public class BaseRecordActivity extends Activity {
 
 		txtRecordType.setText(item.getRecordType()==null?"":item.getRecordType().toString());
 		txtDescription.setText(item.getDescription()==null?"":item.getDescription().toString());
-		txtNotes.setText(item.getNotes()==null?"":item.getNotes().toString());
+		txtJsondata.setText(item.getJsondata()==null?"":item.getJsondata().toString());
 		txtFilename.setText(item.getFilename()==null?"":item.getFilename().toString());
 	}
 

@@ -101,11 +101,11 @@
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="20sp"
-			        android:text="Notes:"
+			        android:text="Jsondata:"
 			        android:textStyle="italic"
 			        />
 		        <TextView
-			        android:id="@+id/lblNotes"
+			        android:id="@+id/lblJsondata"
 			        android:layout_width="wrap_content"
 			        android:layout_height="wrap_content"
 			        android:textSize="20sp"
@@ -230,19 +230,19 @@
 			        android:imeOptions="actionDone"
 			        />
 			    <TextView
-			        android:id="@+id/errNotes"
+			        android:id="@+id/errJsondata"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:textSize="20sp"
-			        android:text="Notes:"
+			        android:text="Jsondata:"
 			        android:textStyle="italic"
 			        />
 			    <EditText
-			        android:id="@+id/txtNotes"
+			        android:id="@+id/txtJsondata"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:ems="10"
-			        android:hint="Notes"
+			        android:hint="Jsondata"
 			        android:imeOptions="actionDone"
 			        />
 			    <TextView

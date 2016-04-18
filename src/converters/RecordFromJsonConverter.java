@@ -21,7 +21,7 @@ public class RecordFromJsonConverter {
 			else record.setDatetime(DateTimeHelper.getNullDate());
 			if(json.has("record_type")&&!json.isNull("record_type"))record.setRecordType(json.getString("record_type"));
 			if(json.has("description")&&!json.isNull("description"))record.setDescription(json.getString("description"));
-			if(json.has("notes")&&!json.isNull("notes"))record.setNotes(json.getString("notes"));
+			if(json.has("jsondata")&&!json.isNull("jsondata"))record.setJsondata(json.getString("jsondata"));
 			if(json.has("filename")&&!json.isNull("filename"))record.setFilename(json.getString("filename"));
 			return record;
 		} catch (JSONException e) {

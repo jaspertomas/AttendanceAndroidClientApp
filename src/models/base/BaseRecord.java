@@ -24,7 +24,7 @@ public class BaseRecord extends Entity{
 		,"datetime"
 		,"record_type"
 		,"description"
-		,"notes"
+		,"jsondata"
 		,"filename"
 			};
 	//field types
@@ -58,7 +58,7 @@ public class BaseRecord extends Entity{
 		,0//datetime
 		,0//record_type
 		,0//description
-		,0//notes
+		,0//jsondata
 		,0//filename
 			};
 	//field positions
@@ -67,7 +67,7 @@ public class BaseRecord extends Entity{
 	public static final int DATETIME=2;
 	public static final int RECORD_TYPE=3;
 	public static final int DESCRIPTION=4;
-	public static final int NOTES=5;
+	public static final int JSONDATA=5;
 	public static final int FILENAME=6;
 	//field labels
 	public static final String[] fieldlabels={
@@ -76,7 +76,7 @@ public class BaseRecord extends Entity{
 		,"Datetime"
 		,"Record Type"
 		,"Description"
-		,"Notes"
+		,"Jsondata"
 		,"Filename"
 			};
 	protected static final ModelHelper modelhelper=new ModelHelper(tablename,fields,fieldtypes,datatypes,fieldvalidations,fieldlabels);
@@ -130,11 +130,11 @@ public class BaseRecord extends Entity{
 		modelhelper.jsonPutString(values, "description", description);
 	}
 
-	public String getNotes() {
-		return modelhelper.jsonGetString(values, "notes");
+	public String getJsondata() {
+		return modelhelper.jsonGetString(values, "jsondata");
 	}
-	public void setNotes(String notes) {
-		modelhelper.jsonPutString(values, "notes", notes);
+	public void setJsondata(String jsondata) {
+		modelhelper.jsonPutString(values, "jsondata", jsondata);
 	}
 
 	public String getFilename() {
