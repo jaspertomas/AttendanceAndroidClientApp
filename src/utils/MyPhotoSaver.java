@@ -10,6 +10,7 @@ import android.util.Log;
 
 public class MyPhotoSaver {
 	public static String DEBUG_TAG="MyPhotoSaver";
+	private static String dateTimeString="";
 	private static String pictureFileShortName="";
 	private static String pictureFileFullName="";
 	private static File pictureFile=null;
@@ -23,8 +24,15 @@ public class MyPhotoSaver {
   public static File getPictureFile() {
 		return pictureFile;
 	}
+  
+public static String getDateTimeString() {
+	return dateTimeString;
+}
+//public static void setDateTimeString(String dateTimeString) {
+//	MyPhotoSaver.dateTimeString = dateTimeString;
+//}
 
-public static Boolean save(byte[] data, File pictureFileDir, String _filename, Context context) {
+public static Boolean save(byte[] data, File pictureFileDir, String _filename, Context context, String datetimestring) {
 //
 //    //if can't get picture directory, do nothing
 //    if (!pictureFileDir.exists() && !pictureFileDir.mkdirs()) {

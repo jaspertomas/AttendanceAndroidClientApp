@@ -84,9 +84,9 @@ public class CameraActivity extends Activity {
 			
 			Date date=new Date();
 			String datetimestring=DateTimeHelper.toString(date);
-			String filename=datetimestring.replace(" ", "-").replace(":", "-")+".jpg";
+			datetimestring=datetimestring.replace(" ", "-").replace(":", "-");
 			
-			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, filename);
+			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, datetimestring);
 			if (bitmap == null) {
 				Toast.makeText(getApplicationContext(), "An error has occured. Picture not taken.",Toast.LENGTH_SHORT).show();
 			} else {
@@ -104,7 +104,8 @@ public class CameraActivity extends Activity {
 			    }
 			    else
 			    {
-					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,filename,CameraActivity.this);
+//					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,datetimestring+".jpg",CameraActivity.this);
+					Boolean saved=MyPhotoSaver.save(data,pictureFileDir,"temp.jpg",CameraActivity.this,datetimestring);
 					if(saved)
 					{
 //					      Toast.makeText(CameraActivity.this, "Image saved", Toast.LENGTH_LONG).show();

@@ -45,6 +45,7 @@ public class ReportResultsActivity extends Activity {
 		setContentView(R.layout.activity_report_results);
 		context=ReportResultsActivity.this;
 
+		PictureHolder.reset();
 		setupView();
 	}
 	@Override
