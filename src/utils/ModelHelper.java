@@ -84,10 +84,10 @@ public class ModelHelper {
 		                values.put(fields[i], c.getDouble(c.getColumnIndex(fields[i])));//Integer
 		                break;
 		        	case DATE:
-		                values.put(fields[i], DateHelper.toDate(c.getString(c.getColumnIndex(fields[i]))));//Date
+		                values.put(fields[i], c.getString(c.getColumnIndex(fields[i])));//Date
 		                break;
 		        	case DATETIME:
-		                values.put(fields[i], DateTimeHelper.toDate(c.getString(c.getColumnIndex(fields[i]))));//DateTime
+		                values.put(fields[i], c.getString(c.getColumnIndex(fields[i])));//DateTime
 		                break;
 		        	case DECIMAL:
 		                values.put(fields[i], BigDecimal.valueOf(c.getDouble(c.getColumnIndex(fields[i]))));//Decimal
@@ -249,7 +249,12 @@ public class ModelHelper {
     public void delete(Entity item) {
     		delete(item.getId());
     }
-
+    public void delete(String criteria) {
+		//if first word in criteria is "where", remove it
+		if(criteria.trim().toLowerCase().indexOf("where")==0)criteria=criteria.replace("where", "");
+		initIfNecessary();
+		db.delete(tablename,criteria,null);
+    }
     private static ContentValues getContentValues(JSONObject attributes) throws JSONException {
         ContentValues values = new ContentValues();
         Iterator keys = attributes.keys();

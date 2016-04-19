@@ -1,0 +1,12 @@
+internal server error when registering while server db already contains a user
+
+
+
+"click upload to send to server" is too long
+
+add upload success after uploading reports
+
+on upload, delete records? and transfer files to external folder?
+
+check out JSONObject.NULL
+and modify modelhelper if necessary

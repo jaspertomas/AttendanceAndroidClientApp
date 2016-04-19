@@ -117,9 +117,22 @@ public class Registration4Activity extends Activity {
 		builder.setCancelable(false);
 		builder.show();		
 	}
-	public void onSubmitFailure(String message)
+	public void onSubmitFailure(final String message)
 	{
-		MyDialogHelper.popup(context, message);
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(message);
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		    	if(message.contains("Please use a different username"))
+		    	{
+					NavigationHolder.setDestination(NavigationHolder.RegistrationActivity);
+					finish();
+		    	}
+		    }
+		});
+		builder.setCancelable(false);
+		builder.show();		
 	}
 	@Override
 	protected void onStart() {

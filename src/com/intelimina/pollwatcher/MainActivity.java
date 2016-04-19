@@ -3,11 +3,18 @@ package com.intelimina.pollwatcher;
 import holders.LGUHolder;
 import holders.NavigationHolder;
 import holders.UserHolder;
+
+import java.util.ArrayList;
+
 import models.Lgus;
+import models.Record;
 import models.User;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import utils.DateHelper;
 import utils.MyInitializer;
-import utils.StringHelper;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
