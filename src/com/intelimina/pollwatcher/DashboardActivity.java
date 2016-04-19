@@ -1,6 +1,7 @@
 package com.intelimina.pollwatcher;
 
 import holders.NavigationHolder;
+import holders.PictureHolder;
 import holders.UserHolder;
 import models.Record;
 import android.app.Activity;
@@ -38,6 +39,16 @@ public class DashboardActivity extends Activity {
 	public void reportResults(View button)
 	{
 		Intent intent = new Intent(context, ReportResultsActivity.class);
+		startActivity(intent);
+	}
+	public void reportVoteBuying(View button)
+	{
+		Intent intent = new Intent(context, ReportVoteBuyingActivity.class);
+		startActivity(intent);
+	}
+	public void reportIncident(View button)
+	{
+		Intent intent = new Intent(context, ReportIncidentActivity.class);
 		startActivity(intent);
 	}
 	public void launchCamera(View button)

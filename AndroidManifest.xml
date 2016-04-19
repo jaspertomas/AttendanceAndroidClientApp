@@ -96,6 +96,14 @@
             android:name=".ReportResultsActivity"
             android:label="@string/title_activity_report_results" >
         </activity>
+        <activity
+            android:name=".ReportVoteBuyingActivity"
+            android:label="@string/title_activity_report_vote_buying" >
+        </activity>
+        <activity
+            android:name=".ReportIncidentActivity"
+            android:label="@string/title_activity_report_incident" >
+        </activity>
     </application>
 
 </manifest>

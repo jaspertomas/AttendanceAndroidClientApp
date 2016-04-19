@@ -28,20 +28,20 @@
      <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Report election results" 
+        android:text="Report Election Results" 
         android:onClick="reportResults"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Report electoral fraud" 
-        android:onClick="reportFraud"
+        android:text="Report Vote Buying" 
+        android:onClick="reportVoteBuying"
         />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Report other event" 
-        android:onClick="reportOther"
+        android:text="Report Other Incident" 
+        android:onClick="reportIncident"
         />
 
     <!-- spacer -->

@@ -35,11 +35,11 @@ public class ReportResultsActivity extends Activity {
 			,"Roxas"
 			};
 	String[] vps={
-			"Honasan "
+			"Honasan"
 			,"Marcos"
 			,"Cayetano"
 			,"Escudero"
-			,"Robredo "
+			,"Robredo"
 			};
 /*
 	String[] ps={
@@ -50,11 +50,11 @@ public class ReportResultsActivity extends Activity {
 			,"Mar Roxas"
 			};
 	String[] vps={
-			"Gringo Honasan "
+			"Gringo Honasan"
 			,"Bongbong Marcos"
 			,"Alan Peter Cayetano"
 			,"Francis Escudero"
-			,"Leni Robredo "
+			,"Leni Robredo"
 			};
  * */	
 	private ImageView imageView;	
@@ -67,12 +67,14 @@ public class ReportResultsActivity extends Activity {
 		setContentView(R.layout.activity_report_results);
 		context=ReportResultsActivity.this;
 
+		MyPhotoSaver.reset();
 		PictureHolder.reset();
 		setupView();
 	}
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		MyPhotoSaver.reset();
 		PictureHolder.reset();
 	}
 	private void setupView()
@@ -114,6 +116,10 @@ public class ReportResultsActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 		savePicture();
+	}
+	public void cancel(View button)
+	{
+		finish();
 	}
 	public void save(View button)
 	{
@@ -300,7 +306,7 @@ public class ReportResultsActivity extends Activity {
 		if(MyPhotoSaver.getPictureFile()!=null)
 		{
 			File picturefile=MyPhotoSaver.getPictureFile();
-			String filename=MyPhotoSaver.getDateTimeString()+".jpg";
+			String filename=MyPhotoSaver.getDateTimeStringToFilename();
 			
 			//then rename it from temp.jpg to a name with the datestring
 			File newfile=new File(MyPhotoSaver.getDir(context)+ File.separator +filename);

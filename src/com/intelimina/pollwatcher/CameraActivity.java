@@ -84,7 +84,6 @@ public class CameraActivity extends Activity {
 			
 			Date date=new Date();
 			String datetimestring=DateTimeHelper.toString(date);
-			datetimestring=datetimestring.replace(" ", "-").replace(":", "-");
 			
 			bitmap=MyBitmapHelper.drawTextToBitmap(CameraActivity.this, bitmap, datetimestring);
 			if (bitmap == null) {

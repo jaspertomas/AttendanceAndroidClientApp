@@ -75,22 +75,22 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			if(success)
 			{
 				//delete successfully uploaded records
-				JSONArray recordIds=json.getJSONArray("record_ids");
-				String id;
-				Record record;
-				for(int i=0;i<recordIds.length();i++)
-				{
-					id=recordIds.getString(i);
-					record=Record.selectOne(" where filename ='"+id+"' ");
-					record.delete();
-				}
-				
-				final Context finalContext=context;
-				CameraActivity.getInstance().runOnUiThread(new Runnable() {
-				    public void run() {
-				    	demo(finalContext);
-				    }
-				});		
+//				JSONArray recordIds=json.getJSONArray("record_ids");
+//				String id;
+//				Record record;
+//				for(int i=0;i<recordIds.length();i++)
+//				{
+//					id=recordIds.getString(i);
+//					record=Record.selectOne(" where filename ='"+id+"' ");
+//					record.delete();
+//				}
+//				
+//				final Context finalContext=context;
+//				CameraActivity.getInstance().runOnUiThread(new Runnable() {
+//				    public void run() {
+//				    	demo(finalContext);
+//				    }
+//				});		
 			}
 			else
 			{

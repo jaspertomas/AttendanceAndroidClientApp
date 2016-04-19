@@ -12,6 +12,7 @@
     <string name="cancel">Cancel</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
+    <string name="goBack">Go Back</string>
     <string name="uname">User Name</string>
     <string name="oldpasswd">Old Password</string>
     <string name="passwd">Password</string>
@@ -43,16 +44,14 @@
     <string name="sendUpdate">Send Update</string>
     <string name="save">Save</string>
     <string name="saveAndExit">Save and Exit</string>
-    <string name="title_activity_user">User Activity</string>
-    <string name="title_activity_users">Users Activity</string>
-    <string name="title_activity_camera">CameraActivity</string>
-    <string name="title_activity_record">Record Activity</string>
-    <string name="title_activity_records">Records Activity</string>
-    <string name="title_activity_employee">Employee Activity</string>
-    <string name="title_activity_employees">Employees Activity</string>
-    <string name="title_activity_log">Log Activity</string>
-    <string name="title_activity_logs">Logs Activity</string>
-    <string name="title_activity_server_setting">ServerSettingActivity</string>
+    <string name="title_activity_user">User </string>
+    <string name="title_activity_users">Users </string>
+    <string name="title_activity_camera">Camera</string>
+    <string name="title_activity_record">Record </string>
+    <string name="title_activity_records">Records </string>
+    <string name="title_activity_log">Log </string>
+    <string name="title_activity_logs">Logs </string>
+    <string name="title_activity_server_setting">ServerSetting</string>
     <string name="title_activity_registration">Poll Watcher Registration</string>
     <string name="title_activity_lgu_list">Pick a City / Province</string>
     <string name="title_activity_login">Poll Watcher Login</string>
@@ -71,16 +70,18 @@
     <string name="title_activity_choose_vehicle">Choose a Vehicle</string>
     <string name="title_activity_view_updates">View Previous Update</string>
     <string name="title_activity_edit_profile">Edit Your Profile</string>
-    <string name="title_activity_camera">CameraActivity</string>
+    <string name="title_activity_camera">Camera</string>
     <string name="title_activity_vehicle_dashboard">Vehicle Dashboard</string>
     <string name="title_activity_vehicle_registration">Vehicle Registration</string>
-    <string name="title_activity_edit_password">EditPasswordActivity</string>
+    <string name="title_activity_edit_password">EditPassword</string>
     -->
 
-    <string name="title_activity_registration2">Registration2Activity</string>
-    <string name="title_activity_registration3">Registration3Activity</string>
-    <string name="title_activity_registration4">Registration4Activity</string>
-    <string name="title_activity_dashboard">DashboardActivity</string>
-    <string name="title_activity_report_results">ReportResultsActivity</string>
+    <string name="title_activity_registration2">Poll Watcher Registration</string>
+    <string name="title_activity_registration3">Poll Watcher Registration</string>
+    <string name="title_activity_registration4">Poll Watcher Registration</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+    <string name="title_activity_report_results">Report Results</string>
+    <string name="title_activity_report_vote_buying">Report Vote Buying</string>
+    <string name="title_activity_report_incident">Report Incident</string>
 
 </resources>
