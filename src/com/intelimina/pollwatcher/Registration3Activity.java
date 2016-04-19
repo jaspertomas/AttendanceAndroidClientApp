@@ -28,9 +28,9 @@ import android.widget.EditText;
 public class Registration3Activity extends Activity {
 	static final int DATE_DIALOG_ID = 0;
 
-	private EditText txtBday;	
+//	private EditText txtBday;	
 	private EditText txtEmail;	
-	private EditText txtPhone;	
+//	private EditText txtPhone;	
 
 	private Context context;
 	@Override
@@ -43,19 +43,19 @@ public class Registration3Activity extends Activity {
 	}
 	private void setupView()
 	{
-		txtBday = (EditText) findViewById(R.id.bday);
+//		txtBday = (EditText) findViewById(R.id.bday);
 		txtEmail = (EditText) findViewById(R.id.email);
-		txtPhone = (EditText) findViewById(R.id.phone);
+//		txtPhone = (EditText) findViewById(R.id.phone);
 
-		txtBday.setOnClickListener(new View.OnClickListener() {
-	        @Override
-	        public void onClick(View v) {
-	    		showDialog(DATE_DIALOG_ID);		
-	        }
-	    });
+//		txtBday.setOnClickListener(new View.OnClickListener() {
+//	        @Override
+//	        public void onClick(View v) {
+//	    		showDialog(DATE_DIALOG_ID);		
+//	        }
+//	    });
 		
 		//default values
-		txtBday.setText(PrettyDateHelper.toString(DateHelper.getNullDate2000()));
+//		txtBday.setText(PrettyDateHelper.toString(DateHelper.getNullDate2000()));
 	}
 	public void back(View button){back();}
 	public void back()
@@ -70,13 +70,14 @@ public class Registration3Activity extends Activity {
 	}
 	public void next(View button)
 	{
-		if(txtBday.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Birthday";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		else if(txtEmail.getText().toString().isEmpty())
+//		if(txtBday.getText().toString().isEmpty())
+//		{
+//        	String message="Please enter your Birthday";
+//			MyDialogHelper.popup(context, message);
+//        	return;
+//		} 
+//		else 
+		if(txtEmail.getText().toString().isEmpty())
 		{
         	String message="Please enter your Email Address";
 			MyDialogHelper.popup(context, message);
@@ -88,12 +89,12 @@ public class Registration3Activity extends Activity {
 			MyDialogHelper.popup(context, message);
         	return;
 		} 
-		else if(txtPhone.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Phone Number";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
+//		else if(txtPhone.getText().toString().isEmpty())
+//		{
+//        	String message="Please enter your Phone Number";
+//			MyDialogHelper.popup(context, message);
+//        	return;
+//		} 
 		
 		try {
 			save();
@@ -106,62 +107,62 @@ public class Registration3Activity extends Activity {
 	public void save() throws ParseException
 	{
 		User user=UserHolder.getRegUser();
-		user.setBday(PrettyDateHelper.toDate(txtBday.getText().toString()));
+//		user.setBday(PrettyDateHelper.toDate(txtBday.getText().toString()));
 		user.setEmail(txtEmail.getText().toString());
-		user.setPhone(txtPhone.getText().toString());
+//		user.setPhone(txtPhone.getText().toString());
 	}
 
-	//-----date picker system----
-	private Integer byear=0,bmonth=0,bdayOfMonth=0;
-	public void setDate(int year, int month, int date) {
-		this.byear=year;
-		this.bmonth=month;
-		this.bdayOfMonth=date;
-//		String myString = OutputStringCalculator.getGivenDateString(year, month, date);
-		txtBday.setText(PrettyDateHelper.toString(DateHelper.toDate(byear+"-"+bmonth+"-"+bdayOfMonth)));
-//		textscrollview.fullScroll(ScrollView.FOCUS_UP);
-	}
-	//this receives the chosen date from the datepicker dialog 
-	private DatePickerDialog.OnDateSetListener mDateSetListener =
-	new DatePickerDialog.OnDateSetListener() {
-
-		public void onDateSet(DatePicker view, int year, 
-				int monthOfYear, int dayOfMonth) {
-			setDate(year, monthOfYear+1, dayOfMonth);
-		}
-	};
-	//this creates the datepicker dialog
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		switch (id) {
-		case DATE_DIALOG_ID:
-			Calendar c = Calendar.getInstance(); 
-			User user=UserHolder.getRegUser();
-			c.setTime(user.getBday());
-			byear=c.get(c.YEAR);
-			bmonth=c.get(c.MONTH)+1;
-			bdayOfMonth=c.get(c.DATE);
-			//set datepicker date to user birthday
-			DatePickerDialog d=new DatePickerDialog(this,
-					mDateSetListener,
-					2000, 0, 1);
-			
-			c = Calendar.getInstance(); 
-			byear=c.get(c.YEAR);
-			bmonth=c.get(c.MONTH)+1;
-			bdayOfMonth=c.get(c.DATE);
-			d.getDatePicker().setMinDate(DateHelper.toDate(String.valueOf(byear-100)+"-"+bmonth+"-"+bdayOfMonth).getTime());
-			d.getDatePicker().setMaxDate(DateHelper.toDate(byear+"-"+bmonth+"-"+bdayOfMonth).getTime());
-			return d;
-		}
-		return null;
-	}
-	//-----end date picker system----
+//	//-----date picker system----
+//	private Integer byear=0,bmonth=0,bdayOfMonth=0;
+//	public void setDate(int year, int month, int date) {
+//		this.byear=year;
+//		this.bmonth=month;
+//		this.bdayOfMonth=date;
+////		String myString = OutputStringCalculator.getGivenDateString(year, month, date);
+//		txtBday.setText(PrettyDateHelper.toString(DateHelper.toDate(byear+"-"+bmonth+"-"+bdayOfMonth)));
+////		textscrollview.fullScroll(ScrollView.FOCUS_UP);
+//	}
+//	//this receives the chosen date from the datepicker dialog 
+//	private DatePickerDialog.OnDateSetListener mDateSetListener =
+//	new DatePickerDialog.OnDateSetListener() {
+//
+//		public void onDateSet(DatePicker view, int year, 
+//				int monthOfYear, int dayOfMonth) {
+//			setDate(year, monthOfYear+1, dayOfMonth);
+//		}
+//	};
+//	//this creates the datepicker dialog
+//	@Override
+//	protected Dialog onCreateDialog(int id) {
+//		switch (id) {
+//		case DATE_DIALOG_ID:
+//			Calendar c = Calendar.getInstance(); 
+//			User user=UserHolder.getRegUser();
+//			c.setTime(user.getBday());
+//			byear=c.get(c.YEAR);
+//			bmonth=c.get(c.MONTH)+1;
+//			bdayOfMonth=c.get(c.DATE);
+//			//set datepicker date to user birthday
+//			DatePickerDialog d=new DatePickerDialog(this,
+//					mDateSetListener,
+//					2000, 0, 1);
+//			
+//			c = Calendar.getInstance(); 
+//			byear=c.get(c.YEAR);
+//			bmonth=c.get(c.MONTH)+1;
+//			bdayOfMonth=c.get(c.DATE);
+//			d.getDatePicker().setMinDate(DateHelper.toDate(String.valueOf(byear-100)+"-"+bmonth+"-"+bdayOfMonth).getTime());
+//			d.getDatePicker().setMaxDate(DateHelper.toDate(byear+"-"+bmonth+"-"+bdayOfMonth).getTime());
+//			return d;
+//		}
+//		return null;
+//	}
+//	//-----end date picker system----
 	public void fill(View button)
 	{
-		txtBday.setText("Jan 1, 2000");
-		byear=2000;bmonth=1;bdayOfMonth=1;
-		txtPhone.setText("12345677");
+//		txtBday.setText("Jan 1, 2000");
+//		byear=2000;bmonth=1;bdayOfMonth=1;
+//		txtPhone.setText("12345677");
 		txtEmail.setText("a@a.a");
 	}
 	@Override
@@ -170,11 +171,11 @@ public class Registration3Activity extends Activity {
 
 		User user=UserHolder.getRegUser();
 		Date bday=user.getBday();
-		txtBday.setText(PrettyDateHelper.toString(bday));
-		byear=DateHelper.getYear(bday);
-		bmonth=DateHelper.getMonth(bday);
-		bdayOfMonth=DateHelper.getDayOfMonth(bday);
-		txtPhone.setText(user.getPhone());
+//		txtBday.setText(PrettyDateHelper.toString(bday));
+//		byear=DateHelper.getYear(bday);
+//		bmonth=DateHelper.getMonth(bday);
+//		bdayOfMonth=DateHelper.getDayOfMonth(bday);
+//		txtPhone.setText(user.getPhone());
 		txtEmail.setText(user.getEmail());
 	}
 	@Override

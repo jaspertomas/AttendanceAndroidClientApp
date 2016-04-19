@@ -122,6 +122,7 @@ public class RegistrationActivity extends Activity {
 	{
 		User user=UserHolder.getRegUser();
 		user.setUsername(txtUname.getText().toString());
+		user.setPhone(txtUname.getText().toString());
 		user.setPassword(txtPasswd.getText().toString());
 	}
 	public void fill(View button)

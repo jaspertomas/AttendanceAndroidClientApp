@@ -64,6 +64,18 @@ public class ReportIncidentActivity extends Activity {
 			MyDialogHelper.popup(context, message);
         	return;
 		} 
+		if(txtType.getText().toString().isEmpty())
+		{
+			String message="Please enter an incident type";
+			MyDialogHelper.popup(context, message);
+			return;
+		} 
+		if(txtNotes.getText().toString().isEmpty())
+		{
+			String message="Please enter a description";
+			MyDialogHelper.popup(context, message);
+			return;
+		} 
 		
 		//--------validation complete---------
 

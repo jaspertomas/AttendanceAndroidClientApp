@@ -66,9 +66,15 @@ public class ReportVoteBuyingActivity extends Activity {
 	{
 		if(PictureHolder.getPictureFile()==null)
 		{
-        	String message="Please take a picture of the vote buying";
+			String message="Please take a picture of the vote buying";
 			MyDialogHelper.popup(context, message);
-        	return;
+			return;
+		} 
+		if(txtNotes.getText().toString().isEmpty())
+		{
+			String message="Please enter a description";
+			MyDialogHelper.popup(context, message);
+			return;
 		} 
 		
 		//--------validation complete---------

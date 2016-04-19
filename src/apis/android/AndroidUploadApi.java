@@ -26,7 +26,9 @@ import utils.MyPhotoSaver;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.intelimina.pollwatcher.CameraActivity;
@@ -75,22 +77,37 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			if(success)
 			{
 				//delete successfully uploaded records
-//				JSONArray recordIds=json.getJSONArray("record_ids");
-//				String id;
-//				Record record;
-//				for(int i=0;i<recordIds.length();i++)
-//				{
-//					id=recordIds.getString(i);
-//					record=Record.selectOne(" where filename ='"+id+"' ");
-//					record.delete();
-//				}
-//				
-//				final Context finalContext=context;
-//				CameraActivity.getInstance().runOnUiThread(new Runnable() {
-//				    public void run() {
-//				    	demo(finalContext);
-//				    }
-//				});		
+				JSONArray recordIds=json.getJSONArray("record_ids");
+				String id;
+				Record record;
+				for(int i=0;i<recordIds.length();i++)
+				{
+					id=recordIds.getString(i);
+					record=Record.selectOne(" where filename ='"+id+"' ");
+					
+					//move file to external folder
+					Log.i("filename",MyPhotoSaver.getDir(context)+ File.separator +record.getFilename());
+					File file=new File(MyPhotoSaver.getDir(context)+ File.separator +record.getFilename());
+					if(file.exists())
+					{
+						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+								+File.separator
+								+record.getFilename();
+						Log.i("renameto",newfilename);
+						File newfile=new File(newfilename);
+						newfile.getParentFile().mkdirs();
+						file.renameTo(newfile);
+					}
+					//delete record
+					record.delete();
+				}
+				
+				final Context finalContext=context;
+				CameraActivity.getInstance().runOnUiThread(new Runnable() {
+				    public void run() {
+				    	demo(finalContext);
+				    }
+				});		
 			}
 			else
 			{
@@ -115,7 +132,7 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			if(accessToken!=null)mainobj.put("access_token", accessToken.toString());
 			
 			JSONArray array=new JSONArray();
-			for(Record record:Record.select(" limit 10"))
+			for(Record record:Record.select(" limit 5"))
 			{
 		        String imagepath = MyPhotoSaver.getDir(context).getPath()+"/"+record.getFilename();
 		        File file=new File(imagepath);
