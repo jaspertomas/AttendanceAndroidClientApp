@@ -41,20 +41,21 @@
             android:layout_height="wrap_content"
             android:inputType="textWebEmailAddress"
             android:hint="@string/email" />
-<!-- 
+
     	<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:text="@string/phone" />
+            android:text="Region" />
     	<EditText
-            android:id="@+id/phone"
+            android:id="@+id/region"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:digits="0123456789-+()"
-			android:inputType="numberSigned"
-            android:hint="@string/phone" />
- -->    	
+            android:hint="Region" 
+            android:editable="false"
+            android:focusable="false"
+            />
+	
     		 	    
     	<Button
             android:layout_width="wrap_content"

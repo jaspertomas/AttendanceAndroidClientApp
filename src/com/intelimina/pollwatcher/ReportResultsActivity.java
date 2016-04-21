@@ -8,6 +8,7 @@ import java.io.File;
 
 import models.Lgu;
 import models.Record;
+import models.Region;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,8 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ReportResultsActivity extends Activity {
-	private EditText txtProvince,txtCity,txtPrecinct;	
+	private EditText txtRegion,txtProvincee,txtCity,txtPrecinct;	
 	private Lgu province,city;
+	private Region region;
 
 	Context context;
 	String[] ps={
@@ -116,10 +118,17 @@ public class ReportResultsActivity extends Activity {
 		lblvp4.setText(vpsfull[3]);
 		lblvp5.setText(vpsfull[4]);
 
+		txtRegion = (EditText) findViewById(R.id.region);
 		txtProvince = (EditText) findViewById(R.id.province);
 		txtCity = (EditText) findViewById(R.id.city);
 		txtPrecinct = (EditText) findViewById(R.id.txtPrecinct);
 		
+		txtRegion.setOnClickListener(new View.OnClickListener() {
+	        @Override
+	        public void onClick(View v) {
+	        	regionList();
+	        }
+	    });
 		txtProvince.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
@@ -138,6 +147,16 @@ public class ReportResultsActivity extends Activity {
 		super.onStart();
 		savePicture();
 		
+		Region tempregion=LGUHolder.getRegion();
+		if(tempregion!=null)
+		{
+			this.region=tempregion;
+			txtRegion.setText(region.getName());
+		}
+		else
+		{
+			txtRegion.setText("");
+		}
 		Lgu tempcity=LGUHolder.getCity();
 		if(tempcity!=null)
 		{
@@ -298,6 +317,12 @@ public class ReportResultsActivity extends Activity {
 		} 
 		
 		//-----LGU Validation------------------
+		if(txtRegion.getText().toString().isEmpty())
+		{
+        	String message="Please choose your Region";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
 		if(txtProvince.getText().toString().isEmpty())
 		{
         	String message="Please choose your Province";
@@ -393,6 +418,12 @@ public class ReportResultsActivity extends Activity {
     		//show image
 	        imageView.setImageBitmap(BitmapFactory.decodeFile(PictureHolder.getPictureFile().getAbsolutePath()));
 	    }
+	}
+	public void regionList()
+	{
+		Intent intent = new Intent(context, RegionListActivity.class);
+		intent.setAction("region");
+		startActivity(intent);
 	}
 	public void provinceList()
 	{

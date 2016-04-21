@@ -1,28 +1,21 @@
 package com.intelimina.pollwatcher;
 
-import holders.NavigationHolder;
 import holders.LGUHolder;
+import holders.NavigationHolder;
 import holders.UserHolder;
 
 import java.text.ParseException;
-import java.util.Calendar;
 import java.util.Date;
 
-import models.Lgus;
+import models.Lgu;
+import models.Region;
 import models.User;
-
-import utils.DateHelper;
 import utils.MyDialogHelper;
-import utils.PrettyDateHelper;
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 
 public class Registration3Activity extends Activity {
@@ -31,7 +24,9 @@ public class Registration3Activity extends Activity {
 //	private EditText txtBday;	
 	private EditText txtEmail;	
 //	private EditText txtPhone;	
+	private EditText txtRegion;
 
+	private Region region;
 	private Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +38,7 @@ public class Registration3Activity extends Activity {
 	}
 	private void setupView()
 	{
+		txtRegion = (EditText) findViewById(R.id.region);
 //		txtBday = (EditText) findViewById(R.id.bday);
 		txtEmail = (EditText) findViewById(R.id.email);
 //		txtPhone = (EditText) findViewById(R.id.phone);
@@ -54,6 +50,13 @@ public class Registration3Activity extends Activity {
 //	        }
 //	    });
 		
+		txtRegion.setOnClickListener(new View.OnClickListener() {
+	        @Override
+	        public void onClick(View v) {
+	        	regionList();
+	        }
+	    });
+
 		//default values
 //		txtBday.setText(PrettyDateHelper.toString(DateHelper.getNullDate2000()));
 	}
@@ -106,10 +109,23 @@ public class Registration3Activity extends Activity {
 	}
 	public void save() throws ParseException
 	{
+		if(txtRegion.getText().toString().isEmpty())
+		{
+        	String message="Please choose your Region";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		
 		User user=UserHolder.getRegUser();
 //		user.setBday(PrettyDateHelper.toDate(txtBday.getText().toString()));
 		user.setEmail(txtEmail.getText().toString());
 //		user.setPhone(txtPhone.getText().toString());
+	}
+	public void regionList()
+	{
+		Intent intent = new Intent(context, RegionListActivity.class);
+		intent.setAction("region");
+		startActivity(intent);
 	}
 
 //	//-----date picker system----
@@ -177,6 +193,18 @@ public class Registration3Activity extends Activity {
 //		bdayOfMonth=DateHelper.getDayOfMonth(bday);
 //		txtPhone.setText(user.getPhone());
 		txtEmail.setText(user.getEmail());
+		
+		Region tempregion=LGUHolder.getRegion();
+		if(tempregion!=null)
+		{
+			this.region=tempregion;
+			txtRegion.setText(region.getName());
+		}
+		else
+		{
+			txtRegion.setText("");
+		}
+		
 	}
 	@Override
 	public void onBackPressed()
