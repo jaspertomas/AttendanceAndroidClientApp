@@ -1,16 +1,17 @@
 package com.intelimina.pollwatcher;
 
+import holders.LGUHolder;
 import holders.PictureHolder;
 import holders.UserHolder;
 
 import java.io.File;
 
+import models.Lgu;
 import models.Record;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import utils.DateTimeHelper;
 import utils.MyDialogHelper;
 import utils.MyPhotoSaver;
 import utils.StringHelper;
@@ -19,7 +20,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,6 +27,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ReportResultsActivity extends Activity {
+	private EditText txtProvince,txtCity,txtPrecinct;	
+	private Lgu province,city;
+
 	Context context;
 	String[] ps={
 			"Binay"
@@ -42,22 +45,22 @@ public class ReportResultsActivity extends Activity {
 			,"Escudero"
 			,"Robredo"
 			};
-/*
-	String[] ps={
+
+	String[] psfull={
 			"Jejomar Binay"
 			,"Miriam Defensor Santiago"
 			,"Rodrigo Duterte"
 			,"Grace Poe"
 			,"Mar Roxas"
 			};
-	String[] vps={
+	String[] vpsfull={
 			"Gringo Honasan"
 			,"Bongbong Marcos"
 			,"Alan Peter Cayetano"
 			,"Francis Escudero"
 			,"Leni Robredo"
 			};
- * */	
+
 	private ImageView imageView;	
 	private EditText txtp1,txtp2,txtp3,txtp4,txtp5,txtvp1,txtvp2,txtvp3,txtvp4,txtvp5,txtNotes;
 	private TextView lblp1,lblp2,lblp3,lblp4,lblp5,lblvp1,lblvp2,lblvp3,lblvp4,lblvp5;
@@ -102,21 +105,61 @@ public class ReportResultsActivity extends Activity {
 		lblp3 = (TextView) findViewById(R.id.lblp3);
 		lblp4 = (TextView) findViewById(R.id.lblp2);
 		lblp5 = (TextView) findViewById(R.id.lblp1);
-		lblp1.setText(ps[0]);
-		lblp2.setText(ps[1]);
-		lblp3.setText(ps[2]);
-		lblp4.setText(ps[3]);
-		lblp5.setText(ps[4]);
-		lblvp1.setText(vps[0]);
-		lblvp2.setText(vps[1]);
-		lblvp3.setText(vps[2]);
-		lblvp4.setText(vps[3]);
-		lblvp5.setText(vps[4]);
+		lblp1.setText(psfull[0]);
+		lblp2.setText(psfull[1]);
+		lblp3.setText(psfull[2]);
+		lblp4.setText(psfull[3]);
+		lblp5.setText(psfull[4]);
+		lblvp1.setText(vpsfull[0]);
+		lblvp2.setText(vpsfull[1]);
+		lblvp3.setText(vpsfull[2]);
+		lblvp4.setText(vpsfull[3]);
+		lblvp5.setText(vpsfull[4]);
+
+		txtProvince = (EditText) findViewById(R.id.province);
+		txtCity = (EditText) findViewById(R.id.city);
+		txtPrecinct = (EditText) findViewById(R.id.txtPrecinct);
+		
+		txtProvince.setOnClickListener(new View.OnClickListener() {
+	        @Override
+	        public void onClick(View v) {
+	        	provinceList();
+	        }
+	    });
+		txtCity.setOnClickListener(new View.OnClickListener() {
+	        @Override
+	        public void onClick(View v) {
+	        	cityList();
+	        }
+	    });
 	}
 	@Override
 	protected void onStart() {
 		super.onStart();
 		savePicture();
+		
+		Lgu tempcity=LGUHolder.getCity();
+		if(tempcity!=null)
+		{
+			this.city=tempcity;
+			txtCity.setText(city.getName());
+		}
+		else
+		{
+			txtCity.setText("");
+		}
+
+		Lgu tempprovince=LGUHolder.getProvince();
+		if(tempprovince!=null)
+		{
+			this.province=tempprovince;
+			txtProvince.setText(province.getName());
+		}
+		else
+		{
+			txtProvince.setText("");
+		}
+		
 	}
 	public void cancel(View button)
 	{
@@ -253,6 +296,26 @@ public class ReportResultsActivity extends Activity {
 			MyDialogHelper.popup(context, message);
         	return;
 		} 
+		
+		//-----LGU Validation------------------
+		if(txtProvince.getText().toString().isEmpty())
+		{
+        	String message="Please choose your Province";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(txtCity.getText().toString().isEmpty())
+		{
+        	String message="Please choose your City";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(txtPrecinct.getText().toString().isEmpty())
+		{
+        	String message="Please enter your Precinct Number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
 		//--------validation complete---------
 
 		//save data to database
@@ -331,4 +394,17 @@ public class ReportResultsActivity extends Activity {
 	        imageView.setImageBitmap(BitmapFactory.decodeFile(PictureHolder.getPictureFile().getAbsolutePath()));
 	    }
 	}
+	public void provinceList()
+	{
+		Intent intent = new Intent(context, LguListActivity.class);
+		intent.setAction("province");
+		startActivity(intent);
+	}
+	public void cityList()
+	{
+		Intent intent = new Intent(context, LguListActivity.class);
+		intent.setAction("city");
+		startActivity(intent);
+	}
+	
 }
