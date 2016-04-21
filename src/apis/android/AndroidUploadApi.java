@@ -12,6 +12,7 @@ records
 package apis.android;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 import models.Record;
@@ -22,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.FileHelper;
 import utils.MyPhotoSaver;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -90,13 +92,30 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 					File file=new File(MyPhotoSaver.getDir(context)+ File.separator +record.getFilename());
 					if(file.exists())
 					{
-						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+						//use this to move files to /DCIM/Camera
+						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
+								+File.separator
+								+"Camera"
 								+File.separator
 								+record.getFilename();
-						Log.i("renameto",newfilename);
+						
+						//use this to move files to /Pictures/Pollwatcher
+//						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+//								+File.separator
+//								+"PollWatcher"
+//								+File.separator
+//								+record.getFilename();
+//						Log.i("renameto",newfilename);
 						File newfile=new File(newfilename);
 						newfile.getParentFile().mkdirs();
-						file.renameTo(newfile);
+//						file.renameTo(newfile);
+						try {
+							FileHelper.copy(file, newfile);
+							file.delete();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 					//delete record
 					record.delete();

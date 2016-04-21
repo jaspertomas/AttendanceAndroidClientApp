@@ -5,6 +5,7 @@ import android.os.Environment;
 
 public class Constants  {
 	
+//	public final static String SERVER_URL = "http://192.168.1.10:80/pollwatcher/web/index.php";
 	public final static String SERVER_URL = "http://10.0.2.2:80/pollwatcher/web/index.php";
 //	public final static String SERVER_URL = "http://pollwatcher.itforhumanity.com/web/index.php";
 	

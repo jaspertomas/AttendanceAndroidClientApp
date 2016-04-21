@@ -320,7 +320,7 @@ public class BaseUser extends Entity{
 	@Override
 	public String toString()
 	{
-		return getUsername().toString();
+		return getFname()+" "+getLname()+" ("+getUsername()+")";
 	}
 	public static void deleteAll() {
 		modelhelper.deleteAll();
