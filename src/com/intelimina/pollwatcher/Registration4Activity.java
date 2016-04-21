@@ -49,12 +49,14 @@ public class Registration4Activity extends Activity {
 		txtProvince.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
+	    		save();
 	        	provinceList();
 	        }
 	    });
 		txtCity.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
+	    		save();
 	        	cityList();
 	        }
 	    });
@@ -95,8 +97,10 @@ public class Registration4Activity extends Activity {
 	public void save()
 	{
 		User user=UserHolder.getRegUser();
-		user.setProvinceId(LGUHolder.getProvince().getId());
-		user.setCityId(LGUHolder.getCity().getId());
+		if(LGUHolder.getProvince()!=null)
+			user.setProvinceId(LGUHolder.getProvince().getId());
+		if(LGUHolder.getCity()!=null)
+			user.setCityId(LGUHolder.getCity().getId());
 		user.setAddress(txtAddress.getText().toString());
 	}
 	public void onSubmitSuccess()

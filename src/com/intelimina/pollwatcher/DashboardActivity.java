@@ -1,7 +1,7 @@
 package com.intelimina.pollwatcher;
 
+import holders.LGUHolder;
 import holders.NavigationHolder;
-import holders.PictureHolder;
 import holders.UserHolder;
 import models.Record;
 import android.app.Activity;
@@ -38,6 +38,7 @@ public class DashboardActivity extends Activity {
 	}
 	public void reportResults(View button)
 	{
+		LGUHolder.reset();
 		Intent intent = new Intent(context, ReportResultsActivity.class);
 		startActivity(intent);
 	}

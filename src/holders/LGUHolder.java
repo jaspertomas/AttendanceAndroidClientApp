@@ -32,6 +32,7 @@ public class LGUHolder {
 	{
 		city=null;
 		province=null;
+		region=null;
 	}
 	
 }

@@ -51,7 +51,7 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 		AndroidRegisterApi api = new AndroidRegisterApi(context);
 		api.setAccessToken(Constants.accessToken1);//possible values:
 		
-		api.setMessageLoading("Connecting to Server...");
+		api.setMessageLoading("Submitting Registration...");
 		api.execute();
 	}
 	@Override public JSONObject convertResponseToJson(String response) throws JSONException

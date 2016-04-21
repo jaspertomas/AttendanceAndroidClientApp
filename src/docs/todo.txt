@@ -19,3 +19,7 @@ restrict middle initial to be only 1 char long
 add records waiting for upload count in dashboard
 
 set province / city to empty at first, not to N/A
+
+deal with no internet connection/server not found
+
+make all portrait

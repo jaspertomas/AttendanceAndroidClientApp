@@ -54,6 +54,7 @@ public class Registration3Activity extends Activity {
 		txtRegion.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
+	        	save();
 	        	regionList();
 	        }
 	    });
