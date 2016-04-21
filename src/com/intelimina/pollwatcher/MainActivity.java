@@ -141,10 +141,10 @@ public class MainActivity extends Activity {
 						user.setBday(DateHelper.getNullDate2000());
 						user.setEmail("");
 						user.setPhone("");
-						LGUHolder.setCity(Lgus.getByName(" Other / Not Applicable"));
-						user.setCityId(LGUHolder.getCity().getId());
-						LGUHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
-						user.setProvinceId(LGUHolder.getProvince().getId());
+//						LGUHolder.setCity(Lgus.getByName(" Other / Not Applicable"));
+//						user.setCityId(LGUHolder.getCity().getId());
+//						LGUHolder.setProvince(Lgus.getByName(" Other / Not Applicable"));
+//						user.setProvinceId(LGUHolder.getProvince().getId());
 						user.setAddress("");
 						user.setIsReg(0);
 						UserHolder.setRegUser(user);

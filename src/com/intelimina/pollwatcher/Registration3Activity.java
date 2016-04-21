@@ -7,8 +7,9 @@ import holders.UserHolder;
 import java.text.ParseException;
 import java.util.Date;
 
-import models.Lgu;
+import models.Lgus;
 import models.Region;
+import models.Regions;
 import models.User;
 import utils.MyDialogHelper;
 import android.app.Activity;
@@ -63,11 +64,7 @@ public class Registration3Activity extends Activity {
 	public void back(View button){back();}
 	public void back()
 	{
-		try {
-			save();
-		} catch (ParseException e) {
-	    	MyDialogHelper.popup(context, "Invalid Date");
-		}
+		save();
 		NavigationHolder.setDestination(NavigationHolder.Registration2Activity);
 		finish();
 	}
@@ -98,23 +95,19 @@ public class Registration3Activity extends Activity {
 //			MyDialogHelper.popup(context, message);
 //        	return;
 //		} 
-		
-		try {
-			save();
-		} catch (ParseException e) {
-	    	MyDialogHelper.popup(context, "Invalid Date");
-		}
-		NavigationHolder.setDestination(NavigationHolder.Registration4Activity);
-		finish();
-	}
-	public void save() throws ParseException
-	{
 		if(txtRegion.getText().toString().isEmpty())
 		{
         	String message="Please choose your Region";
 			MyDialogHelper.popup(context, message);
         	return;
 		} 
+		
+		save();
+		NavigationHolder.setDestination(NavigationHolder.Registration4Activity);
+		finish();
+	}
+	public void save()
+	{
 		
 		User user=UserHolder.getRegUser();
 //		user.setBday(PrettyDateHelper.toDate(txtBday.getText().toString()));
@@ -180,6 +173,8 @@ public class Registration3Activity extends Activity {
 //		byear=2000;bmonth=1;bdayOfMonth=1;
 //		txtPhone.setText("12345677");
 		txtEmail.setText("a@a.a");
+		LGUHolder.setRegion(Regions.getByName("NCR"));
+		txtRegion.setText(LGUHolder.getRegion().getName());
 	}
 	@Override
 	protected void onStart() {
