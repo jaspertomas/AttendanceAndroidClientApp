@@ -60,9 +60,9 @@ public class LguListActivity extends Activity {
 		
 		if(getIntent().getAction().contentEquals("province"))
 			//4 means province
-			list=models.Lgus.select(" where type =4 and region_id="+region_id+" order by name");
+			list=models.Lgus.select(" where type =4 and (region_id="+region_id+" or region_id is null) order by name");
 		else
-			list=models.Lgus.select(" where type !=4 and region_id="+region_id+" order by name");
+			list=models.Lgus.select(" where type !=4 and (region_id="+region_id+" or region_id is null) order by name");
 		itemTitles= new ArrayList<String>(list.size());
 
 //		itemTitles.add("---"+tablelabel+"---");
