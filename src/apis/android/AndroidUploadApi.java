@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import utils.FileHelper;
+import utils.MyDialogHelper;
 import utils.MyPhotoSaver;
 import utils.NetworkHelper;
 import android.content.Context;
@@ -54,7 +55,7 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			final DashboardActivity instance= DashboardActivity.getInstance();
 			instance.runOnUiThread(new Runnable() {
 			    public void run() {
-			        Toast.makeText(instance, "Please connect to the internet", Toast.LENGTH_LONG).show();
+			    	MyDialogHelper.popup(instance, "Please connect to the internet");
 			    }
 			});		
 			return;

@@ -23,6 +23,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.MyDialogHelper;
 import utils.MyPhotoSaver;
 import utils.NetworkHelper;
 import utils.UrlHelper;
@@ -54,7 +55,7 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 			final Registration4Activity instance= Registration4Activity.getInstance();
 			instance.runOnUiThread(new Runnable() {
 			    public void run() {
-			        Toast.makeText(instance, "Please connect to the internet", Toast.LENGTH_LONG).show();
+			    	MyDialogHelper.popup(instance, "Please connect to the internet");
 			    }
 			});		
 			return;
