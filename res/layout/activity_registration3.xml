@@ -15,7 +15,7 @@
 		    android:orientation="vertical"
 			>
 			
-
+<!-- 
      	<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +29,7 @@
             android:editable="false"
             android:focusable="false"
             />
+ -->
      	<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:inputType="textWebEmailAddress"
             android:hint="@string/email" />
+<!-- 
     	<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -52,6 +54,7 @@
             android:digits="0123456789-+()"
 			android:inputType="numberSigned"
             android:hint="@string/phone" />
+ -->    	
     		 	    
     	<Button
             android:layout_width="wrap_content"

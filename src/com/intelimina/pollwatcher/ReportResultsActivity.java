@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ReportResultsActivity extends Activity {
 	Context context;
@@ -284,6 +285,7 @@ public class ReportResultsActivity extends Activity {
 		record.setRecordType("electionresults");
 		record.setSfGuardUserId(UserHolder.getUser().getSfGuardUserId());
 		record.save();
+		Toast.makeText(context, "Report successfully saved.",Toast.LENGTH_LONG).show();
 		finish();
 	}
 	public void takePicture(View button)

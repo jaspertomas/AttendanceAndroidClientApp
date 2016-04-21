@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ReportVoteBuyingActivity extends Activity {
 	Context context;
@@ -88,6 +89,7 @@ public class ReportVoteBuyingActivity extends Activity {
 		record.setRecordType("votebuying");
 		record.setSfGuardUserId(UserHolder.getUser().getSfGuardUserId());
 		record.save();
+		Toast.makeText(context, "Report successfully saved.",Toast.LENGTH_LONG).show();
 		finish();
 	}
 	public void takePicture(View button)

@@ -79,8 +79,8 @@
     <string name="title_activity_registration2">Poll Watcher Registration</string>
     <string name="title_activity_registration3">Poll Watcher Registration</string>
     <string name="title_activity_registration4">Poll Watcher Registration</string>
-    <string name="title_activity_dashboard">Dashboard</string>
-    <string name="title_activity_report_results">Report Results</string>
+    <string name="title_activity_dashboard">Poll Watcher Dashboard</string>
+    <string name="title_activity_report_results">Report Election Results</string>
     <string name="title_activity_report_vote_buying">Report Vote Buying</string>
     <string name="title_activity_report_incident">Report Incident</string>
 

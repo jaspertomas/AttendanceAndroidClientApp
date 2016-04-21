@@ -127,7 +127,7 @@ public class RegistrationActivity extends Activity {
 	}
 	public void fill(View button)
 	{
-		txtUname.setText("asdfgh");
+		txtUname.setText("09176543210");
 		txtPasswd.setText("asdfgh");
 		txtPasswd2.setText("asdfgh");
 		

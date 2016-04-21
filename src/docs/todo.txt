@@ -11,3 +11,9 @@ set phone as username
 
 add prescinct no, region, lgu to report result
 
+restrict phone number (username) to have at least 11 numbers
+
+restrict middle initial to be only 1 char long
+
+
+add records waiting for upload count in dashboard

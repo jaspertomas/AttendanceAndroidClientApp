@@ -88,7 +88,7 @@ public class ReportIncidentActivity extends Activity {
 		record.setRecordType(txtType.getText().toString());
 		record.setSfGuardUserId(UserHolder.getUser().getSfGuardUserId());
 		record.save();
-		Toast.makeText(context, "Report successfully saved. Click Upload Reports to send to server.",Toast.LENGTH_LONG).show();
+		Toast.makeText(context, "Report successfully saved.",Toast.LENGTH_LONG).show();
 		finish();
 	}
 	public void takePicture(View button)
