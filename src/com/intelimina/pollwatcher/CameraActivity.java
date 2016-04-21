@@ -34,17 +34,17 @@ public class CameraActivity extends Activity {
 	FrameLayout preview;
 	
 	Context context;
-	static CameraActivity instance;
-	public static CameraActivity getInstance() {
-		return instance;
-	}
+//	static CameraActivity instance;
+//	public static CameraActivity getInstance() {
+//		return instance;
+//	}
 		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_camera);
 		context=CameraActivity.this;
-		instance=CameraActivity.this;
+//		instance=CameraActivity.this;
 		
 		pic = (ImageView) findViewById(R.id.imageView1);
 		preview = (FrameLayout) findViewById(R.id.camera_preview);

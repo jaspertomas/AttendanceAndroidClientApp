@@ -16,11 +16,16 @@ import apis.android.AndroidUploadApi;
 public class DashboardActivity extends Activity {
 	TextView welcome;
 
+	static DashboardActivity instance;
+	public static DashboardActivity getInstance() {
+		return instance;
+	}
 	Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dashboard);
+		instance=DashboardActivity.this;
 		context=DashboardActivity.this;
 
 		setupView();

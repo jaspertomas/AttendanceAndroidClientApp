@@ -1,8 +1,5 @@
 add help page
 
-on upload, rename file doesn't seem to work. 
-try on a real device, maybe it will work
-
 add prescinct no, region, lgu to report model
 
 restrict phone number (username) to have at least 11 numbers

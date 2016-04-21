@@ -25,6 +25,7 @@ import org.json.JSONObject;
 
 import utils.FileHelper;
 import utils.MyPhotoSaver;
+import utils.NetworkHelper;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -35,6 +36,8 @@ import android.widget.Toast;
 
 import com.intelimina.pollwatcher.CameraActivity;
 import com.intelimina.pollwatcher.Constants;
+import com.intelimina.pollwatcher.DashboardActivity;
+import com.intelimina.pollwatcher.Registration4Activity;
 
 public class AndroidUploadApi extends BaseAndroidUploadApi{
 	public AndroidUploadApi(Context context) {
@@ -46,12 +49,23 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 
 	public static void demo(Context context)
 	{
+		if(!NetworkHelper.isNetworkAvailable(context))
+		{
+			final DashboardActivity instance= DashboardActivity.getInstance();
+			instance.runOnUiThread(new Runnable() {
+			    public void run() {
+			        Toast.makeText(instance, "Please connect to the internet", Toast.LENGTH_LONG).show();
+			    }
+			});		
+			return;
+		}
+		
 		Integer count=Record.count("");
 		if(count==0)
 		{
-			CameraActivity.getInstance().runOnUiThread(new Runnable() {
+			DashboardActivity.getInstance().runOnUiThread(new Runnable() {
 			    public void run() {
-			        Toast.makeText(CameraActivity.getInstance(), "Upload Success", Toast.LENGTH_LONG).show();
+			        Toast.makeText(DashboardActivity.getInstance(), "Upload Success", Toast.LENGTH_LONG).show();
 			    }
 			});		
 			return;
@@ -122,7 +136,7 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 				}
 				
 				final Context finalContext=context;
-				CameraActivity.getInstance().runOnUiThread(new Runnable() {
+				DashboardActivity.getInstance().runOnUiThread(new Runnable() {
 				    public void run() {
 				    	demo(finalContext);
 				    }
@@ -130,9 +144,9 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 			}
 			else
 			{
-				CameraActivity.getInstance().runOnUiThread(new Runnable() {
+				DashboardActivity.getInstance().runOnUiThread(new Runnable() {
 				    public void run() {
-				        Toast.makeText(CameraActivity.getInstance(), error, Toast.LENGTH_LONG).show();
+				        Toast.makeText(DashboardActivity.getInstance(), error, Toast.LENGTH_LONG).show();
 				    }
 				});		
 			}

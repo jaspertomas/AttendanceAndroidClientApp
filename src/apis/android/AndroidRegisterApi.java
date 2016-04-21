@@ -24,6 +24,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import utils.MyPhotoSaver;
+import utils.NetworkHelper;
 import utils.UrlHelper;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -32,6 +33,7 @@ import android.util.Base64;
 import android.widget.Toast;
 
 import com.intelimina.pollwatcher.Constants;
+import com.intelimina.pollwatcher.DashboardActivity;
 import com.intelimina.pollwatcher.Registration4Activity;
 
 public class AndroidRegisterApi extends BaseAndroidRegisterApi{
@@ -47,6 +49,17 @@ public class AndroidRegisterApi extends BaseAndroidRegisterApi{
 
 	public static void demo(Context context,User user)
 	{
+		if(!NetworkHelper.isNetworkAvailable(context))
+		{
+			final Registration4Activity instance= Registration4Activity.getInstance();
+			instance.runOnUiThread(new Runnable() {
+			    public void run() {
+			        Toast.makeText(instance, "Please connect to the internet", Toast.LENGTH_LONG).show();
+			    }
+			});		
+			return;
+		}
+
 		AndroidRegisterApi.user=user;
 		AndroidRegisterApi api = new AndroidRegisterApi(context);
 		api.setAccessToken(Constants.accessToken1);//possible values:
