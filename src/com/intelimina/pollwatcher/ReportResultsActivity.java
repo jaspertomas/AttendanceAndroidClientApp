@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ReportResultsActivity extends Activity {
-	private EditText txtRegion,txtProvincee,txtCity,txtPrecinct;	
+	private EditText txtRegion,txtProvince,txtCity,txtPrecinct;	
 	private Lgu province,city;
 	private Region region;
 
@@ -193,6 +193,32 @@ public class ReportResultsActivity extends Activity {
         	return;
 		} 
 		
+		//-----LGU Validation------------------
+		if(txtRegion.getText().toString().isEmpty())
+		{
+        	String message="Please choose your Region";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(txtProvince.getText().toString().isEmpty())
+		{
+        	String message="Please choose your Province";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(txtCity.getText().toString().isEmpty())
+		{
+        	String message="Please choose your City";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(txtPrecinct.getText().toString().isEmpty())
+		{
+        	String message="Please enter your Precinct Number";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		//-------vote count validation-----------------
 		if(txtp5.getText().toString().isEmpty())
 		{
         	String message="Please enter vote count for "+ps[4];
@@ -316,31 +342,6 @@ public class ReportResultsActivity extends Activity {
         	return;
 		} 
 		
-		//-----LGU Validation------------------
-		if(txtRegion.getText().toString().isEmpty())
-		{
-        	String message="Please choose your Region";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		if(txtProvince.getText().toString().isEmpty())
-		{
-        	String message="Please choose your Province";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		if(txtCity.getText().toString().isEmpty())
-		{
-        	String message="Please choose your City";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
-		if(txtPrecinct.getText().toString().isEmpty())
-		{
-        	String message="Please enter your Precinct Number";
-			MyDialogHelper.popup(context, message);
-        	return;
-		} 
 		//--------validation complete---------
 
 		//save data to database

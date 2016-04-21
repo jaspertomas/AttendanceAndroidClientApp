@@ -1,8 +1,17 @@
 package holders;
 
 import models.Lgu;
+import models.Region;
 
 public class LGUHolder {
+	static Region region;
+	public static Region getRegion() {
+		return region;
+	}
+	public static void setRegion(Region region) {
+		LGUHolder.region = region;
+	}
+
 	static Lgu city;
 	public static Lgu getCity() {
 		return city;

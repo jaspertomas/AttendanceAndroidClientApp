@@ -67,6 +67,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".RegionListActivity"
+            android:label="@string/title_activity_region_list"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".LguListActivity"
             android:label="@string/title_activity_lgu_list"
             android:screenOrientation="portrait" >

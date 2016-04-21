@@ -24,81 +24,98 @@
         android:text="Take a picture" />
     
 
-
-	<!-- SPACER -->
-	<TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-	    android:padding="3dip"
-	    android:text="            " />
-	    
-    	<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Region" />
-    	<EditText
-            android:id="@+id/region"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="Region" 
-            android:editable="false"
-            android:focusable="false"
-            />
 	
 
-    	<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/province" />
-    	<EditText
-            android:id="@+id/province"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/province" 
-            android:editable="false"
-            android:focusable="false"
-            />
-    	<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/city" />
-    	<EditText
-            android:id="@+id/city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:hint="@string/city" 
-            android:editable="false"
-            android:focusable="false"
-            />
-	<TextView
-	    android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-	    android:padding="3dip"
-	    android:text="Precinct No." />
-	<EditText
-        android:id="@+id/txtPrecinct"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-	    android:padding="3dip"
-	    android:text="" />	
-	<!-- SPACER -->
-	<TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-	    android:padding="3dip"
-	    android:text="            " />
-	    
 
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:stretchColumns="1" >
 
+        <TableRow>
+			<!-- SPACER -->
+			<TextView
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+			    android:padding="3dip"
+			    android:text="            " />
+        </TableRow>
+        <TableRow>
+	    	<TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="20sp"
+	            android:text="Region" />
+	    	<EditText
+	            android:id="@+id/region"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:hint="Region" 
+	            android:editable="false"
+	            android:focusable="false"
+	            />
+        </TableRow>
+        
+        <TableRow>
+	    	<TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="20sp"
+	            android:text="@string/province" />
+	    	<EditText
+	            android:id="@+id/province"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:hint="@string/province" 
+	            android:editable="false"
+	            android:focusable="false"
+	            />
+        </TableRow>
+        
+        <TableRow>
+	    	<TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="20sp"
+	            android:text="@string/city" />
+	    	<EditText
+	            android:id="@+id/city"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:hint="@string/city" 
+	            android:editable="false"
+	            android:focusable="false"
+	            />            
+        </TableRow>
+        
+        <TableRow>
+			<TextView
+			    android:textSize="20sp"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+			    android:padding="3dip"
+			    android:text="Precinct No." />
+			<EditText
+		        android:id="@+id/txtPrecinct"
+		        android:textSize="20sp"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+			    android:padding="3dip"
+			    android:hint="Precinct No."/>	            
+        </TableRow>
+    </TableLayout>
+        
+			<!-- SPACER -->
+        	<TextView
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+			    android:padding="3dip"
+			    android:text="            " />
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1" >
+        	
         <TableRow>
 
             <TextView

@@ -5,7 +5,7 @@ import holders.LGUHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Lgus;
+import models.Regions;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class RegionListActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_lgu_list);
+		setContentView(R.layout.activity_region_list);
 //		instance=this;
 		context=RegionListActivity.this;
 		
@@ -38,7 +38,7 @@ public class RegionListActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.lgu_list, menu);
+		getMenuInflater().inflate(R.menu.region_list, menu);
 		return true;
 	}
 
@@ -49,17 +49,13 @@ public class RegionListActivity extends Activity {
         ListView listView = (ListView) findViewById (R.id.list_view);
         
 		//=====read tracks table and add results to listview=======
-		ArrayList<models.Lgu> list;
+		ArrayList<models.Region> list;
 		
-		if(getIntent().getAction().contentEquals("province"))
-			//4 means province
-			list=models.Lgus.select(" where type =4 order by name");
-		else
-			list=models.Lgus.select(" where type !=4 order by name");
+		list=models.Regions.select("");
 		itemTitles= new ArrayList<String>(list.size());
 
 //		itemTitles.add("---"+tablelabel+"---");
-        for(models.Lgu item:list)
+        for(models.Region item:list)
         {
         	itemTitles.add(item.getName());
         }
@@ -74,15 +70,11 @@ public class RegionListActivity extends Activity {
     			    {
     					String selectedFromList = (parent.getItemAtPosition(position).toString());
 
-    					if(getIntent().getAction().contentEquals("province"))
-    						LGUHolder.setProvince(Lgus.getByName(selectedFromList));
-    					else
-    						LGUHolder.setCity(Lgus.getByName(selectedFromList));
+						LGUHolder.setRegion(Regions.getByName(selectedFromList));
     						
     					finish();
     			    }});	
         
         }	   
 	}
-
 }
