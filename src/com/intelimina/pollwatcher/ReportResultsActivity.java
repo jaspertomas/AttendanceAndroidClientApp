@@ -152,31 +152,28 @@ public class ReportResultsActivity extends Activity {
 		{
 			this.region=tempregion;
 			txtRegion.setText(region.getName());
-		}
-		else
-		{
-			txtRegion.setText("");
-		}
-		Lgu tempcity=LGUHolder.getCity();
-		if(tempcity!=null)
-		{
-			this.city=tempcity;
-			txtCity.setText(city.getName());
-		}
-		else
-		{
-			txtCity.setText("");
-		}
+			
+			txtProvince.setEnabled(true);
+			txtCity.setEnabled(true);
 
-		Lgu tempprovince=LGUHolder.getProvince();
-		if(tempprovince!=null)
-		{
-			this.province=tempprovince;
-			txtProvince.setText(province.getName());
+			Lgu tempcity=LGUHolder.getCity();
+			if(tempcity!=null)
+			{
+				this.city=tempcity;
+				txtCity.setText(city.getName());
+			}
+
+			Lgu tempprovince=LGUHolder.getProvince();
+			if(tempprovince!=null)
+			{
+				this.province=tempprovince;
+				txtProvince.setText(province.getName());
+			}
 		}
 		else
 		{
-			txtProvince.setText("");
+			txtProvince.setEnabled(false);
+			txtCity.setEnabled(false);
 		}
 		
 	}

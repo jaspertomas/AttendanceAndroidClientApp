@@ -5,7 +5,10 @@ import holders.LGUHolder;
 import java.util.ArrayList;
 import java.util.List;
 
+import utils.MyDialogHelper;
+
 import models.Lgus;
+import models.Region;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class LguListActivity extends Activity {
 //	private static LguListActivity instance;
@@ -42,20 +46,23 @@ public class LguListActivity extends Activity {
 		return true;
 	}
 
+	List<String> itemTitles;
 	public void setupView()
 	{
 		
-		List<String> itemTitles;
         ListView listView = (ListView) findViewById (R.id.list_view);
         
 		//=====read tracks table and add results to listview=======
 		ArrayList<models.Lgu> list;
+		Region region=LGUHolder.getRegion();
+		Integer region_id=0;
+		if(region!=null)region_id=region.getId();
 		
 		if(getIntent().getAction().contentEquals("province"))
 			//4 means province
-			list=models.Lgus.select(" where type =4 order by name");
+			list=models.Lgus.select(" where type =4 and region_id="+region_id+" order by name");
 		else
-			list=models.Lgus.select(" where type !=4 order by name");
+			list=models.Lgus.select(" where type !=4 and region_id="+region_id+" order by name");
 		itemTitles= new ArrayList<String>(list.size());
 
 //		itemTitles.add("---"+tablelabel+"---");
@@ -83,6 +90,13 @@ public class LguListActivity extends Activity {
     			    }});	
         
         }	   
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		//if list contains no items, it's probably because a region has not been chosen yet.
+		if(itemTitles.size()==0)
+			MyDialogHelper.popup(context, "Please choose a region first");
 	}
 
 }
