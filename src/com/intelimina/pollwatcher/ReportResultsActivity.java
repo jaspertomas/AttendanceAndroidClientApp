@@ -342,18 +342,36 @@ public class ReportResultsActivity extends Activity {
 		//--------validation complete---------
 
 		//save data to database
-		JSONObject jsondata=new JSONObject();
 		try {
-			jsondata.put(ps[0], Integer.valueOf(txtp1.getText().toString()));
-			jsondata.put(ps[1], Integer.valueOf(txtp2.getText().toString()));
-			jsondata.put(ps[2], Integer.valueOf(txtp3.getText().toString()));
-			jsondata.put(ps[3], Integer.valueOf(txtp4.getText().toString()));
-			jsondata.put(ps[4], Integer.valueOf(txtp5.getText().toString()));
-			jsondata.put(vps[0], Integer.valueOf(txtvp1.getText().toString()));
-			jsondata.put(vps[1], Integer.valueOf(txtvp2.getText().toString()));
-			jsondata.put(vps[2], Integer.valueOf(txtvp3.getText().toString()));
-			jsondata.put(vps[3], Integer.valueOf(txtvp4.getText().toString()));
-			jsondata.put(vps[4], Integer.valueOf(txtvp5.getText().toString()));
+			JSONObject candidatedata=new JSONObject();
+			candidatedata.put(ps[0], Integer.valueOf(txtp1.getText().toString()));
+			candidatedata.put(ps[1], Integer.valueOf(txtp2.getText().toString()));
+			candidatedata.put(ps[2], Integer.valueOf(txtp3.getText().toString()));
+			candidatedata.put(ps[3], Integer.valueOf(txtp4.getText().toString()));
+			candidatedata.put(ps[4], Integer.valueOf(txtp5.getText().toString()));
+			candidatedata.put(vps[0], Integer.valueOf(txtvp1.getText().toString()));
+			candidatedata.put(vps[1], Integer.valueOf(txtvp2.getText().toString()));
+			candidatedata.put(vps[2], Integer.valueOf(txtvp3.getText().toString()));
+			candidatedata.put(vps[3], Integer.valueOf(txtvp4.getText().toString()));
+			candidatedata.put(vps[4], Integer.valueOf(txtvp5.getText().toString()));
+			JSONObject locationdata=new JSONObject();
+			locationdata.put("province_id", Integer.valueOf(LGUHolder.getProvince().getId().toString()));
+			locationdata.put("city_id", Integer.valueOf(LGUHolder.getCity().getId().toString()));
+			locationdata.put("precinct_no", Integer.valueOf(txtPrecinct.getText().toString()));
+			JSONObject jsondata=new JSONObject();
+			jsondata.put("candidatedata", candidatedata);
+			jsondata.put("locationdata", locationdata);
+			
+			Record record=new Record();
+			record.setJsondata(jsondata.toString());
+			record.setFilename(PictureHolder.getFilename());
+			record.setDatetime(new java.util.Date());
+			record.setDescription(txtNotes.getText().toString());
+			record.setRecordType("electionresults");
+			record.setSfGuardUserId(UserHolder.getUser().getSfGuardUserId());
+			record.save();
+			Toast.makeText(context, "Report successfully saved.",Toast.LENGTH_LONG).show();
+			finish();
 			
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
@@ -363,16 +381,6 @@ public class ReportResultsActivity extends Activity {
 			e.printStackTrace();
 		}
 		
-		Record record=new Record();
-		record.setJsondata(jsondata.toString());
-		record.setFilename(PictureHolder.getFilename());
-		record.setDatetime(new java.util.Date());
-		record.setDescription(txtNotes.getText().toString());
-		record.setRecordType("electionresults");
-		record.setSfGuardUserId(UserHolder.getUser().getSfGuardUserId());
-		record.save();
-		Toast.makeText(context, "Report successfully saved.",Toast.LENGTH_LONG).show();
-		finish();
 	}
 	public void takePicture(View button)
 	{

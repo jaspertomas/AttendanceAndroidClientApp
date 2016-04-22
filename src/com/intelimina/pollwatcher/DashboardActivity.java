@@ -14,7 +14,7 @@ import android.widget.Toast;
 import apis.android.AndroidUploadApi;
 
 public class DashboardActivity extends Activity {
-	TextView welcome;
+	TextView lblWelcome,lblRecordCount;
 
 	static DashboardActivity instance;
 	public static DashboardActivity getInstance() {
@@ -32,8 +32,16 @@ public class DashboardActivity extends Activity {
 	}
 	private void setupView()
 	{
-		welcome = (TextView) findViewById (R.id.welcome);
-        welcome.setText("Welcome "+UserHolder.getUser().toString());
+		lblWelcome = (TextView) findViewById (R.id.welcome);
+        lblRecordCount = (TextView) findViewById (R.id.recordCount);
+
+        lblWelcome.setText("Welcome "+UserHolder.getUser().toString());
+	}
+	@Override
+	protected void onResume() {
+		super.onResume();
+	    Integer recordCount=Record.count("");
+	    lblRecordCount.setText(recordCount.toString()+" records waiting for upload");
 	}
 	@Override
 	public void onBackPressed()

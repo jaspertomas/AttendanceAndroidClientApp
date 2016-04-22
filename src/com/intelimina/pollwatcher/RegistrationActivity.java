@@ -70,19 +70,19 @@ public class RegistrationActivity extends Activity {
 		//validate
 		if(txtUname.getText().toString().isEmpty())
 		{
-        	String message="Please enter a User Name";
+        	String message="Please enter a Phone Number";
 			MyDialogHelper.popup(context, message);
         	return;
 		}
-		if(txtUname.getText().toString().length()<6)
+		if(txtUname.getText().toString().length()<11)
 		{
-        	String message="Username is too short (6 letters or longer please)";
+        	String message="Phone Number is too short (11 numbers please)";
 			MyDialogHelper.popup(context, message);
         	return;
 		}
 		else if(txtUname.getText().toString().length()>50)
 		{
-        	String message="Your Username is too long (50 letters or shorter please)";
+        	String message="Phone number is too long (11 numbers please)";
 			MyDialogHelper.popup(context, message);
         	return;
 		}
@@ -90,7 +90,7 @@ public class RegistrationActivity extends Activity {
 		//say so
 		else if(duplicateuser!=null && duplicateuser.getId()!=UserHolder.getRegUser().getId())
 		{
-        	String message="Username "+txtUname.getText().toString()+" is already taken.";
+        	String message="Phone number "+txtUname.getText().toString()+" is already registered.";
 			MyDialogHelper.popup(context, message);
         	return;
 		} 

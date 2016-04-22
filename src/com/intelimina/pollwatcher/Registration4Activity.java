@@ -128,7 +128,7 @@ public class Registration4Activity extends Activity {
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
-		    	if(message.contains("Please use a different username"))
+		    	if(message.contains(" is already registered."))
 		    	{
 					NavigationHolder.setDestination(NavigationHolder.RegistrationActivity);
 					finish();

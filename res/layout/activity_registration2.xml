@@ -35,6 +35,7 @@
             android:id="@+id/mi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLength="1"
             android:hint="@string/mi" />
      	<TextView
             android:layout_width="wrap_content"
