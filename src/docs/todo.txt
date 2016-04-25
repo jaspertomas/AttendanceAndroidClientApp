@@ -2,3 +2,29 @@ add help page
 
 allow login on unregistered phone
 ----------------
+report results:
+region is region 3, city is wrong?
+
+make city related to province
+
+region is 9 is out of order
+convert regions to hindi arabic numbers / add names?
+
+national summary by region
+
+
+
+ 
+logout; 
+remove edit profile and edit password
+
+vote buying and other incident:
+please indicate location and description 
+
+--done---------------
+make sure users cannot edit other users' password
+make sure users cannot edit uploaded data
+ - disable edit actions on all modules except user
+ 
+ registered users disabled
+ 

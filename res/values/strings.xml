@@ -64,7 +64,8 @@
     <string name="crud_cancel">Cancel</string>
     <string name="crud_add_new">Add New</string>
     <string name="crud_save_and_add_new">Save and Add New</string>
-
+    <string name="location_and_description_please">Please indicate location and description</string>
+    
     <!--
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_choose_user">Choose a User</string>
