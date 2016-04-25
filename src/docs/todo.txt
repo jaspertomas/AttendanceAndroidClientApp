@@ -15,13 +15,14 @@ national summary by region
 
 
  
-logout; 
+does logout work? (please test) 
+
+--done---------------
 remove edit profile and edit password
 
 vote buying and other incident:
 please indicate location and description 
 
---done---------------
 make sure users cannot edit other users' password
 make sure users cannot edit uploaded data
  - disable edit actions on all modules except user

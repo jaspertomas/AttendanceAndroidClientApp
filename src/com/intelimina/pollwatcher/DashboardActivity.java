@@ -49,6 +49,11 @@ public class DashboardActivity extends Activity {
 		NavigationHolder.setDestination(NavigationHolder.ShutDown);
 		finish();
 	}
+	public void logout(View button)
+	{
+		NavigationHolder.setDestination(NavigationHolder.ShutDown);
+		finish();
+	}
 	public void reportResults(View button)
 	{
 		LGUHolder.reset();
