@@ -51,7 +51,7 @@ public class RegionListActivity extends Activity {
 		//=====read tracks table and add results to listview=======
 		ArrayList<models.Region> list;
 		
-		list=models.Regions.select("");
+		list=models.Regions.select(" order by priority");
 		itemTitles= new ArrayList<String>(list.size());
 
 //		itemTitles.add("---"+tablelabel+"---");
