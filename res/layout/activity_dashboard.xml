@@ -14,37 +14,37 @@
     	
      <TextView
 	    android:id="@+id/welcome"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         />
     <TextView
 	    android:id="@+id/recordCount"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         />
     
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Go to Camera App" 
         android:onClick="launchCamera"
         />
      <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Report Election Results" 
         android:onClick="reportResults"
         />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Report Vote Buying" 
         android:onClick="reportVoteBuying"
         />
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Report Other Incident" 
         android:onClick="reportIncident"
@@ -57,23 +57,23 @@
         android:text="           " />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Upload reports to server" 
         android:onClick="upload"
         />
 	<Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="logout"
         android:text="@string/logout" />
 	<Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="editProfile"
         android:text="@string/editProfile" />
 	<Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="editPassword"
         android:text="@string/editPassword" />

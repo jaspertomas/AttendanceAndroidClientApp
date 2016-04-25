@@ -61,12 +61,14 @@
             android:layout_height="wrap_content"
             android:onClick="next"
             android:text="@string/next" />
-   		<Button
+    	<!-- 
+		<Button
             android:id="@+id/btnFill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="fill"
             android:text="Fill" />
+    	 -->
     	</LinearLayout>
 	</ScrollView>
      	    
