@@ -65,7 +65,7 @@
     <string name="crud_add_new">Add New</string>
     <string name="crud_save_and_add_new">Save and Add New</string>
     <string name="location_and_description_please">Please indicate location and description</string>
-    
+
     <!--
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_choose_user">Choose a User</string>
@@ -85,5 +85,12 @@
     <string name="title_activity_report_results">Report Election Results</string>
     <string name="title_activity_report_vote_buying">Report Vote Buying</string>
     <string name="title_activity_report_incident">Report Incident</string>
-
+    <string name="helpText"><b>Go to Camera App:</b> 
+        \n\tThis allows you to switch to the Camera App in a hurry, so that you can take videos of what\'s happening around you. This is important because the PollWatcher App cannot take videos, only pictures. 
+        \n\tThe pictures you take using the Camera App cannot be uploaded to the PollWatcher server. This is to protect PollWatcher from doctored pictures.
+        \n\n<b>Report Election Results:</b> \n\tThis is where you enter the election results of your poll center, and take a picture of it.
+        \n\n<b>Report Vote Buying:</b> \n\tThis is where you report vote buying happening around you. Please write down the location where it happened, and which candidate was doing it, etc.
+        \n\n<b>Report Other Incident:</b> \n\tThis is where you report other things happening around you. Please write down details and location where it happened
+        \n\n<b>Upload Reports to Server:</b> \n\tClick this button to send your reports to the server. Please make sure you are connected to the internet. Your pictures will appear in your DCIM/Camera folder afterwards, so you can post them on facebook or other networking sites.</string>
+    <string name="title_activity_help">HelpActivity</string>
 </resources>

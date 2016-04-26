@@ -28,10 +28,16 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Help Page" 
+        android:onClick="help"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Go to Camera App" 
         android:onClick="launchCamera"
         />
-     <Button
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Report Election Results" 
@@ -50,12 +56,12 @@
         android:onClick="reportIncident"
         />
 
-    <!-- spacer -->
+    <!-- spacer 
 	<TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="           " />
-
+	-->
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

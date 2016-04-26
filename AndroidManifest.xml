@@ -51,13 +51,13 @@
         </activity>
         <activity
             android:name="activities.users.UserActivity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_user" >
+            android:label="@string/title_activity_user"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="activities.users.UsersActivity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_users" >
+            android:label="@string/title_activity_users"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".RegistrationActivity"
@@ -81,38 +81,42 @@
         </activity>
         <activity
             android:name=".Registration2Activity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_registration2" >
+            android:label="@string/title_activity_registration2"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Registration3Activity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_registration3" >
+            android:label="@string/title_activity_registration3"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Registration4Activity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_registration4" >
+            android:label="@string/title_activity_registration4"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".DashboardActivity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_dashboard" >
+            android:label="@string/title_activity_dashboard"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ReportResultsActivity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_report_results" >
+            android:label="@string/title_activity_report_results"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ReportVoteBuyingActivity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_report_vote_buying" >
+            android:label="@string/title_activity_report_vote_buying"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".ReportIncidentActivity"
-            android:screenOrientation="portrait" 
-            android:label="@string/title_activity_report_incident" >
+            android:label="@string/title_activity_report_incident"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".HelpActivity"
+            android:label="@string/title_activity_help" >
         </activity>
     </application>
 

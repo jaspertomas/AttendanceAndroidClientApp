@@ -54,6 +54,11 @@ public class DashboardActivity extends Activity {
 		NavigationHolder.setDestination(NavigationHolder.ShutDown);
 		finish();
 	}
+	public void help(View button)
+	{
+		Intent intent = new Intent(context, HelpActivity.class);
+		startActivity(intent);
+	}
 	public void reportResults(View button)
 	{
 		LGUHolder.reset();
