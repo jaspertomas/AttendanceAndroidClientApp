@@ -72,22 +72,39 @@
 	            />
         </TableRow>
         
+
         <TableRow>
 	    	<TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textSize="20sp"
-	            android:text="@string/city" />
+	            android:text="Municipality" />
 	    	<EditText
 	            android:id="@+id/city"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:hint="@string/city" 
+	            android:hint="Municipality" 
+	            />            
+	            <!-- 
 	            android:editable="false"
 	            android:focusable="false"
-	            />            
+	             -->
         </TableRow>
-        
+        <TableRow>
+	    	<TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textSize="20sp"
+	            android:text="Barangay No."
+	            /> 
+	    	<EditText
+	            android:id="@+id/barangay"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:inputType="number"
+	            android:hint="Barangay No." 
+	            />            
+        </TableRow>        
         <TableRow>
 			<TextView
 			    android:textSize="20sp"
@@ -101,6 +118,7 @@
 		        android:layout_width="match_parent"
 		        android:layout_height="wrap_content"
 			    android:padding="3dip"
+	            android:inputType="number"
 			    android:hint="Precinct No."/>	            
         </TableRow>
     </TableLayout>
@@ -126,6 +144,7 @@
 
             <EditText
 		        android:id="@+id/txtp1"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -143,6 +162,7 @@
 
             <EditText
 		        android:id="@+id/txtp2"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -159,6 +179,7 @@
 
             <EditText
 		        android:id="@+id/txtp3"
+	            android:inputType="number"
                 android:gravity="right"
                 android:padding="3dip"
                 android:text="" />
@@ -174,6 +195,7 @@
 
             <EditText
 		        android:id="@+id/txtp4"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -190,6 +212,7 @@
 
             <EditText
 		        android:id="@+id/txtp5"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -219,6 +242,7 @@
 
             <EditText
 		        android:id="@+id/txtvp1"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -235,6 +259,7 @@
 
             <EditText
 		        android:id="@+id/txtvp2"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -251,6 +276,7 @@
 
             <EditText
 		        android:id="@+id/txtvp3"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -267,6 +293,7 @@
 
             <EditText
 		        android:id="@+id/txtvp4"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"
@@ -283,6 +310,7 @@
 
             <EditText
 		        android:id="@+id/txtvp5"
+	            android:inputType="number"
                 android:textSize="20sp"
                 android:gravity="right"
                 android:padding="3dip"

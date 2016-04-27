@@ -28,7 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ReportResultsActivity extends Activity {
-	private EditText txtRegion,txtProvince,txtCity,txtPrecinct;	
+	private EditText txtRegion,txtProvince,txtCity,txtBarangay,txtPrecinct;	
 	private Lgu province,city;
 	private Region region;
 
@@ -121,6 +121,7 @@ public class ReportResultsActivity extends Activity {
 		txtRegion = (EditText) findViewById(R.id.region);
 		txtProvince = (EditText) findViewById(R.id.province);
 		txtCity = (EditText) findViewById(R.id.city);
+		txtBarangay = (EditText) findViewById(R.id.barangay);
 		txtPrecinct = (EditText) findViewById(R.id.txtPrecinct);
 		
 		txtRegion.setOnClickListener(new View.OnClickListener() {
@@ -135,12 +136,14 @@ public class ReportResultsActivity extends Activity {
 	        	provinceList();
 	        }
 	    });
+		/*
 		txtCity.setOnClickListener(new View.OnClickListener() {
 	        @Override
 	        public void onClick(View v) {
 	        	cityList();
 	        }
 	    });
+	    */
 	}
 	@Override
 	protected void onStart() {
@@ -154,14 +157,14 @@ public class ReportResultsActivity extends Activity {
 			txtRegion.setText(region.getName());
 			
 			txtProvince.setEnabled(true);
-			txtCity.setEnabled(true);
-
-			Lgu tempcity=LGUHolder.getCity();
-			if(tempcity!=null)
-			{
-				this.city=tempcity;
-				txtCity.setText(city.getName());
-			}
+//			txtCity.setEnabled(true);
+//
+//			Lgu tempcity=LGUHolder.getCity();
+//			if(tempcity!=null)
+//			{
+//				this.city=tempcity;
+//				txtCity.setText(city.getName());
+//			}
 
 			Lgu tempprovince=LGUHolder.getProvince();
 			if(tempprovince!=null)
@@ -173,7 +176,7 @@ public class ReportResultsActivity extends Activity {
 		else
 		{
 			txtProvince.setEnabled(false);
-			txtCity.setEnabled(false);
+//			txtCity.setEnabled(false);
 		}
 		
 	}
@@ -205,7 +208,13 @@ public class ReportResultsActivity extends Activity {
 		} 
 		if(txtCity.getText().toString().isEmpty())
 		{
-        	String message="Please choose your City";
+        	String message="Please enter your City / Municipality";
+			MyDialogHelper.popup(context, message);
+        	return;
+		} 
+		if(txtBarangay.getText().toString().isEmpty())
+		{
+        	String message="Please enter your Barangay Number";
 			MyDialogHelper.popup(context, message);
         	return;
 		} 
@@ -356,8 +365,10 @@ public class ReportResultsActivity extends Activity {
 			candidatedata.put(vps[4], Integer.valueOf(txtvp5.getText().toString()));
 			JSONObject locationdata=new JSONObject();
 			locationdata.put("province_id", Integer.valueOf(LGUHolder.getProvince().getId().toString()));
-			locationdata.put("city_id", Integer.valueOf(LGUHolder.getCity().getId().toString()));
-			locationdata.put("precinct_no", Integer.valueOf(txtPrecinct.getText().toString()));
+//			locationdata.put("city_id", Integer.valueOf(LGUHolder.getCity().getId().toString()));
+			locationdata.put("city", StringHelper.toFirstCaps(txtCity.getText().toString()));
+			locationdata.put("barangay_no", txtBarangay.getText().toString());
+			locationdata.put("precinct_no", txtPrecinct.getText().toString());
 			JSONObject jsondata=new JSONObject();
 			jsondata.put("candidatedata", candidatedata);
 			jsondata.put("locationdata", locationdata);
@@ -437,11 +448,13 @@ public class ReportResultsActivity extends Activity {
 		intent.setAction("province");
 		startActivity(intent);
 	}
+	/*
 	public void cityList()
 	{
 		Intent intent = new Intent(context, LguListActivity.class);
 		intent.setAction("city");
 		startActivity(intent);
 	}
+	*/
 	
 }

@@ -108,18 +108,18 @@ public class AndroidUploadApi extends BaseAndroidUploadApi{
 					if(file.exists())
 					{
 						//use this to move files to /DCIM/Camera
-						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
-								+File.separator
-								+"Camera"
-								+File.separator
-								+record.getFilename();
-						
-						//use this to move files to /Pictures/Pollwatcher
-//						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+//						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
 //								+File.separator
-//								+"PollWatcher"
+//								+"Camera"
 //								+File.separator
 //								+record.getFilename();
+						
+						//use this to move files to /Pictures/Pollwatcher
+						String newfilename=Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+								+File.separator
+								+"PollWatcher"
+								+File.separator
+								+record.getFilename();
 //						Log.i("renameto",newfilename);
 						File newfile=new File(newfilename);
 						newfile.getParentFile().mkdirs();

@@ -6,15 +6,16 @@ make city related to province/text box municipality
 
 national summary by region with max and min
  
-does logout work? (please test) 
-
-add help page
-
 remove fill buttons
 
 make sure pictures go to dcim/camera
 
+make brgy and polling station integer only
+
 --done---------------
+add help page
+
+
 region is 9 is out of order
 convert regions to hindi arabic numbers / add names?
 
