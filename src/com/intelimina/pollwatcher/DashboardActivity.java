@@ -92,4 +92,10 @@ public class DashboardActivity extends Activity {
 	    else
 			AndroidUploadApi.demo(context);
 	}
+	//upload api calls this on success
+	public void onUploadSuccess()
+	{
+	    Integer recordCount=0;
+	    lblRecordCount.setText(recordCount.toString()+" records waiting for upload");
+	}
 }

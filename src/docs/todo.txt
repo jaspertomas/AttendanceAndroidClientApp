@@ -1,16 +1,21 @@
+in server, move priority of negros to bottom
+update server 
+
+
+
+
 allow login on unregistered phone?
 ----------------
 report results:
 
-make city related to province/text box municipality
+make city into textbox
 
-national summary by region with max and min
+national summary by region
  
 remove fill buttons
 
 make sure pictures go to dcim/camera
 
-make brgy and polling station integer only
 
 --done---------------
 add help page

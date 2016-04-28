@@ -6,8 +6,8 @@ import android.os.Environment;
 public class Constants  {
 	
 //	public final static String SERVER_URL = "http://192.168.1.10:80/pollwatcher/web/index.php";
-	public final static String SERVER_URL = "http://10.0.2.2:80/pollwatcher/web/index.php";
-//	public final static String SERVER_URL = "http://pollwatcher.itforhumanity.com/web/index.php";
+//	public final static String SERVER_URL = "http://10.0.2.2:80/pollwatcher/web/index.php";
+	public final static String SERVER_URL = "http://pollwatcher.itforhumanity.com/web/index.php";
 	
 //	public final static String SERVER_URL = "http://192.168.1.17:80/tomas_accounting/web/index.php";
 //	public final static String LOGIN_API_ENDPOINT_URL = Constants.SERVER_URL+"api/v1/courses?access_token=aeg3WeHgHuf93FHgNPad7jOfdZRkdC5yhNTYJAMD85bGKD6IjINSYZxRelRDQCAC";

@@ -1,11 +1,10 @@
 package utils;
 
-import holders.PictureDataHolder;
-
 import java.io.File;
 import java.io.FileOutputStream;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 public class MyPhotoSaver {
@@ -102,4 +101,36 @@ public class MyPhotoSaver {
 		// .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 		// return new File(sdDir, "CameraAPIDemo");
 	}
+	
+	public static Bitmap scaleBitmap(Bitmap bm) {
+		int maxHeight=1080;
+		int maxWidth=1080;
+	    int width = bm.getWidth();
+	    int height = bm.getHeight();
+
+	    Log.v("Pictures", "Width and height are " + width + "--" + height);
+
+	    //if picture is smaller than max dimensions, do nothing
+	    if(width<maxWidth && height<maxHeight){
+	    	return bm;
+	    } else if (width > height) {
+	        // landscape
+	        float ratio = (float) width / maxWidth;
+	        width = maxWidth;
+	        height = (int)(height / ratio);
+	    } else if (height > width) {
+	        // portrait
+	        float ratio = (float) height / maxHeight;
+	        height = maxHeight;
+	        width = (int)(width / ratio);
+	    } else {
+	        // square
+	        height = maxHeight;
+	        width = maxWidth;
+	    }
+//	    Log.v("Pictures", "after scaling Width and height are " + width + "--" + height);
+
+	    bm = Bitmap.createScaledBitmap(bm, width, height, true);
+	    return bm;
+	}	
 }

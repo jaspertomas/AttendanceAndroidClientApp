@@ -364,6 +364,7 @@ public class ReportResultsActivity extends Activity {
 			candidatedata.put(vps[3], Integer.valueOf(txtvp4.getText().toString()));
 			candidatedata.put(vps[4], Integer.valueOf(txtvp5.getText().toString()));
 			JSONObject locationdata=new JSONObject();
+			locationdata.put("region_id", Integer.valueOf(LGUHolder.getRegion().getId().toString()));
 			locationdata.put("province_id", Integer.valueOf(LGUHolder.getProvince().getId().toString()));
 //			locationdata.put("city_id", Integer.valueOf(LGUHolder.getCity().getId().toString()));
 			locationdata.put("city", StringHelper.toFirstCaps(txtCity.getText().toString()));

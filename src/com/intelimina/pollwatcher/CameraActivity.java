@@ -80,7 +80,9 @@ public class CameraActivity extends Activity {
 		@Override
 		public void onPictureTaken(byte[] data, Camera camera) {
 
-			Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+			Bitmap bitmap = MyPhotoSaver.scaleBitmap(BitmapFactory.decodeByteArray(data, 0, data.length));
+//			Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+//			Bitmap bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeByteArray(data, 0, data.length), 1080, 720, false);
 			
 			Date date=new Date();
 			String datetimestring=DateTimeHelper.toString(date);
